@@ -1,6 +1,5 @@
 package cn.nulladev.vanillamagic.item;
 
-import cn.nulladev.vanillamagic.VMCreativeTab;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -19,9 +18,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 
 public class WorldInteractionWand extends Item {
-    public WorldInteractionWand() {
-        super(new Properties().stacksTo(1).tab(VMCreativeTab.INSTANCE));
-        this.setRegistryName("world_interaction_wand");
+
+    public WorldInteractionWand(Properties props) {
+        super(props);
     }
 
     @Override
@@ -47,7 +46,7 @@ public class WorldInteractionWand extends Item {
                 if (blockstate1.is(b)) {
                     blockstate1.getBlock().setPlacedBy(level, blockpos, blockstate1, player, itemstack);
                     if (player instanceof ServerPlayer) {
-                        CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, blockpos, itemstack);
+                        CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer) player, blockpos, itemstack);
                     }
                 }
 

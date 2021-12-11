@@ -9,7 +9,7 @@ public class VMCreativeTab extends CreativeModeTab {
     public static final VMCreativeTab INSTANCE = new VMCreativeTab();
 
     public VMCreativeTab() {
-        super("vanillamagic");
+        super(VanillaMagic.MODID);
     }
 
     @Override
