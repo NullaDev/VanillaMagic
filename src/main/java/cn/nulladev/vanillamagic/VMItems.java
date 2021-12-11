@@ -13,7 +13,7 @@ public class VMItems {
 
     public static final DeferredRegister<Item> ITEM = DeferredRegister.create(Item.class, VanillaMagic.MODID);
 
-    public static RegistryObject<Item> WORLD_INTERACTION_WAND = register("world_interaction_wand", WorldInteractionWand::new);
+    public static RegistryObject<Item> WORLD_INTERACTION_WAND = register("world_interaction_wand", p -> new WorldInteractionWand(p.stacksTo(1)));
 
     public static RegistryObject<Item> CONCEPT_CORE_WATER = register("water", ConceptCore::new);
     public static RegistryObject<Item> CONCEPT_CORE_COBBLESTONE = register("concept_core_cobblestone", ConceptCore::new);
