@@ -1,6 +1,8 @@
 package cn.nulladev.vanillamagic.item;
 
+import cn.nulladev.vanillamagic.VMItems;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -78,12 +80,19 @@ public class WorldInteractionWand extends Item {
 
     @Override
     public InteractionResult useOn(UseOnContext ctx) {
+        int cd = VMItems.getCoreCD(getCore(ctx.getItemInHand()));
         switch (getCore(ctx.getItemInHand())) {
             case "water":
+                setMaxCD(ctx.getItemInHand(), cd);
+                setCD(ctx.getItemInHand(), cd);
                 return place(new BlockPlaceContext(ctx), Blocks.WATER);
             case "stone":
+                setMaxCD(ctx.getItemInHand(), cd);
+                setCD(ctx.getItemInHand(), cd);
                 return place(new BlockPlaceContext(ctx), Blocks.STONE);
             case "cobblestone":
+                setMaxCD(ctx.getItemInHand(), cd);
+                setCD(ctx.getItemInHand(), cd);
                 return place(new BlockPlaceContext(ctx), Blocks.COBBLESTONE);
             default:
                 return InteractionResult.PASS;
