@@ -13,7 +13,7 @@ import net.minecraft.world.level.Level;
 
 public class WandCoreRecipe extends CustomRecipe {
 
-    public static final RecipeSerializer<WandCoreRecipe> SERIALIZER = new SimpleRecipeSerializer<WandCoreRecipe>(WandCoreRecipe::new);
+    public static final RecipeSerializer<WandCoreRecipe> SERIALIZER = new SimpleRecipeSerializer<>(WandCoreRecipe::new);
 
     public WandCoreRecipe(ResourceLocation rl) {
         super(rl);

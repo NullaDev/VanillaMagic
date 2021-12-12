@@ -15,7 +15,7 @@ import javax.annotation.Nonnull;
 
 public class WandRemoveCoreRecipe extends CustomRecipe {
 
-    public static final RecipeSerializer<WandRemoveCoreRecipe> SERIALIZER = new SimpleRecipeSerializer<WandRemoveCoreRecipe>(WandRemoveCoreRecipe::new);
+    public static final RecipeSerializer<WandRemoveCoreRecipe> SERIALIZER = new SimpleRecipeSerializer<>(WandRemoveCoreRecipe::new);
 
     public WandRemoveCoreRecipe(ResourceLocation rl) {
         super(rl);
