@@ -19,7 +19,7 @@ public class WorldInteractionWand extends Item {
     private static final String TAG_MAX_CD = "cdmax";
 
     public WorldInteractionWand(Properties props) {
-        super(props);
+        super(props.stacksTo(1));
     }
 
     public static void setCore(ItemStack stack, ItemStack core) {
@@ -92,8 +92,8 @@ public class WorldInteractionWand extends Item {
 
     @Override
     public InteractionResult useOn(UseOnContext ctx) {
-        if (ctx.getItemInHand().getItem() instanceof ConceptCore) {
-            ConceptCore item = (ConceptCore)ctx.getItemInHand().getItem();
+        if (getCore(ctx.getItemInHand()).getItem() instanceof ConceptCore) {
+            ConceptCore item = (ConceptCore)getCore(ctx.getItemInHand()).getItem();
             setCD(ctx.getItemInHand(), item.CD);
             setMaxCD(ctx.getItemInHand(), item.CD);
             return item.wandUse(ctx);

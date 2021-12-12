@@ -20,16 +20,21 @@ public class WandCoreRecipe extends CustomRecipe {
 
     @Override
     public boolean matches(CraftingContainer inv, Level level) {
-        System.out.println("woshisb");
         boolean foundCore = false;
         boolean foundWand = false;
         for (int i = 0; i < inv.getMaxStackSize(); i++) {
             ItemStack stack = inv.getItem(i);
             if (!stack.isEmpty()) {
                 if (stack.getItem() instanceof WorldInteractionWand && !WorldInteractionWand.hasCore(stack)) {
-                    foundWand = true;
+                    if (foundWand)
+                        return false;
+                    else
+                        foundWand = true;
                 } else if (stack.getItem() instanceof ConceptCore) {
-                    foundCore = true;
+                    if (foundCore)
+                        return false;
+                    else
+                        foundCore = true;
                 } else {
                     return false;
                 }

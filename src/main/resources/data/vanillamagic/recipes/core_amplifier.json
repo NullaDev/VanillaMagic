@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "result": {
-    "item": "vanillamagic:space_crystal_small",
+    "item": "vanillamagic:core_amplifier",
     "count": 1
   },
   "pattern": [
@@ -11,13 +11,13 @@
   ],
   "key": {
     "A": {
-      "item": "minecraft:obsidian"
+      "item": "minecraft:copper_ingot"
     },
     "B": {
-      "item": "minecraft:ender_pearl"
+      "item": "minecraft:ender_eye"
     },
     "C": {
-      "item": "minecraft:emerald"
+      "item": "vanillamagic:world_interaction_io"
     }
   }
 }

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "vanillamagic:world_interaction_wand",
+    "count": 1
+  },
+  "pattern": [
+    " BA",
+    " AA",
+    "A  "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:gold_ingot"
+    },
+    "B": {
+      "item": "vanillamagic:core_amplifier"
+    }
+  }
+}

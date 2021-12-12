@@ -9,7 +9,7 @@ public abstract class ConceptCore extends Item {
     public int CD;
 
     public ConceptCore(Properties props) {
-        super(props);
+        super(props.stacksTo(1));
         this.setCD(10);
     }
 

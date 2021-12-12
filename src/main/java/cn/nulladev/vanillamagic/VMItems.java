@@ -12,9 +12,13 @@ public class VMItems {
 
     public static final DeferredRegister<Item> ITEM = DeferredRegister.create(Item.class, VanillaMagic.MODID);
 
-    public static RegistryObject<Item> CONCEPT_CORE_SMALL = register("space_crystal_small", GenericVMItem::new);
+    public static RegistryObject<Item> SPACE_CRYSTAL_SMALL = register("space_crystal_small", GenericVMItem::new);
+    public static RegistryObject<Item> SPACE_CRYSTAL_MIDDLE = register("space_crystal_middle", GenericVMItem::new);
+    public static RegistryObject<Item> SPACE_CRYSTAL_LARGE = register("space_crystal_large", GenericVMItem::new);
+    public static RegistryObject<Item> WORLD_INTERACTION_IO = register("world_interaction_io", GenericVMItem::new);
+    public static RegistryObject<Item> CORE_AMPLIFIER = register("core_amplifier", GenericVMItem::new);
 
-    public static RegistryObject<Item> WORLD_INTERACTION_WAND = register("world_interaction_wand", p -> new WorldInteractionWand(p.stacksTo(1)));
+    public static RegistryObject<Item> WORLD_INTERACTION_WAND = register("world_interaction_wand", WorldInteractionWand::new);
 
     public static RegistryObject<Item> CONCEPT_CORE_WATER = register("concept_core_water", ConceptCoreWater::new);
     public static RegistryObject<Item> CONCEPT_CORE_COBBLESTONE = register("concept_core_cobblestone", ConceptCoreCobblestone::new);

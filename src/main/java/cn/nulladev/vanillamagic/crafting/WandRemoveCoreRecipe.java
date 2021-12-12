@@ -28,7 +28,10 @@ public class WandRemoveCoreRecipe extends CustomRecipe {
             ItemStack stack = inv.getItem(i);
             if (!stack.isEmpty()) {
                 if (stack.getItem() instanceof WorldInteractionWand && WorldInteractionWand.hasCore(stack)) {
-                    foundWand = true;
+                    if (foundWand)
+                        return false;
+                    else
+                        foundWand = true;
                 } else {
                     return false;
                 }
