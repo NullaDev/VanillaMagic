@@ -1,7 +1,6 @@
 package cn.nulladev.vanillamagic.crafting;
 
-import cn.nulladev.vanillamagic.VMItems;
-import cn.nulladev.vanillamagic.item.ConceptCore;
+import cn.nulladev.vanillamagic.item.conceptcore.ConceptCore;
 import cn.nulladev.vanillamagic.item.WorldInteractionWand;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
@@ -21,6 +20,7 @@ public class WandCoreRecipe extends CustomRecipe {
 
     @Override
     public boolean matches(CraftingContainer inv, Level level) {
+        System.out.println("woshisb");
         boolean foundCore = false;
         boolean foundWand = false;
         for (int i = 0; i < inv.getMaxStackSize(); i++) {
@@ -29,7 +29,7 @@ public class WandCoreRecipe extends CustomRecipe {
                 if (stack.getItem() instanceof WorldInteractionWand && !WorldInteractionWand.hasCore(stack)) {
                     foundWand = true;
                 } else if (stack.getItem() instanceof ConceptCore) {
-                    return true;
+                    foundCore = true;
                 } else {
                     return false;
                 }
@@ -59,7 +59,7 @@ public class WandCoreRecipe extends CustomRecipe {
         }
 
         ItemStack wand_with_core = wand.copy();
-        WorldInteractionWand.setCore(wand_with_core, VMItems.getCoreType(core));
+        WorldInteractionWand.setCore(wand_with_core, core);
 
         return wand_with_core;
     }

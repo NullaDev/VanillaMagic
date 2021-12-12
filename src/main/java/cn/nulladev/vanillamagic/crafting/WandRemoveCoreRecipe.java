@@ -1,6 +1,5 @@
 package cn.nulladev.vanillamagic.crafting;
 
-import cn.nulladev.vanillamagic.VMItems;
 import cn.nulladev.vanillamagic.item.WorldInteractionWand;
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
@@ -51,7 +50,7 @@ public class WandRemoveCoreRecipe extends CustomRecipe {
         }
         ItemStack wand_empty = wand.copy();
         wand_empty.setCount(1);
-        WorldInteractionWand.setCore(wand_empty, "");
+        WorldInteractionWand.setCore(wand_empty, ItemStack.EMPTY);
 
         return wand_empty;
     }
@@ -62,7 +61,7 @@ public class WandRemoveCoreRecipe extends CustomRecipe {
         for (int i = 0; i < ret.size(); i++) {
             ItemStack stack = inv.getItem(i);
             if (stack.getItem() instanceof WorldInteractionWand) {
-                ret.set(i, new ItemStack(VMItems.getCoreFromName(WorldInteractionWand.getCore(stack))));
+                ret.set(i, WorldInteractionWand.getCore(stack));
             }
         }
         return ret;

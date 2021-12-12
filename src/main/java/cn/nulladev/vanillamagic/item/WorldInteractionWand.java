@@ -1,29 +1,20 @@
 package cn.nulladev.vanillamagic.item;
 
-import cn.nulladev.vanillamagic.VMItems;
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.client.renderer.EffectInstance;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
+import cn.nulladev.vanillamagic.item.conceptcore.ConceptCore;
+import net.minecraft.ChatFormatting;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
 
 public class WorldInteractionWand extends Item {
 
-    private static final String TAG_CORE_TYPE = "type";
+    private static final String TAG_CORE = "core";
     private static final String TAG_CD = "cd";
     private static final String TAG_MAX_CD = "cdmax";
 
@@ -31,16 +22,24 @@ public class WorldInteractionWand extends Item {
         super(props);
     }
 
-    public static void setCore(ItemStack stack, String type) {
-        stack.getOrCreateTag().putString(TAG_CORE_TYPE, type);
+    public static void setCore(ItemStack stack, ItemStack core) {
+        CompoundTag tag = new CompoundTag();
+        if (core != null) {
+            tag = core.save(tag);
+        }
+        stack.getOrCreateTag().put(TAG_CORE, tag);
     }
 
-    public static String getCore(ItemStack stack) {
-        return stack.getOrCreateTag().getString(TAG_CORE_TYPE);
+    public static ItemStack getCore(ItemStack stack) {
+        if (stack.getOrCreateTag().contains(TAG_CORE)) {
+            return ItemStack.of(stack.getOrCreateTag().getCompound(TAG_CORE));
+        } else {
+            return ItemStack.EMPTY;
+        }
     }
 
     public static boolean hasCore(ItemStack stack) {
-        return !getCore(stack).equals("");
+        return !getCore(stack).isEmpty();
     }
 
     @Override
@@ -79,55 +78,29 @@ public class WorldInteractionWand extends Item {
     }
 
     @Override
-    public InteractionResult useOn(UseOnContext ctx) {
-        int cd = VMItems.getCoreCD(getCore(ctx.getItemInHand()));
-        switch (getCore(ctx.getItemInHand())) {
-            case "water":
-                setMaxCD(ctx.getItemInHand(), cd);
-                setCD(ctx.getItemInHand(), cd);
-                return place(new BlockPlaceContext(ctx), Blocks.WATER);
-            case "stone":
-                setMaxCD(ctx.getItemInHand(), cd);
-                setCD(ctx.getItemInHand(), cd);
-                return place(new BlockPlaceContext(ctx), Blocks.STONE);
-            case "cobblestone":
-                setMaxCD(ctx.getItemInHand(), cd);
-                setCD(ctx.getItemInHand(), cd);
-                return place(new BlockPlaceContext(ctx), Blocks.COBBLESTONE);
-            default:
-                return InteractionResult.PASS;
-        }
-    }
-
-    public InteractionResult place(BlockPlaceContext ctx, Block b) {
-        if (!ctx.canPlace()) {
-            return InteractionResult.FAIL;
+    public Component getName(ItemStack stack) {
+        if (hasCore(stack)) {
+            MutableComponent component = super.getName(stack).plainCopy();
+            component.append("(");
+            component.append(getCore(stack).getDisplayName().plainCopy().withStyle(ChatFormatting.GREEN));
+            component.append(")");
+            return component;
         } else {
-            BlockState blockstate = b.getStateForPlacement(ctx);
-            BlockPos blockpos = ctx.getClickedPos();
-            Level level = ctx.getLevel();
-            Player player = ctx.getPlayer();
-            ItemStack itemstack = ctx.getItemInHand();
-            if (blockstate == null) {
-                return InteractionResult.FAIL;
-            } else if (!level.setBlock(blockpos, blockstate, 11)) {
-                return InteractionResult.FAIL;
-            } else {
-                BlockState blockstate1 = level.getBlockState(blockpos);
-                if (blockstate1.is(b)) {
-                    blockstate1.getBlock().setPlacedBy(level, blockpos, blockstate1, player, itemstack);
-                    if (player instanceof ServerPlayer) {
-                        CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer) player, blockpos, itemstack);
-                    }
-                }
-
-                level.gameEvent(player, GameEvent.BLOCK_PLACE, blockpos);
-                SoundType soundtype = blockstate1.getSoundType(level, blockpos, ctx.getPlayer());
-                level.playSound(player, blockpos, blockstate1.getSoundType(level, blockpos, ctx.getPlayer()).getPlaceSound(), SoundSource.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
-
-                return InteractionResult.sidedSuccess(level.isClientSide);
-            }
+            return super.getName(stack);
         }
     }
+
+    @Override
+    public InteractionResult useOn(UseOnContext ctx) {
+        if (ctx.getItemInHand().getItem() instanceof ConceptCore) {
+            ConceptCore item = (ConceptCore)ctx.getItemInHand().getItem();
+            setCD(ctx.getItemInHand(), item.CD);
+            setMaxCD(ctx.getItemInHand(), item.CD);
+            return item.wandUse(ctx);
+        }
+        return InteractionResult.PASS;
+    }
+
+
 
 }
