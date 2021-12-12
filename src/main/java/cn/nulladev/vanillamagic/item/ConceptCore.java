@@ -7,4 +7,5 @@ public class ConceptCore extends Item {
     public ConceptCore(Properties props) {
         super(props);
     }
+
 }

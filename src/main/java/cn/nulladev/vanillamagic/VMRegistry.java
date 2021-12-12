@@ -12,5 +12,6 @@ public class VMRegistry {
         modBus.register(INSTANCE);
         VMBlocks.BLOCK.register(modBus);
         VMItems.ITEM.register(modBus);
+        //VMRecipes
     }
 }

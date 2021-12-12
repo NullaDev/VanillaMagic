@@ -2,7 +2,7 @@ package cn.nulladev.vanillamagic;
 
 import net.minecraftforge.fml.common.Mod;
 
-@Mod("vanillamagic")
+@Mod(VanillaMagic.MODID)
 public class VanillaMagic {
 
     public static final String MODID = "vanillamagic";
