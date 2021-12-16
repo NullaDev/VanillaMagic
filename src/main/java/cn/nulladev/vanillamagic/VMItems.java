@@ -12,9 +12,10 @@ public class VMItems {
 
     public static final DeferredRegister<Item> ITEM = DeferredRegister.create(Item.class, VanillaMagic.MODID);
 
-    public static RegistryObject<Item> SPACE_CRYSTAL_SMALL = register("space_crystal_small", GenericVMItem::new);
-    public static RegistryObject<Item> SPACE_CRYSTAL_MIDDLE = register("space_crystal_middle", GenericVMItem::new);
-    public static RegistryObject<Item> SPACE_CRYSTAL_LARGE = register("space_crystal_large", GenericVMItem::new);
+    public static RegistryObject<Item> SPACE_CRYSTAL_SMALL = register("space_crystal_small", (p) -> new SpaceCrystal(p, 3));
+    public static RegistryObject<Item> SPACE_CRYSTAL_MIDDLE = register("space_crystal_middle", (p) -> new SpaceCrystal(p, 4));
+    public static RegistryObject<Item> SPACE_CRYSTAL_LARGE = register("space_crystal_large", (p) -> new SpaceCrystal(p, 5));
+
     public static RegistryObject<Item> WORLD_INTERACTION_IO = register("world_interaction_io", GenericVMItem::new);
     public static RegistryObject<Item> CORE_AMPLIFIER = register("core_amplifier", GenericVMItem::new);
 
