@@ -1,0 +1,26 @@
+{
+    "side": [
+        "arrow_1",
+        "arrow_2",
+        "arrow_3"
+    ],
+    "comp": {
+        "grid": {
+            "sprite": "slot",
+            "x": 34,
+            "y": 0,
+            "rx": 3,
+            "ry": 3
+        },
+        "arrow": {
+            "sprite": "arrow_0",
+            "x": 115,
+            "y": 18
+        },
+        "output_slot": {
+            "sprite": "result_slot",
+            "x": 147,
+            "y": 18
+        }
+    }
+}
