@@ -7,6 +7,7 @@ import net.minecraft.world.item.ItemStack;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 @ParametersAreNonnullByDefault
@@ -14,6 +15,7 @@ public class PredSlot extends Slot {
 
     private final Predicate<ItemStack> pred;
     private BooleanSupplier pickup;
+    private Consumer<ItemStack> take;
 
     public PredSlot(Container inv, int ind, int x, int y, Predicate<ItemStack> pred) {
         super(inv, ind, x, y);
@@ -25,6 +27,11 @@ public class PredSlot extends Slot {
         return this;
     }
 
+    public PredSlot setTake(Consumer<ItemStack> take){
+        this.take = take;
+        return this;
+    }
+
     @Override
     public boolean mayPlace(ItemStack stack) {
         return pred.test(stack);
@@ -32,6 +39,15 @@ public class PredSlot extends Slot {
 
     @Override
     public boolean mayPickup(Player player) {
-        return super.mayPickup(player);
+        return pickup == null ? super.mayPickup(player) : pickup.getAsBoolean();
     }
+
+    @Override
+    public void onTake(Player player, ItemStack stack) {
+        if (take != null) {
+            take.accept(stack);
+        }
+        super.onTake(player, stack);
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.lcy0x1.base;
 
 import com.lcy0x1.core.util.RecSerializer;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
@@ -12,6 +13,7 @@ import net.minecraft.world.level.Level;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public abstract class BaseRecipe<
         Rec extends SRec,
         SRec extends BaseRecipe<?, SRec, Inv>,
