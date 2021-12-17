@@ -2,6 +2,7 @@ package cn.nulladev.vanillamagic.client;
 
 import cn.nulladev.vanillamagic.VMItems;
 import cn.nulladev.vanillamagic.VMRegistry;
+import com.lcy0x1.base.PredSlot;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
@@ -44,12 +45,7 @@ public class CrystalMenu extends AbstractContainerMenu {
         else
             size = 3;
 
-        this.addSlot(new Slot(this.dummy_container, 0, 124, 45) {
-            @Override
-            public boolean mayPlace(ItemStack stack) {
-                return false;
-            }
-        });
+        this.addSlot(new PredSlot(this.dummy_container, 0, 124, 45, stack -> false));
 
         for (int i = 0; i < size * size; i++)
             this.addSlot(new Slot(this.dummy_container, i + 1, 8 + 18 * (i % size), 5 + 18 * (i / size)));

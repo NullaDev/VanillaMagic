@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "vanillamagic:item/space_crystal_small"
-  }
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "vanillamagic:item/space_crystal_small"
+    }
 }
+

@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "vanillamagic:item/concept_core_stone"
-  }
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "vanillamagic:item/concept_core_stone"
+    }
 }
+

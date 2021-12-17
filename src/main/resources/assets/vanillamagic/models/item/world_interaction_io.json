@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "vanillamagic:item/world_interaction_io"
-  }
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "vanillamagic:item/world_interaction_io"
+    }
 }
+

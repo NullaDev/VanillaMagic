@@ -1,0 +1,50 @@
+{
+    "simple": {
+        "item": {
+            "-path": [
+                "item.vanillamagic"
+            ],
+            "world_interaction_io": "世界交互接口",
+            "core_amplifier": "核心增幅器",
+            "world_interaction_wand": "世界交互法杖"
+        },
+        "block": {
+            "-path": [
+                "item.vanillamagic",
+                "block.vanillamagic"
+            ]
+        }
+    },
+    "cartesian": {
+        "space_crystal": {
+            "-path": [
+                "item.vanillamagic"
+            ],
+            "list": [
+                {
+                    "space_crystal":"空间水晶:"
+                },
+                {
+                    "small": "小",
+                    "middle": "中",
+                    "large": "大"
+                }
+            ]
+        },
+        "concept_core":{
+            "-path": [
+                "item.vanillamagic"
+            ],
+            "list": [
+                {
+                    "concept_core":"概念核心:"
+                },
+                {
+                    "water": "水",
+                    "cobblestone": "圆石",
+                    "stone": "石"
+                }
+            ]
+        }
+    }
+}

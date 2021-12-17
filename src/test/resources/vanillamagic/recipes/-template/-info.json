@@ -1,0 +1,8 @@
+{
+    "-split": {
+        "-list": [
+            "split",
+            "merge"
+        ]
+    }
+}
