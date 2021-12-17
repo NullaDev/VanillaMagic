@@ -22,7 +22,7 @@ import java.util.Map;
 public class GUIGenerator {
 
     public static void main(String[] args) throws Exception {
-        new GUIGenerator("vanilla_magic").gen();
+        new GUIGenerator("vanillamagic").gen();
     }
 
     private class Comp {
@@ -98,9 +98,9 @@ public class GUIGenerator {
     private final String GUI, DST, CONT, CDST;
 
     GUIGenerator(String modid) {
-        GUI = "./lightland-core/src/test/resources/lightland-core/gui/";
-        DST = "./lightland-core/src/test/resources/" + modid + "/assets/textures/gui/";
-        CDST = "./lightland-core/src/test/resources/" + modid + "/data/" + modid + "/gui/";
+        GUI = "./src/test/resources/" + modid + "/gui/";
+        DST = "./src/test/resources/" + modid + "/assets/textures/gui/";
+        CDST = "./src/test/resources/" + modid + "/data/" + modid + "/gui/";
         CONT = GUI + "-templates/container/" + modid + "/";
     }
 
