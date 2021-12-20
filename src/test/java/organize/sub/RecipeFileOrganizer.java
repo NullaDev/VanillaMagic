@@ -94,8 +94,8 @@ public class RecipeFileOrganizer extends ResourceOrganizer {
     }
 
     private void addParts(File f) throws Exception {
-        if (f.isDirectory()) {
-            for (File fi : f.listFiles()) {
+        if (f.isDirectory() || !f.exists()) {
+            for (File fi : list(f)) {
                 String file = fi.getName();
                 if (file.startsWith("-") || file.startsWith("."))
                     continue;
@@ -117,7 +117,7 @@ public class RecipeFileOrganizer extends ResourceOrganizer {
         filename = f.isDirectory() ? filename : filename.split("\\.")[0];
         String name = filename.startsWith("_") ? prefix + filename : filename.endsWith("_") ? filename + prefix : filename;
         if (f.isDirectory()) {
-            for (File fi : f.listFiles()) {
+            for (File fi : list(f)) {
                 String file = fi.getName();
                 if (file.startsWith("-") || file.startsWith("."))
                     continue;

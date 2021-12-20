@@ -13,7 +13,7 @@ public class AssetMisc extends ResourceOrganizer {
 
     @Override
     public void organize(File f) throws Exception {
-        for (File fi : f.listFiles())
+        for (File fi : list(f))
             process(fi, getTargetFolder());
     }
 
@@ -21,7 +21,7 @@ public class AssetMisc extends ResourceOrganizer {
         if (f.getName().startsWith("."))
             return;
         if (f.isDirectory()) {
-            for (File fi : f.listFiles())
+            for (File fi : list(f))
                 process(fi, pre + f.getName() + "/");
         } else {
             File t = new File(pre + f.getName());

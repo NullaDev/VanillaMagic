@@ -44,17 +44,17 @@ public class BlockFileOrganizer extends ResourceOrganizer {
         File model_h = new File(f.getPath() + "/-special/model_horizontal");
         File textures = new File(f.getPath() + "/-special/textures");
         File states = new File(f.getPath() + "/-special/blockstates");
-        for (File fi : textures.listFiles()) {
+        for (File fi : list(textures)) {
             File ti = new File(texture + fi.getName());
             check(ti);
             Files.copy(fi, ti);
         }
-        for (File fi : states.listFiles()) {
+        for (File fi : list(states)) {
             File ti = new File(state + fi.getName());
             check(ti);
             Files.copy(fi, ti);
         }
-        for (File fi : models.listFiles()) {
+        for (File fi : list(models)) {
             File ti = new File(model + fi.getName());
             check(ti);
             Files.copy(fi, ti);
@@ -63,7 +63,7 @@ public class BlockFileOrganizer extends ResourceOrganizer {
             write(loot + name + ".json", BL.replaceAll("\\^s", name));
             ((ItemFileOrganizer) MAP.get("items")).createBlock(name);
         }
-        for (File fi : model_h.listFiles()) {
+        for (File fi : list(model_h)) {
             File ti = new File(model + fi.getName());
             check(ti);
             Files.copy(fi, ti);
@@ -75,7 +75,7 @@ public class BlockFileOrganizer extends ResourceOrganizer {
     }
 
     private void org(File f, boolean drop) throws Exception {
-        for (File fi : f.listFiles()) {
+        for (File fi : list(f)) {
             String filename = fi.getName();
             if (filename.startsWith("-") || filename.startsWith("."))
                 continue;

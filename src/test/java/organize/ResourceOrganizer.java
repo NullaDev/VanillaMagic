@@ -34,7 +34,7 @@ public abstract class ResourceOrganizer {
         new AssetMisc();
         new DataMisc();
         File f = new File("./src/test/resources");
-        for (File fi : f.listFiles()) {
+        for (File fi : list(f)) {
             MODID = fi.getName();
             delete(new File("./src/main/resources/assets/"));
             delete(new File("./src/main/resources/data/"));
@@ -52,7 +52,7 @@ public abstract class ResourceOrganizer {
     public static void delete(File f) throws Exception {
         if (f.exists()) {
             if (f.isDirectory())
-                for (File fi : f.listFiles())
+                for (File fi : list(f))
                     delete(fi);
             f.delete();
         }
@@ -97,6 +97,13 @@ public abstract class ResourceOrganizer {
         PrintStream ps = new PrintStream(f, "UTF-8");
         ps.println(cont);
         ps.close();
+    }
+
+    public static File[] list(File f){
+        if(!f.exists()){
+            f.mkdirs();
+        }
+        return f.listFiles();
     }
 
     public enum Type {

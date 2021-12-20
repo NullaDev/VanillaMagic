@@ -22,7 +22,7 @@ public class LangFileOrganizer extends ResourceOrganizer {
 
     @Override
     public void organize(File f) throws Exception {
-        for (File fi : f.listFiles()) {
+        for (File fi : list(f)) {
             if (!fi.isDirectory())
                 continue;
             String name = fi.getName();
@@ -31,7 +31,7 @@ public class LangFileOrganizer extends ResourceOrganizer {
 
             JsonElement root_json = new JsonParser().parse(new FileReader(fi.getPath() + "/main.json"));
             JsonObject dst_json = new JsonObject();
-            for (File fj : fi.listFiles()) {
+            for (File fj : list(fi)) {
                 if (fj.getName().startsWith("."))
                     continue;
                 JsonObject part = new JsonParser().parse(new FileReader(fj)).getAsJsonObject();
