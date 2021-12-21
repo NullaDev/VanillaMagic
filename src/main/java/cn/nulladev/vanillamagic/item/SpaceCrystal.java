@@ -21,6 +21,13 @@ public class SpaceCrystal extends Item {
         this.size = size;
     }
 
+    public static int getSize(ItemStack stack) {
+        if (stack.getItem() instanceof SpaceCrystal)
+            return ((SpaceCrystal) stack.getItem()).size;
+        else
+            return 0;
+    }
+
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         if (!world.isClientSide) {

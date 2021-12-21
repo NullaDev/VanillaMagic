@@ -1,0 +1,21 @@
+{
+  "type": "vanillamagic:crystal",
+  "result": {
+    "item": "vanillamagic:concept_core_cobblestone",
+    "count": 1
+  },
+  "pattern": [
+    "ABC"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:water_bucket"
+    },
+    "B": {
+      "item": "vanillamagic:world_interaction_io"
+    },
+    "C": {
+      "item": "minecraft:lava_bucket"
+    }
+  }
+}

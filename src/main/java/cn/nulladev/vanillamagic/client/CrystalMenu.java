@@ -25,8 +25,8 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> implements Conta
 
     public static class CrystalContainer extends BaseContainer<CrystalMenu> implements BaseRecipe.RecInv<AbstractCrystalRecipe<?>> {
 
-        public CrystalContainer(CrystalMenu menu) {
-            super(menu);
+        public CrystalContainer(int size, CrystalMenu menu) {
+            super(size, menu);
         }
 
         public int getWidth(){
@@ -47,10 +47,7 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> implements Conta
     }
 
     public int getSize() {
-        if (this.crystal.getItem() instanceof SpaceCrystal)
-            return ((SpaceCrystal) crystal.getItem()).size;
-        else
-            return 0;
+        return SpaceCrystal.getSize(this.crystal);
     }
 
     public static SpriteManager getSprite(ItemStack crystal) {
@@ -63,22 +60,22 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> implements Conta
     }
 
     public CrystalMenu(int windowID, Inventory inventory, ItemStack crystal) {
-        super(VMRegistry.MT_CRYSTAL.get(), windowID, inventory, getSprite(crystal), CrystalContainer::new);
+        super(VMRegistry.MT_CRYSTAL.get(), windowID, inventory, getSprite(crystal), menu -> new CrystalContainer(SpaceCrystal.getSize(crystal) * SpaceCrystal.getSize(crystal) + 1, menu));
         this.player = inventory.player;
         this.crystal = crystal;
         this.addSlot("output_slot", stack -> false, slot -> slot.setPickup(() -> false));
         for (int i = 0; i < getSize(); i++)
             for (int j = 0; j < getSize(); j++)
-                this.addCraftingSlot("grid", i, j, getSize());
+                this.addCraftingSlot(i, j, getSize());
         this.container.addListener(this);
     }
 
-    protected void addCraftingSlot(String name, int i, int j, int size) {
-        sprite.getSlot(name, (x, y) -> new PredSlot(container, i * size + j + 1, x + 18 * j, y + 18 * i, stack -> true), this::addSlot);
+    protected void addCraftingSlot(int i, int j, int size) {
+        sprite.getSlot("grid", (x, y) -> new PredSlot(container, i * size + j + 1, x + 18 * j, y + 18 * i, stack -> true), this::addSlot);
     }
 
     @Override
-    public void containerChanged(Container p_18983_) {
+    public void containerChanged(Container container) {
 
     }
 

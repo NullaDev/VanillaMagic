@@ -23,7 +23,8 @@ public class BaseContainerMenu<T extends BaseContainerMenu<T>> extends AbstractC
 
         protected final T parent;
 
-        public BaseContainer(T menu) {
+        public BaseContainer(int size, T menu) {
+            super(size);
             parent = menu;
         }
 
