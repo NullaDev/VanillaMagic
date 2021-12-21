@@ -19,7 +19,7 @@ import java.util.function.Predicate;
 @ParametersAreNonnullByDefault
 public class BaseContainerMenu<T extends BaseContainerMenu<T>> extends AbstractContainerMenu {
 
-    public static class BaseContainer<T extends BaseContainerMenu> extends SimpleContainer {
+    public static class BaseContainer<T extends BaseContainerMenu<T>> extends SimpleContainer {
 
         protected final T parent;
 
