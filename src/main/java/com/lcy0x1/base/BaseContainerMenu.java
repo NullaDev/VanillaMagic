@@ -41,7 +41,7 @@ public class BaseContainerMenu<T extends BaseContainerMenu<T>> extends AbstractC
     private int added = 0;
 
     @SuppressWarnings("unchecked")
-    protected BaseContainerMenu(MenuType<?> type, int wid, Inventory plInv, int size, SpriteManager manager, Function<T, BaseContainer<T>> factory) {
+    protected BaseContainerMenu(MenuType<?> type, int wid, Inventory plInv, SpriteManager manager, Function<T, BaseContainer<T>> factory) {
         super(type, wid);
         this.inventory = plInv;
         container = factory.apply((T) this);

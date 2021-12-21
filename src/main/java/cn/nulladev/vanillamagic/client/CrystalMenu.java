@@ -7,6 +7,7 @@ import cn.nulladev.vanillamagic.crafting.AbstractCrystalRecipe;
 import cn.nulladev.vanillamagic.item.SpaceCrystal;
 import com.lcy0x1.base.BaseContainerMenu;
 import com.lcy0x1.base.BaseRecipe;
+import com.lcy0x1.base.PredSlot;
 import com.lcy0x1.core.util.SpriteManager;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
@@ -17,6 +18,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Predicate;
 
 @ParametersAreNonnullByDefault
 public class CrystalMenu extends BaseContainerMenu<CrystalMenu> implements ContainerListener {
@@ -28,7 +30,7 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> implements Conta
         }
 
         public int getWidth(){
-            return parent.size;
+            return parent.getSize();
         }
     }
 
@@ -39,15 +41,13 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> implements Conta
     private final Player player;
     private final ItemStack crystal;
 
-    public int size;
-
     public static CrystalMenu fromNetwork(int windowId, Inventory inv, FriendlyByteBuf buf) {
         InteractionHand hand = buf.readBoolean() ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
         return new CrystalMenu(windowId, inv, inv.player.getItemInHand(hand));
     }
 
-    public static int getSize(ItemStack crystal) {
-        if (crystal.getItem() instanceof SpaceCrystal)
+    public int getSize() {
+        if (this.crystal.getItem() instanceof SpaceCrystal)
             return ((SpaceCrystal) crystal.getItem()).size;
         else
             return 0;
@@ -63,18 +63,23 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> implements Conta
     }
 
     public CrystalMenu(int windowID, Inventory inventory, ItemStack crystal) {
-        super(VMRegistry.MT_CRYSTAL.get(), windowID, inventory, getSize(crystal), getSprite(crystal), CrystalContainer::new);
+        super(VMRegistry.MT_CRYSTAL.get(), windowID, inventory, getSprite(crystal), CrystalContainer::new);
         this.player = inventory.player;
         this.crystal = crystal;
-        this.size = getSize(crystal);
         this.addSlot("output_slot", stack -> false, slot -> slot.setPickup(() -> false));
-        this.addSlot("grid", stack -> true);
+        for (int i = 0; i < getSize(); i++)
+            for (int j = 0; j < getSize(); j++)
+                this.addCraftingSlot("grid", i, j, getSize());
         this.container.addListener(this);
     }
 
+    protected void addCraftingSlot(String name, int i, int j, int size) {
+        sprite.getSlot(name, (x, y) -> new PredSlot(container, i * size + j + 1, x + 18 * j, y + 18 * i, stack -> true), this::addSlot);
+    }
 
     @Override
-    public void containerChanged(Container container) {
+    public void containerChanged(Container p_18983_) {
 
     }
+
 }

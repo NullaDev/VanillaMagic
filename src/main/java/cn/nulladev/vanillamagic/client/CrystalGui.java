@@ -18,10 +18,14 @@ public class CrystalGui extends BaseContainerScreen<CrystalMenu> {
 
     @Override
     protected void renderBg(PoseStack p_97787_, float p_97788_, int p_97789_, int p_97790_) {
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, getTexture());
+        int k = (width - imageWidth) / 2;
+        int l = (height - imageHeight) / 2;
+        blit(p_97787_, k, l, 0, 0, imageWidth, imageHeight);
     }
 
     private ResourceLocation getTexture() {
-        return new ResourceLocation(VanillaMagic.MODID, "textures/gui/container/crystal_" + this.menu.size + ".png");
+        return new ResourceLocation(VanillaMagic.MODID, "textures/gui/container/crystal_" + this.menu.getSize() + ".png");
     }
 }

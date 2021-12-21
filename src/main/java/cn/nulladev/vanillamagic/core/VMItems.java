@@ -1,7 +1,5 @@
 package cn.nulladev.vanillamagic.core;
 
-import cn.nulladev.vanillamagic.core.VMCreativeTab;
-import cn.nulladev.vanillamagic.core.VanillaMagic;
 import cn.nulladev.vanillamagic.item.conceptcore.*;
 import cn.nulladev.vanillamagic.item.*;
 import net.minecraft.world.item.Item;
