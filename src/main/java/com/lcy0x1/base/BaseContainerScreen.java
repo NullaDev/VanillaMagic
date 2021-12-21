@@ -6,7 +6,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public abstract class BaseContainerScreen<T extends BaseContainerMenu> extends AbstractContainerScreen<T> {
+public abstract class BaseContainerScreen<T extends BaseContainerMenu<T>> extends AbstractContainerScreen<T> {
 
     public BaseContainerScreen(T cont, Inventory plInv, Component title) {
         super(cont, plInv, title);
