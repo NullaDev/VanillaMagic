@@ -1,5 +1,7 @@
-package cn.nulladev.vanillamagic;
+package cn.nulladev.vanillamagic.core;
 
+import cn.nulladev.vanillamagic.core.VMItems;
+import cn.nulladev.vanillamagic.core.VanillaMagic;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;

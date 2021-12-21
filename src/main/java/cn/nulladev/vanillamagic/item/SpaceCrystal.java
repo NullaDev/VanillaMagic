@@ -29,7 +29,7 @@ public class SpaceCrystal extends Item {
             NetworkHooks.openGui((ServerPlayer) player, container, buf -> {
                 buf.writeBoolean(hand == InteractionHand.MAIN_HAND);
             });
-            player.openMenu(container);
+            //player.openMenu(container);
         }
         return InteractionResultHolder.success(player.getItemInHand(hand));
     }

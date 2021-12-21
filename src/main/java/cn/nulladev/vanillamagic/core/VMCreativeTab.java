@@ -1,4 +1,4 @@
-package cn.nulladev.vanillamagic;
+package cn.nulladev.vanillamagic.core;
 
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;

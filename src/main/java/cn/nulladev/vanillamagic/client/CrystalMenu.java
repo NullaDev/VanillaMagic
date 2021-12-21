@@ -1,9 +1,10 @@
 package cn.nulladev.vanillamagic.client;
 
-import cn.nulladev.vanillamagic.VMItems;
-import cn.nulladev.vanillamagic.VMRegistry;
-import cn.nulladev.vanillamagic.VanillaMagic;
+import cn.nulladev.vanillamagic.core.VMItems;
+import cn.nulladev.vanillamagic.core.VMRegistry;
+import cn.nulladev.vanillamagic.core.VanillaMagic;
 import cn.nulladev.vanillamagic.crafting.AbstractCrystalRecipe;
+import cn.nulladev.vanillamagic.item.SpaceCrystal;
 import com.lcy0x1.base.BaseContainerMenu;
 import com.lcy0x1.base.BaseRecipe;
 import com.lcy0x1.core.util.SpriteManager;
@@ -38,7 +39,7 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> implements Conta
     private final Player player;
     private final ItemStack crystal;
 
-    private int size;
+    public int size;
 
     public static CrystalMenu fromNetwork(int windowId, Inventory inv, FriendlyByteBuf buf) {
         InteractionHand hand = buf.readBoolean() ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
@@ -46,12 +47,10 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> implements Conta
     }
 
     public static int getSize(ItemStack crystal) {
-        if (crystal.getItem() == VMItems.SPACE_CRYSTAL_LARGE.get())
-            return 5;
-        else if (crystal.getItem() == VMItems.SPACE_CRYSTAL_MIDDLE.get())
-            return 4;
+        if (crystal.getItem() instanceof SpaceCrystal)
+            return ((SpaceCrystal) crystal.getItem()).size;
         else
-            return 3;
+            return 0;
     }
 
     public static SpriteManager getSprite(ItemStack crystal) {
@@ -67,6 +66,7 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> implements Conta
         super(VMRegistry.MT_CRYSTAL.get(), windowID, inventory, getSize(crystal), getSprite(crystal), CrystalContainer::new);
         this.player = inventory.player;
         this.crystal = crystal;
+        this.size = getSize(crystal);
         this.addSlot("output_slot", stack -> false, slot -> slot.setPickup(() -> false));
         this.addSlot("grid", stack -> true);
         this.container.addListener(this);
