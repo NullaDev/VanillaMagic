@@ -10,6 +10,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.HashMap;
 import java.util.Map;
 
 @SerialClass
@@ -21,7 +22,7 @@ public class AbstractCrystalRecipe<Rec extends AbstractCrystalRecipe<Rec>> exten
     @SerialClass.SerialField
     public String[] pattern;
     @SerialClass.SerialField(generic = {String.class, Ingredient.class})
-    public Map<String, Ingredient> key;
+    public HashMap<String, Ingredient> key;
     @SerialClass.SerialField
     public ItemStack result;
 
@@ -50,7 +51,7 @@ public class AbstractCrystalRecipe<Rec extends AbstractCrystalRecipe<Rec>> exten
 
     @Override
     public ItemStack assemble(CrystalMenu.CrystalContainer inv) {
-        return result;
+        return result.copy();
     }
 
     @Override

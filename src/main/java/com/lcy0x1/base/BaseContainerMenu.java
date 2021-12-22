@@ -22,6 +22,7 @@ public class BaseContainerMenu<T extends BaseContainerMenu<T>> extends AbstractC
     public static class BaseContainer<T extends BaseContainerMenu<T>> extends SimpleContainer {
 
         protected final T parent;
+        private boolean updating = false;
 
         public BaseContainer(int size, T menu) {
             super(size);
@@ -30,9 +31,12 @@ public class BaseContainerMenu<T extends BaseContainerMenu<T>> extends AbstractC
 
         @Override
         public void setChanged() {
-            //如果这一行不注释掉的话，就会StackOverflow，我也不知道为啥。
-            //super.setChanged();
-            parent.slotsChanged(this);
+            super.setChanged();
+            if (!updating) {
+                updating = true;
+                parent.slotsChanged(this);
+                updating = false;
+            }
         }
 
     }

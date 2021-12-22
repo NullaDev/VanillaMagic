@@ -142,6 +142,8 @@ public class GUIGenerator {
                 co.addProperty("y", cy + c.it.dy);
                 co.addProperty("w", c.it.w);
                 co.addProperty("h", c.it.h);
+                co.addProperty("rx", c.rx);
+                co.addProperty("ry", c.ry);
                 jarr.add(c.name, co);
             }
             out.add("comp", jarr);

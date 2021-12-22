@@ -97,8 +97,8 @@ public class SpriteManager {
     public <T extends Slot> void getSlot(String key, SlotFactory<T> fac, Consumer<Slot> con) {
         check();
         Rect c = getComp(key);
-        for (int i = 0; i < c.rx; i++)
-            for (int j = 0; j < c.ry; j++)
+        for (int j = 0; j < c.ry; j++)
+            for (int i = 0; i < c.rx; i++)
                 con.accept(fac.getSlot(c.x + i * c.w, c.y + j * c.h));
     }
 
