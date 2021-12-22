@@ -10,6 +10,8 @@ import com.lcy0x1.base.BaseRecipe;
 import com.lcy0x1.base.PredSlot;
 import com.lcy0x1.core.util.SpriteManager;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerListener;
 import net.minecraft.world.InteractionHand;
@@ -19,7 +21,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.function.Predicate;
+import java.util.Optional;
 
 @ParametersAreNonnullByDefault
 public class CrystalMenu extends BaseContainerMenu<CrystalMenu> implements ContainerListener {
@@ -90,7 +92,18 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> implements Conta
 
     @Override
     public void containerChanged(Container container) {
+        if (!this.player.level.isClientSide) {
+            ServerPlayer serverplayer = (ServerPlayer)player;
+            ItemStack itemstack = ItemStack.EMPTY;
+            Optional<AbstractCrystalRecipe<?>> optional = player.getServer().getRecipeManager().getRecipeFor(VMRegistry.RT_CRYSTAL, (CrystalContainer)this.container, this.player.level);
+            if (optional.isPresent()) {
+                AbstractCrystalRecipe craftingrecipe = optional.get();
+                itemstack = craftingrecipe.assemble((CrystalContainer)this.container);
+            }
 
+            this.container.setItem(0, itemstack);
+            serverplayer.connection.send(new ClientboundContainerSetSlotPacket(this.containerId, this.incrementStateId(), 0, itemstack));
+        }
     }
 
 }

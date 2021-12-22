@@ -30,7 +30,8 @@ public class BaseContainerMenu<T extends BaseContainerMenu<T>> extends AbstractC
 
         @Override
         public void setChanged() {
-            super.setChanged();
+            //如果这一行不注释掉的话，就会StackOverflow，我也不知道为啥。
+            //super.setChanged();
             parent.slotsChanged(this);
         }
 
