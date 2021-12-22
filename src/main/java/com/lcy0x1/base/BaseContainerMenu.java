@@ -49,6 +49,10 @@ public class BaseContainerMenu<T extends BaseContainerMenu<T>> extends AbstractC
         sprite = manager;
         int x = manager.getPlInvX();
         int y = manager.getPlInvY();
+        this.bindPlayerInventory(plInv, x, y);
+    }
+
+    protected void bindPlayerInventory(Inventory plInv, int x, int y) {
         for (int i = 0; i < 3; ++i)
             for (int j = 0; j < 9; ++j)
                 this.addSlot(new Slot(plInv, j + i * 9 + 9, x + j * 18, y + i * 18));

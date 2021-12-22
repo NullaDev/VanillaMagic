@@ -15,6 +15,7 @@ import net.minecraft.world.ContainerListener;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -70,6 +71,19 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> implements Conta
         this.container.addListener(this);
     }
 
+    @Override
+    protected void bindPlayerInventory(Inventory plInv, int x, int y) {
+        for (int i = 0; i < 3; ++i)
+            for (int j = 0; j < 9; ++j)
+                this.addSlot(new Slot(plInv, j + i * 9 + 9, x + j * 18, y + i * 18));
+        for (int k = 0; k < 9; ++k)
+            if (k == plInv.selected) {
+                this.addSlot(new SlotLocked(plInv, k, x + k * 18, y + 58));
+            } else {
+                this.addSlot(new Slot(plInv, k, x + k * 18, y + 58));
+            }
+    }
+
     protected void addCraftingSlot(int i, int j, int size) {
         sprite.getSlot("grid", (x, y) -> new PredSlot(container, i * size + j + 1, x + 18 * j, y + 18 * i, stack -> true), this::addSlot);
     }
@@ -77,6 +91,24 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> implements Conta
     @Override
     public void containerChanged(Container container) {
 
+    }
+
+}
+
+class SlotLocked extends Slot {
+
+    public SlotLocked(Inventory inventory, int index, int x, int y) {
+        super(inventory, index, x, y);
+    }
+
+    @Override
+    public boolean mayPickup(Player player) {
+        return false;
+    }
+
+    @Override
+    public boolean mayPlace(ItemStack stack) {
+        return false;
     }
 
 }
