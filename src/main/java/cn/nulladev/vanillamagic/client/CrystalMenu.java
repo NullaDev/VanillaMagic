@@ -9,8 +9,6 @@ import com.lcy0x1.base.BaseContainerMenu;
 import com.lcy0x1.base.BaseRecipe;
 import com.lcy0x1.core.util.SpriteManager;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Inventory;
@@ -52,9 +50,9 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> {
     }
 
     public static SpriteManager getSprite(ItemStack crystal) {
-        if (crystal.getItem() == VMItems.SPACE_CRYSTAL_LARGE.get())
+        if (crystal.getItem() == VMItems.SPACE_CRYSTAL_ULTIMATE.get())
             return SPRITE_5;
-        else if (crystal.getItem() == VMItems.SPACE_CRYSTAL_MIDDLE.get())
+        else if (crystal.getItem() == VMItems.SPACE_CRYSTAL_ADVANCED.get())
             return SPRITE_4;
         else
             return SPRITE_3;

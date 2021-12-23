@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "vanillamagic:space_crystal_ultimate",
+    "count": 1
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "B": {
+      "item": "vanillamagic:space_crystal_advanced"
+    },
+    "C": {
+      "item": "minecraft:nether_star"
+    }
+  }
+}

@@ -25,9 +25,9 @@
                     "space_crystal":"空间水晶:"
                 },
                 {
-                    "small": "小",
-                    "middle": "中",
-                    "large": "大"
+                    "basic": "基础",
+                    "advanced": "进阶",
+                    "ultimate": "终极"
                 }
             ]
         },

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "vanillamagic:space_crystal_advanced",
+    "count": 1
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:end_crystal"
+    },
+    "B": {
+      "item": "vanillamagic:space_crystal_basic"
+    },
+    "C": {
+      "item": "minecraft:diamond_block"
+    }
+  }
+}

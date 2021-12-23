@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "result": {
-    "item": "vanillamagic:space_crystal_small",
+    "item": "vanillamagic:space_crystal_basic",
     "count": 1
   },
   "pattern": [
