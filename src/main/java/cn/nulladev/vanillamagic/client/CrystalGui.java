@@ -33,8 +33,7 @@ public class CrystalGui extends BaseContainerScreen<CrystalMenu> {
 
     @Override
     protected void slotClicked(Slot slot, int index, int key, ClickType type) {
-        if (slot.index == menu.getSize() * menu.getSize()) {
-            //Do sth?
+        if (slot != null && slot.index == 36 + menu.getSize() * menu.getSize() && slot.hasItem()) {
             this.onClose();
         } else {
             super.slotClicked(slot, index, key, type);

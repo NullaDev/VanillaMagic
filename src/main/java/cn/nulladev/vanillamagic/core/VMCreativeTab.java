@@ -2,7 +2,6 @@ package cn.nulladev.vanillamagic.core;
 
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 
 public class VMCreativeTab extends CreativeModeTab {
 
@@ -14,7 +13,7 @@ public class VMCreativeTab extends CreativeModeTab {
 
     @Override
     public ItemStack makeIcon() {
-        return new ItemStack(Items.APPLE);
+        return new ItemStack(VMItems.WORLD_INTERACTION_WAND.get());
     }
 
     @Override

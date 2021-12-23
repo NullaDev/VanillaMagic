@@ -73,30 +73,11 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> {
             for (int j = 0; j < 9; ++j)
                 this.addSlot(new Slot(plInv, j + i * 9 + 9, x + j * 18, y + i * 18));
         for (int k = 0; k < 9; ++k)
-            if (k == plInv.selected && plInv.getItem(k).equals(this.crystal)) {
+            if (k == plInv.selected && plInv.getItem(k) != null && plInv.getItem(k).getItem() instanceof SpaceCrystal) {
                 this.addSlot(new SlotLocked(plInv, k, x + k * 18, y + 58));
             } else {
                 this.addSlot(new Slot(plInv, k, x + k * 18, y + 58));
             }
-    }
-
-    public void craft() {
-        if (!this.player.level.isClientSide) {
-            Optional<AbstractCrystalRecipe<?>> optional = player.getServer().getRecipeManager().getRecipeFor(VMRegistry.RT_CRYSTAL, (CrystalContainer) this.container, this.player.level);
-            if (optional.isPresent()) {
-                AbstractCrystalRecipe<?> craftingrecipe = optional.get();
-                Inventory inventory = this.player.getInventory();
-                if (inventory.contains(crystal)) {
-                    for(int i = 0; i < getSize() * getSize(); i++) {
-                        ItemStack stack = container.getItem(i);
-                        if (!stack.isEmpty())
-                            stack.shrink(1);
-                    }
-                    crystal.shrink(1);
-                    inventory.add(craftingrecipe.assemble((CrystalContainer) this.container));
-                }
-            }
-        }
     }
 
     @Override
@@ -114,6 +95,20 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> {
 
     @Override
     protected void clearContainer(Player player, Container container) {
+        Optional<AbstractCrystalRecipe<?>> optional = player.getServer().getRecipeManager().getRecipeFor(VMRegistry.RT_CRYSTAL, (CrystalContainer) this.container, this.player.level);
+        if (optional.isPresent()) {
+            AbstractCrystalRecipe<?> craftingrecipe = optional.get();
+            Inventory inventory = this.player.getInventory();
+            if (inventory.contains(crystal)) {
+                for(int i = 0; i < getSize() * getSize(); i++) {
+                    ItemStack stack = container.getItem(i);
+                    if (!stack.isEmpty())
+                        stack.shrink(1);
+                }
+                crystal.shrink(1);
+                inventory.placeItemBackInInventory(craftingrecipe.assemble((CrystalContainer) this.container));
+            }
+        }
         if (!player.isAlive() || player instanceof ServerPlayer && ((ServerPlayer)player).hasDisconnected()) {
             for(int i = 0; i < container.getContainerSize(); ++i) {
                 if (i == getSize() * getSize())
