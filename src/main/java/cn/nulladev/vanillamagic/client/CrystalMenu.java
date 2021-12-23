@@ -9,6 +9,7 @@ import com.lcy0x1.base.BaseContainerMenu;
 import com.lcy0x1.base.BaseRecipe;
 import com.lcy0x1.core.util.SpriteManager;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Inventory;
@@ -90,6 +91,27 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> {
             }
         }
         super.slotsChanged(container);
+    }
+
+    @Override
+    protected void clearContainer(Player player, Container container) {
+        if (!player.isAlive() || player instanceof ServerPlayer && ((ServerPlayer)player).hasDisconnected()) {
+            for(int i = 0; i < container.getContainerSize(); ++i) {
+                if (i == getSize() * getSize())
+                    continue;
+                player.drop(container.removeItemNoUpdate(i), false);
+            }
+        } else {
+            for(int i = 0; i < container.getContainerSize(); ++i) {
+                if (i == getSize() * getSize())
+                    continue;
+                Inventory inventory = player.getInventory();
+                if (inventory.player instanceof ServerPlayer) {
+                    inventory.placeItemBackInInventory(container.removeItemNoUpdate(i));
+                }
+            }
+
+        }
     }
 
 }
