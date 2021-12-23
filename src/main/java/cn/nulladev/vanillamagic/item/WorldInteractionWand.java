@@ -92,6 +92,8 @@ public class WorldInteractionWand extends Item {
 
     @Override
     public InteractionResult useOn(UseOnContext ctx) {
+        if (getCD(ctx.getItemInHand()) > 0 && !ctx.getPlayer().isCreative())
+            return InteractionResult.PASS;
         if (getCore(ctx.getItemInHand()).getItem() instanceof ConceptCore) {
             ConceptCore item = (ConceptCore)getCore(ctx.getItemInHand()).getItem();
             setCD(ctx.getItemInHand(), item.CD);

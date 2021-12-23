@@ -7,6 +7,8 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.ClickType;
+import net.minecraft.world.inventory.Slot;
 
 public class CrystalGui extends BaseContainerScreen<CrystalMenu> {
     public final CrystalMenu menu;
@@ -27,5 +29,15 @@ public class CrystalGui extends BaseContainerScreen<CrystalMenu> {
 
     private ResourceLocation getTexture() {
         return new ResourceLocation(VanillaMagic.MODID, "textures/gui/container/crystal_" + this.menu.getSize() + ".png");
+    }
+
+    @Override
+    protected void slotClicked(Slot slot, int index, int key, ClickType type) {
+        if (slot.index == menu.getSize() * menu.getSize()) {
+            //Do sth?
+            this.onClose();
+        } else {
+            super.slotClicked(slot, index, key, type);
+        }
     }
 }
