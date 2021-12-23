@@ -15,5 +15,7 @@
     "vanillamagic": {}
   },
   "death.attack": {},
-  "itemGroup.vanillamagic": "原始魔法"
+  "itemGroup.vanillamagic": "原始魔法",
+  "vanillamagic.misc.cd1": "当前可用",
+  "vanillamagic.misc.cd2": "剩余CD:%dticks"
 }

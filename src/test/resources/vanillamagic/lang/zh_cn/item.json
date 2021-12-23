@@ -40,9 +40,10 @@
                     "concept_core":"概念核心:"
                 },
                 {
-                    "water": "水",
                     "cobblestone": "圆石",
-                    "stone": "石"
+                    "lava": "岩浆",
+                    "stone": "石",
+                    "water": "水"
                 }
             ]
         }

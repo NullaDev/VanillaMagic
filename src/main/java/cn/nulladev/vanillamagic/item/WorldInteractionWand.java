@@ -50,19 +50,24 @@ public class WorldInteractionWand extends Item {
     }
 
     private int getCD(ItemStack stack) {
-        return stack.getOrCreateTag().getInt(TAG_CD);
+        ItemStack core = getCore(stack);
+        if (!core.isEmpty())
+            return ConceptCore.getCD(core);
+        else
+            return 0;
     }
 
     private void setCD(ItemStack stack, int cd) {
-        stack.getOrCreateTag().putInt(TAG_CD, cd);
+        ItemStack core = getCore(stack);
+        if (!core.isEmpty())
+            ConceptCore.setCD(core, cd);
     }
 
     private int getMaxCD(ItemStack stack) {
-        return stack.getOrCreateTag().getInt(TAG_MAX_CD);
-    }
-
-    private void setMaxCD(ItemStack stack, int cdmax) {
-        stack.getOrCreateTag().putInt(TAG_MAX_CD, cdmax);
+        if (stack.getItem() instanceof ConceptCore)
+            return ((ConceptCore) stack.getItem()).UsingCD;
+        else
+            return 0;
     }
 
     @Override
@@ -96,13 +101,10 @@ public class WorldInteractionWand extends Item {
             return InteractionResult.PASS;
         if (getCore(ctx.getItemInHand()).getItem() instanceof ConceptCore) {
             ConceptCore item = (ConceptCore)getCore(ctx.getItemInHand()).getItem();
-            setCD(ctx.getItemInHand(), item.CD);
-            setMaxCD(ctx.getItemInHand(), item.CD);
+            setCD(ctx.getItemInHand(), item.UsingCD);
             return item.wandUse(ctx);
         }
         return InteractionResult.PASS;
     }
-
-
 
 }

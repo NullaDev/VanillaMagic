@@ -21,9 +21,10 @@ public class VMItems {
 
     public static RegistryObject<Item> WORLD_INTERACTION_WAND = register("world_interaction_wand", WorldInteractionWand::new);
 
-    public static RegistryObject<Item> CONCEPT_CORE_WATER = register("concept_core_water", ConceptCoreWater::new);
     public static RegistryObject<Item> CONCEPT_CORE_COBBLESTONE = register("concept_core_cobblestone", ConceptCoreCobblestone::new);
+    public static RegistryObject<Item> CONCEPT_CORE_LAVA = register("concept_core_lava", ConceptCoreLava::new);
     public static RegistryObject<Item> CONCEPT_CORE_STONE = register("concept_core_stone", ConceptCoreStone::new);
+    public static RegistryObject<Item> CONCEPT_CORE_WATER = register("concept_core_water", ConceptCoreWater::new);
 
     public static <V extends Item> RegistryObject<V> register(String name, Function<Item.Properties, V> sup) {
         return ITEM.register(name, () -> sup.apply(new Item.Properties().tab(VMCreativeTab.INSTANCE)));
