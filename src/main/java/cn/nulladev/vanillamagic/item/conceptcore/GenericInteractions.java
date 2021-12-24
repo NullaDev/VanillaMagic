@@ -27,6 +27,8 @@ public class GenericInteractions {
             ItemStack itemstack = ctx.getItemInHand();
             if (blockstate == null) {
                 return InteractionResult.FAIL;
+            } else if (!b.canSurvive(blockstate, level, blockpos)) {
+                return InteractionResult.FAIL;
             } else if (!level.setBlock(blockpos, blockstate, 11)) {
                 return InteractionResult.FAIL;
             } else {

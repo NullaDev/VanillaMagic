@@ -1,0 +1,33 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_lava",
+    "count": 1
+  },
+  "pattern": [
+    " A  ",
+    " B  ",
+    " C  ",
+    " DEF"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:lava_bucket"
+    },
+    "B": {
+      "item": "minecraft:dripstone_block"
+    },
+    "C": {
+      "item": "minecraft:pointed_dripstone"
+    },
+    "D": {
+      "item": "minecraft:cauldron"
+    },
+    "E": {
+      "item": "minecraft:bucket"
+    },
+    "F": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}

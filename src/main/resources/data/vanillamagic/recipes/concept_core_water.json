@@ -1,0 +1,23 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_water",
+    "count": 1
+  },
+  "pattern": [
+    "   ",
+    "ABC",
+    "   "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:water_bucket"
+    },
+    "B": {
+      "item": "vanillamagic:world_interaction_io"
+    },
+    "C": {
+      "item": "minecraft:water_bucket"
+    }
+  }
+}

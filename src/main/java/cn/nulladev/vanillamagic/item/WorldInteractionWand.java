@@ -5,6 +5,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
@@ -49,7 +50,7 @@ public class WorldInteractionWand extends Item {
         }
     }
 
-    private int getCD(ItemStack stack) {
+    private static int getCD(ItemStack stack) {
         ItemStack core = getCore(stack);
         if (!core.isEmpty())
             return ConceptCore.getCD(core);
@@ -57,15 +58,16 @@ public class WorldInteractionWand extends Item {
             return 0;
     }
 
-    private void setCD(ItemStack stack, int cd) {
+    private static void setCD(ItemStack stack, int cd) {
         ItemStack core = getCore(stack);
         if (!core.isEmpty())
             ConceptCore.setCD(core, cd);
     }
 
-    private int getMaxCD(ItemStack stack) {
-        if (stack.getItem() instanceof ConceptCore)
-            return ((ConceptCore) stack.getItem()).UsingCD;
+    private static int getMaxCD(ItemStack stack) {
+        ItemStack core = getCore(stack);
+        if (core.getItem() instanceof ConceptCore)
+            return ((ConceptCore) core.getItem()).UsingCD;
         else
             return 0;
     }
@@ -79,7 +81,15 @@ public class WorldInteractionWand extends Item {
     public int getBarWidth(ItemStack stack) {
         if (getMaxCD(stack) == 0)
             return 0;
-        return Math.round(13F * getCD(stack) / getMaxCD(stack));
+        return Math.round(13F - 13F * getCD(stack) / getMaxCD(stack));
+    }
+
+    @Override
+    public int getBarColor(ItemStack stack) {
+        if (getMaxCD(stack) == 0)
+            return 0;
+        float f = Math.max(0.0F, (getMaxCD(stack) - getCD(stack)) / (float)getMaxCD(stack));
+        return Mth.hsvToRgb(f / 3.0F, 1.0F, 1.0F);
     }
 
     @Override

@@ -1,0 +1,23 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_stone",
+    "count": 1
+  },
+  "pattern": [
+    " A ",
+    " B ",
+    " C "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:lava_bucket"
+    },
+    "B": {
+      "item": "vanillamagic:concept_core_water"
+    },
+    "C": {
+      "item": "minecraft:world_interaction_io"
+    }
+  }
+}

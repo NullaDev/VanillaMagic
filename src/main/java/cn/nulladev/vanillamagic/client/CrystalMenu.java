@@ -97,35 +97,15 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> {
     protected void clearContainer(Player player, Container container) {
         Optional<AbstractCrystalRecipe<?>> optional = player.getServer().getRecipeManager().getRecipeFor(VMRegistry.RT_CRYSTAL, (CrystalContainer) this.container, this.player.level);
         if (optional.isPresent()) {
-            AbstractCrystalRecipe<?> craftingrecipe = optional.get();
             Inventory inventory = this.player.getInventory();
-            if (inventory.contains(crystal)) {
-                for(int i = 0; i < getSize() * getSize(); i++) {
-                    ItemStack stack = container.getItem(i);
-                    if (!stack.isEmpty())
-                        stack.shrink(1);
-                }
-                crystal.shrink(1);
-                inventory.placeItemBackInInventory(craftingrecipe.assemble((CrystalContainer) this.container));
+            for(int i = 0; i < getSize() * getSize(); i++) {
+                ItemStack stack = container.getItem(i);
+                if (!stack.isEmpty())
+                    stack.shrink(1);
             }
+            crystal.shrink(1);
         }
-        if (!player.isAlive() || player instanceof ServerPlayer && ((ServerPlayer)player).hasDisconnected()) {
-            for(int i = 0; i < container.getContainerSize(); ++i) {
-                if (i == getSize() * getSize())
-                    continue;
-                player.drop(container.removeItemNoUpdate(i), false);
-            }
-        } else {
-            for(int i = 0; i < container.getContainerSize(); ++i) {
-                if (i == getSize() * getSize())
-                    continue;
-                Inventory inventory = player.getInventory();
-                if (inventory.player instanceof ServerPlayer) {
-                    inventory.placeItemBackInInventory(container.removeItemNoUpdate(i));
-                }
-            }
-
-        }
+        super.clearContainer(player, container);
     }
 
 }

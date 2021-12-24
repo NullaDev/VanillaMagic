@@ -2,6 +2,7 @@ package cn.nulladev.vanillamagic.item.conceptcore;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
@@ -46,13 +47,31 @@ public abstract class ConceptCore extends Item {
     }
 
     @Override
+    public boolean isBarVisible(ItemStack stack) {
+        return getCD(stack) > 0;
+    }
+
+    @Override
+    public int getBarWidth(ItemStack stack) {
+        return Math.round(13F - 13F * getCD(stack) / UsingCD);
+    }
+
+    @Override
+    public int getBarColor(ItemStack stack) {
+        float f = Math.max(0.0F, (this.UsingCD - getCD(stack)) / (float)UsingCD);
+        return Mth.hsvToRgb(f / 3.0F, 1.0F, 1.0F);
+    }
+
+    @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flags) {
-        Component cdinfo;
+        Component total_cd = new TranslatableComponent("vanillamagic.misc.total_cd", UsingCD);;
+        Component cd_info;
         if (getCD(stack) > 0)
-            cdinfo = new TranslatableComponent("vanillamagic.misc.cd2", getCD(stack));
+            cd_info = new TranslatableComponent("vanillamagic.misc.cd2", getCD(stack));
         else
-            cdinfo = new TranslatableComponent("vanillamagic.misc.cd1");
-        list.add(cdinfo);
+            cd_info = new TranslatableComponent("vanillamagic.misc.cd1");
+        list.add(total_cd);
+        list.add(cd_info);
     }
 
 }
