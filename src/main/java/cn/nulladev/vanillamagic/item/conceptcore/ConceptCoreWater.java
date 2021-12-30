@@ -9,6 +9,7 @@ public class ConceptCoreWater extends ConceptCore {
 
     public ConceptCoreWater(Properties props) {
         super(props);
+        this.setUsingCD(5);
     }
 
     @Override

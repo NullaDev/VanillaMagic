@@ -9,6 +9,7 @@ public class ConceptCoreStone extends ConceptCore {
 
     public ConceptCoreStone(Properties props) {
         super(props);
+        this.setUsingCD(30);
     }
 
     @Override

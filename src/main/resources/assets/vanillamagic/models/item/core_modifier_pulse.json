@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "vanillamagic:item/core_modifier_pulse"
+    }
+}
+

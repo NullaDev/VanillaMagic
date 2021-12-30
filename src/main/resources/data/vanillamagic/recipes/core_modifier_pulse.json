@@ -1,0 +1,26 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:core_modifier_pulse",
+    "count": 1
+  },
+  "pattern": [
+    "  D",
+    " CC",
+    "ABC"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:redstone_torch"
+    },
+    "B": {
+      "item": "minecraft:repeater"
+    },
+    "C": {
+      "item": "minecraft:redstone"
+    },
+    "D": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}

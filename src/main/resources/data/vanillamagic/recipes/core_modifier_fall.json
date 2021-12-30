@@ -1,0 +1,17 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:core_modifier_fall",
+    "count": 1
+  },
+  "pattern": [
+    " A ",
+    "   ",
+    " A "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:world_interaction_io"
+    }
+  }
+}

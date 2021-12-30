@@ -1,0 +1,24 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_bone_meal",
+    "count": 1
+  },
+  "pattern": [
+    "AAAA",
+    "AAAA",
+    "AAAA",
+    " BC "
+  ],
+  "key": {
+    "A": {
+      "item": "vanillamagic:concept_core_sugar_cane"
+    },
+    "B": {
+      "item": "minecraft:composter"
+    },
+    "C": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}

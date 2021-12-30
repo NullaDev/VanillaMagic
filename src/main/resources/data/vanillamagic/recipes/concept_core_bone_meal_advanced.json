@@ -1,0 +1,43 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_bone_meal_advanced",
+    "count": 1
+  },
+  "pattern": [
+    " AAA ",
+    " BBB ",
+    " CCC ",
+    "ADEF ",
+    "ADGHI"
+  ],
+  "key": {
+    "A": {
+      "item": "vanillamagic:core_modifier_pulse"
+    },
+    "B": {
+      "item": "minecraft:piston"
+    },
+    "C": {
+      "item": "vanillamagic:concept_core_stone"
+    },
+    "D": {
+      "item": "minecraft:dispenser"
+    },
+    "E": {
+      "item": "vanillamagic:concept_core_bone_meal"
+    },
+    "F": {
+      "item": "minecraft:moss_block"
+    },
+    "G": {
+      "item": "minecraft:water_bucket"
+    },
+    "H": {
+      "item": "minecraft:composter"
+    },
+    "I": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}

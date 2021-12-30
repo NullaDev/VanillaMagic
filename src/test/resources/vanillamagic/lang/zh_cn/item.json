@@ -4,8 +4,8 @@
             "-path": [
                 "item.vanillamagic"
             ],
-            "world_interaction_io": "世界交互接口",
             "core_amplifier": "核心增幅器",
+            "world_interaction_io": "世界交互接口",
             "world_interaction_wand": "世界交互法杖"
         },
         "block": {
@@ -31,6 +31,20 @@
                 }
             ]
         },
+        "core_modifier": {
+            "-path": [
+                "item.vanillamagic"
+            ],
+            "list": [
+                {
+                    "core_modifier":"核心修饰:"
+                },
+                {
+                    "fall": "坠落",
+                    "pulse": "脉冲"
+                }
+            ]
+        },
         "concept_core":{
             "-path": [
                 "item.vanillamagic"
@@ -40,6 +54,8 @@
                     "concept_core":"概念核心:"
                 },
                 {
+                    "bone_meal": "骨粉",
+                    "bone_meal_advanced": "骨粉(高级)",
                     "cobblestone": "圆石",
                     "lava": "岩浆",
                     "stone": "石",
