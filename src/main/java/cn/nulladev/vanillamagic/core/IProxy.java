@@ -26,6 +26,6 @@ class ClientProxy implements IProxy {
 class ServerProxy implements IProxy {
     @Override
     public void setup() {
-
+        VMRegistry.INSTANCE.registerReflection();
     }
 }

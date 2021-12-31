@@ -5,6 +5,7 @@
                 "item.vanillamagic"
             ],
             "core_amplifier": "核心增幅器",
+            "infinite_fuel": "无限之燃料",
             "world_interaction_io": "世界交互接口",
             "world_interaction_wand": "世界交互法杖"
         },
@@ -57,6 +58,7 @@
                     "bone_meal": "骨粉",
                     "bone_meal_advanced": "骨粉(高级)",
                     "cactus": "仙人掌",
+                    "carpet": "地毯",
                     "cobblestone": "圆石",
                     "lava": "岩浆",
                     "obsidian": "黑曜石",

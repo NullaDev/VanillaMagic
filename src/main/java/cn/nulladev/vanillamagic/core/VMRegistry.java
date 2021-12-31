@@ -2,6 +2,7 @@ package cn.nulladev.vanillamagic.core;
 
 import cn.nulladev.vanillamagic.client.CrystalMenu;
 import cn.nulladev.vanillamagic.crafting.*;
+import cn.nulladev.vanillamagic.item.InfiniteFuel;
 import com.lcy0x1.base.BaseRecipe;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -33,5 +34,9 @@ public class VMRegistry {
         VMItems.ITEM.register(modBus);
         RECIPE.register(modBus);
         MENU.register(modBus);
+    }
+
+    public void registerReflection() {
+        ((InfiniteFuel)VMItems.INFINITE_FUEL.get()).initCraftingRemain();
     }
 }

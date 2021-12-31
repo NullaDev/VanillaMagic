@@ -1,0 +1,33 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_carpet",
+    "count": 1
+  },
+  "pattern": [
+    "A   ",
+    "BCD ",
+    "ECC ",
+    "  EF"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:lever"
+    },
+    "B": {
+      "item": "minecraft:sticky_piston"
+    },
+    "C": {
+      "item": "minecraft:slime_block"
+    },
+    "D": {
+      "item": "minecraft:white_carpet"
+    },
+    "E": {
+      "item": "minecraft:observer"
+    },
+    "F": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}
