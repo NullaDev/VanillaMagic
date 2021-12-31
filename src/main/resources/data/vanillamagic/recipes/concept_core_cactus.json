@@ -1,0 +1,26 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_cactus",
+    "count": 1
+  },
+  "pattern": [
+    " A ",
+    "B B",
+    "CDC"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:cobblestone_wall"
+    },
+    "B": {
+      "item": "minecraft:cactus"
+    },
+    "B": {
+      "item": "minecraft:sand"
+    },
+    "D": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}

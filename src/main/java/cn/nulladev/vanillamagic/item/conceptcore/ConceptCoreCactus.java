@@ -1,18 +1,19 @@
 package cn.nulladev.vanillamagic.item.conceptcore;
 
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.block.Blocks;
 
-public class ConceptCoreBoneMeal extends ConceptCore {
+public class ConceptCoreCactus extends ConceptCore {
 
-    public ConceptCoreBoneMeal(Properties props) {
+    public ConceptCoreCactus(Properties props) {
         super(props);
         this.setUsingCD(12000);
     }
 
     @Override
     public InteractionResult wandUse(UseOnContext ctx) {
-        return Items.BONE_MEAL.useOn(ctx);
+        return GenericInteractions.place(new BlockPlaceContext(ctx), Blocks.CACTUS);
     }
 }
