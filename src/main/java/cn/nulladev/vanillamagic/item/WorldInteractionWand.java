@@ -6,8 +6,11 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
@@ -88,7 +91,7 @@ public class WorldInteractionWand extends Item {
     public int getBarColor(ItemStack stack) {
         if (getMaxCD(stack) == 0)
             return 0;
-        float f = Math.max(0.0F, (getMaxCD(stack) - getCD(stack)) / (float)getMaxCD(stack));
+        float f = Math.max(0.0F, (getMaxCD(stack) - getCD(stack)) / (float) getMaxCD(stack));
         return Mth.hsvToRgb(f / 3.0F, 1.0F, 1.0F);
     }
 
@@ -109,12 +112,31 @@ public class WorldInteractionWand extends Item {
     public InteractionResult useOn(UseOnContext ctx) {
         if (getCD(ctx.getItemInHand()) > 0 && !ctx.getPlayer().isCreative())
             return InteractionResult.PASS;
+
         if (getCore(ctx.getItemInHand()).getItem() instanceof ConceptCore) {
-            ConceptCore item = (ConceptCore)getCore(ctx.getItemInHand()).getItem();
-            setCD(ctx.getItemInHand(), item.UsingCD);
-            return item.wandUse(ctx);
+            ConceptCore item = (ConceptCore) getCore(ctx.getItemInHand()).getItem();
+            InteractionResult result = item.wandUseOn(ctx);
+            if (result != InteractionResult.PASS)
+                setCD(ctx.getItemInHand(), item.UsingCD);
+            return result;
         }
         return InteractionResult.PASS;
     }
 
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        if (getCD(stack) > 0 && !player.isCreative())
+            return InteractionResultHolder.pass(stack);
+
+        if (getCore(stack).getItem() instanceof ConceptCore) {
+            ConceptCore item = (ConceptCore) getCore(stack).getItem();
+            InteractionResultHolder result = item.wandUse(level, player, hand);
+            if (result.getResult() != InteractionResult.PASS) {
+                setCD(player.getItemInHand(hand), item.UsingCD);
+                return InteractionResultHolder.success(stack);
+            }
+        }
+        return InteractionResultHolder.pass(stack);
+    }
 }

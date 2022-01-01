@@ -19,6 +19,8 @@ public class VMItems {
     public static RegistryObject<Item> CORE_AMPLIFIER = register("core_amplifier", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_FALL = register("core_modifier_fall", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_PULSE = register("core_modifier_pulse", GenericVMItem::new);
+    public static RegistryObject<Item> CORE_MODIFIER_PULSE_CONTROLLABLE = register("core_modifier_pulse_controllable", GenericVMItem::new);
+    public static RegistryObject<Item> CORE_MODIFIER_SNOW_GOLEM = register("core_modifier_snow_golem", GenericVMItem::new);
     public static RegistryObject<Item> INFINITE_FUEL = register("infinite_fuel", InfiniteFuel::new);
     public static RegistryObject<Item> WORLD_INTERACTION_IO = register("world_interaction_io", GenericVMItem::new);
 
@@ -31,6 +33,7 @@ public class VMItems {
     public static RegistryObject<Item> CONCEPT_CORE_COBBLESTONE = register("concept_core_cobblestone", ConceptCoreCobblestone::new);
     public static RegistryObject<Item> CONCEPT_CORE_LAVA = register("concept_core_lava", ConceptCoreLava::new);
     public static RegistryObject<Item> CONCEPT_CORE_OBSIDIAN = register("concept_core_obsidian", ConceptCoreObsidian::new);
+    public static RegistryObject<Item> CONCEPT_CORE_SNOWBALL = register("concept_core_snowball", ConceptCoreSnowball::new);
     public static RegistryObject<Item> CONCEPT_CORE_STONE = register("concept_core_stone", ConceptCoreStone::new);
     public static RegistryObject<Item> CONCEPT_CORE_SUGAR_CANE = register("concept_core_sugar_cane", ConceptCoreSugarCane::new);
     public static RegistryObject<Item> CONCEPT_CORE_TNT = register("concept_core_tnt", ConceptCoreTNT::new);

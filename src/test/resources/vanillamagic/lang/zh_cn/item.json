@@ -42,7 +42,9 @@
                 },
                 {
                     "fall": "坠落",
-                    "pulse": "脉冲"
+                    "pulse": "脉冲",
+                    "pulse_controllable": "可控脉冲",
+                    "snow_golem": "雪傀儡"
                 }
             ]
         },
@@ -62,6 +64,7 @@
                     "cobblestone": "圆石",
                     "lava": "岩浆",
                     "obsidian": "黑曜石",
+                    "snowball": "雪球",
                     "stone": "石",
                     "sugar_cane": "甘蔗",
                     "tnt": "TNT",

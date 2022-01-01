@@ -13,7 +13,7 @@ public class ConceptCoreLava extends ConceptCore {
     }
 
     @Override
-    public InteractionResult wandUse(UseOnContext ctx) {
+    public InteractionResult wandUseOn(UseOnContext ctx) {
         return GenericInteractions.place(new BlockPlaceContext(ctx), Blocks.LAVA);
     }
 }

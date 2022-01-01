@@ -11,7 +11,7 @@
   ],
   "key": {
     "A": {
-      "item": "minecraft:world_interaction_io"
+      "item": "vanillamagic:world_interaction_io"
     }
   }
 }

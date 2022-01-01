@@ -3,8 +3,11 @@ package cn.nulladev.vanillamagic.item.conceptcore;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -25,7 +28,13 @@ public abstract class ConceptCore extends Item {
         this.setUsingCD(10);
     }
 
-    public abstract InteractionResult wandUse(UseOnContext ctx);
+    public InteractionResult wandUseOn(UseOnContext ctx) {
+        return InteractionResult.PASS;
+    }
+
+    public InteractionResultHolder<ItemStack> wandUse(Level level, Player player, InteractionHand hand) {
+        return InteractionResultHolder.pass(player.getItemInHand(hand));
+    }
 
     public void setUsingCD(int CD) {
         this.UsingCD = CD;
@@ -37,6 +46,10 @@ public abstract class ConceptCore extends Item {
 
     public static void setCD(ItemStack stack, int cd) {
         stack.getOrCreateTag().putInt(TAG_CD, cd);
+    }
+
+    public ItemStack getMachineOutput() {
+        return ItemStack.EMPTY;
     }
 
     @Override

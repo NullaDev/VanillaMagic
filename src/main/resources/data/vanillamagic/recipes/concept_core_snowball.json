@@ -1,0 +1,36 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_snowball",
+    "count": 1
+  },
+  "pattern": [
+    "A BC",
+    "DDDD",
+    "EEEE",
+    "  FG"
+  ],
+  "key": {
+    "A": {
+      "item": "vanillamagic:core_modifier_snow_golem"
+    },
+    "B": {
+      "item": "vanillamagic:concept_core_tnt"
+    },
+    "C": {
+      "item": "vanillamagic:core_modifier_pulse_controllable"
+    },
+    "D": {
+      "item": "minecraft:powered_rail"
+    },
+    "E": {
+      "item": "minecraft:obsidian"
+    },
+    "F": {
+      "item": "minecraft:hopper"
+    },
+    "G": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:core_modifier_pulse_controllable",
+    "count": 1
+  },
+  "pattern": [
+    "    ",
+    "A BA",
+    "CDDC",
+    "   E"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:sticky_piston"
+    },
+    "B": {
+      "item": "minecraft:redstone_block"
+    },
+    "C": {
+      "item": "minecraft:comparator"
+    },
+    "D": {
+      "item": "minecraft:hopper"
+    },
+    "E": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}

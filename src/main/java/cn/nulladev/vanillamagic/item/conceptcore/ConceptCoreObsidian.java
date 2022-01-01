@@ -13,7 +13,7 @@ public class ConceptCoreObsidian extends ConceptCore {
     }
 
     @Override
-    public InteractionResult wandUse(UseOnContext ctx) {
+    public InteractionResult wandUseOn(UseOnContext ctx) {
         return GenericInteractions.place(new BlockPlaceContext(ctx), Blocks.OBSIDIAN);
     }
 }

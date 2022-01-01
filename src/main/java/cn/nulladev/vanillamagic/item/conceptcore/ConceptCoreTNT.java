@@ -12,7 +12,7 @@ public class ConceptCoreTNT extends ConceptCore {
     }
 
     @Override
-    public InteractionResult wandUse(UseOnContext ctx) {
+    public InteractionResult wandUseOn(UseOnContext ctx) {
         double x = ctx.getClickedPos().getX()+0.5D;
         double y = ctx.getClickedPos().getY()+1.5D;
         double z = ctx.getClickedPos().getZ()+0.5D;

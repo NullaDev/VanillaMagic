@@ -1,0 +1,26 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:core_modifier_snow_golem",
+    "count": 1
+  },
+  "pattern": [
+    " A ",
+    " B ",
+    "CBD"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:carved_pumpkin"
+    },
+    "B": {
+      "item": "minecraft:snow_block"
+    },
+    "C": {
+      "item": "minecraft:minecart"
+    },
+    "D": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}
