@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "vanillamagic:infinite_fuel",
+    "count": 1
+  },
+  "pattern": [
+    " A ",
+    " B ",
+    " C "
+  ],
+  "key": {
+    "A": {
+      "item": "vanillamagic:concept_core_carpet"
+    },
+    "B": {
+      "item": "vanillamagic:core_amplifier"
+    },
+    "C": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}
