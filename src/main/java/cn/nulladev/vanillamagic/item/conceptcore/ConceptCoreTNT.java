@@ -1,8 +1,11 @@
 package cn.nulladev.vanillamagic.item.conceptcore;
 
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.item.PrimedTnt;
-import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 
 public class ConceptCoreTNT extends ConceptCore {
 
@@ -12,12 +15,13 @@ public class ConceptCoreTNT extends ConceptCore {
     }
 
     @Override
-    public InteractionResult wandUseOn(UseOnContext ctx) {
-        double x = ctx.getClickedPos().getX()+0.5D;
-        double y = ctx.getClickedPos().getY()+1.5D;
-        double z = ctx.getClickedPos().getZ()+0.5D;
-        PrimedTnt primedtnt = new PrimedTnt(ctx.getLevel(), x, y, z, null);
-        ctx.getLevel().addFreshEntity(primedtnt);
-        return InteractionResult.SUCCESS;
+    public InteractionResultHolder<ItemStack> wandUse(Level level, Player player, InteractionHand hand) {
+        double x = player.getX();
+        double y = player.getY()+0.5D;
+        double z = player.getZ();
+        PrimedTnt primedtnt = new PrimedTnt(level, x, y, z, null);
+        level.addFreshEntity(primedtnt);
+        return InteractionResultHolder.success(player.getItemInHand(hand));
     }
+
 }
