@@ -10,7 +10,7 @@ public class ConceptCoreCobblestoneAdvanced extends ConceptCore {
 
     public ConceptCoreCobblestoneAdvanced(Properties props) {
         super(props);
-        this.setUsingCD(1);
+        this.setUsingCD(15);
     }
 
     @Override

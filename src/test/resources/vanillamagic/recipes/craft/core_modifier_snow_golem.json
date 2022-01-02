@@ -7,7 +7,7 @@
   "pattern": [
     " A ",
     " B ",
-    "CBD"
+    " BC"
   ],
   "key": {
     "A": {
@@ -17,9 +17,6 @@
       "item": "minecraft:snow_block"
     },
     "C": {
-      "item": "minecraft:minecart"
-    },
-    "D": {
       "item": "vanillamagic:world_interaction_io"
     }
   }

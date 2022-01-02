@@ -44,7 +44,9 @@
                     "fall": "坠落",
                     "pulse": "脉冲",
                     "pulse_controllable": "可控脉冲",
-                    "snow_golem": "雪傀儡"
+                    "snow_golem": "雪傀儡",
+                    "update_end": "末地更新",
+                    "wither": "凋灵"
                 }
             ]
         },

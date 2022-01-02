@@ -21,6 +21,8 @@ public class VMItems {
     public static RegistryObject<Item> CORE_MODIFIER_PULSE = register("core_modifier_pulse", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_PULSE_CONTROLLABLE = register("core_modifier_pulse_controllable", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_SNOW_GOLEM = register("core_modifier_snow_golem", GenericVMItem::new);
+    public static RegistryObject<Item> CORE_MODIFIER_UPDATE_END = register("core_modifier_update_end", GenericVMItem::new);
+    public static RegistryObject<Item> CORE_MODIFIER_WITHER = register("core_modifier_wither", GenericVMItem::new);
     public static RegistryObject<Item> INFINITE_FUEL = register("infinite_fuel", InfiniteFuel::new);
     public static RegistryObject<Item> WORLD_INTERACTION_IO = register("world_interaction_io", GenericVMItem::new);
 

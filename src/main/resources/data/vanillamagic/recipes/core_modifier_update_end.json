@@ -1,0 +1,29 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:core_modifier_update_end",
+    "count": 1
+  },
+  "pattern": [
+    " A ",
+    "BC ",
+    " DE"
+  ],
+  "key": {
+    "A": {
+      "item": "vanillamagic:concept_core_carpet"
+    },
+    "B": {
+      "item": "vanillamagic:core_modifier_pulse"
+    },
+    "C": {
+      "item": "minecraft:dropper"
+    },
+    "D": {
+      "item": "minecraft:ender_eye"
+    },
+    "E": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}

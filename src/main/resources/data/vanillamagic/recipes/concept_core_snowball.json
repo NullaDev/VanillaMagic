@@ -5,31 +5,34 @@
     "count": 1
   },
   "pattern": [
-    "A BC",
-    "DDDD",
+    "ABCD",
     "EEEE",
-    "  FG"
+    "FFFF",
+    "  GH"
   ],
   "key": {
     "A": {
-      "item": "vanillamagic:core_modifier_snow_golem"
+      "item": "minecraft:minecart"
     },
     "B": {
-      "item": "vanillamagic:concept_core_tnt"
+      "item": "vanillamagic:core_modifier_snow_golem"
     },
     "C": {
-      "item": "vanillamagic:core_modifier_pulse_controllable"
+      "item": "vanillamagic:concept_core_tnt"
     },
     "D": {
-      "item": "minecraft:powered_rail"
+      "item": "vanillamagic:core_modifier_pulse_controllable"
     },
     "E": {
-      "item": "minecraft:obsidian"
+      "item": "minecraft:powered_rail"
     },
     "F": {
-      "item": "minecraft:hopper"
+      "item": "minecraft:obsidian"
     },
     "G": {
+      "item": "minecraft:hopper"
+    },
+    "H": {
       "item": "vanillamagic:world_interaction_io"
     }
   }

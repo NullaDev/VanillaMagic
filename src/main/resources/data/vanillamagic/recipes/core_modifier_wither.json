@@ -1,20 +1,20 @@
 {
   "type": "vanillamagic:crystal_default",
   "result": {
-    "item": "vanillamagic:core_modifier_snow_golem",
+    "item": "vanillamagic:core_modifier_wither",
     "count": 1
   },
   "pattern": [
-    " A ",
-    " B ",
+    "AAA",
+    "BBB",
     " BC"
   ],
   "key": {
     "A": {
-      "item": "minecraft:carved_pumpkin"
+      "item": "minecraft:wither_skeleton_skull"
     },
     "B": {
-      "item": "minecraft:snow_block"
+      "item": "minecraft:soul_sand"
     },
     "C": {
       "item": "vanillamagic:world_interaction_io"
