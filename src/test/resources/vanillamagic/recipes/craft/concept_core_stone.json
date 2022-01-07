@@ -17,7 +17,7 @@
       "item": "vanillamagic:concept_core_water"
     },
     "C": {
-      "item": "minecraft:world_interaction_io"
+      "item": "vanillamagic:world_interaction_io"
     }
   }
 }

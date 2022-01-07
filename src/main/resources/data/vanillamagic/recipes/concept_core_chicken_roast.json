@@ -1,0 +1,31 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_chicken_roast",
+    "count": 1
+  },
+  "pattern": [
+    "     ",
+    "AABAA",
+    "AACAA",
+    "  D  ",
+    "  E  "
+  ],
+  "key": {
+    "A": {
+      "item": "vanillamagic:concept_core_chicken"
+    },
+    "B": {
+      "item": "minecraft:lava_bucket"
+    },
+    "C": {
+      "tag": "minecraft:slabs"
+    },
+    "D": {
+      "item": "minecraft:hopper"
+    },
+    "E": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}

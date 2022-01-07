@@ -15,6 +15,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ConceptCore extends Item {
@@ -50,6 +51,12 @@ public abstract class ConceptCore extends Item {
 
     public ItemStack getMachineOutput() {
         return ItemStack.EMPTY;
+    }
+
+    public ArrayList<ItemStack> getMachineOutputs() {
+        ArrayList<ItemStack> list = new ArrayList<>();
+        list.add(this.getMachineOutput());
+        return list;
     }
 
     @Override

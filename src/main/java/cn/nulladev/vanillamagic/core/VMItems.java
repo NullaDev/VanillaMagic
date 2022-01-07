@@ -3,6 +3,7 @@ package cn.nulladev.vanillamagic.core;
 import cn.nulladev.vanillamagic.item.conceptcore.*;
 import cn.nulladev.vanillamagic.item.*;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -14,7 +15,7 @@ public class VMItems {
 
     public static RegistryObject<Item> SPACE_CRYSTAL_BASIC = register("space_crystal_basic", (p) -> new SpaceCrystal(p, 3));
     public static RegistryObject<Item> SPACE_CRYSTAL_ADVANCED = register("space_crystal_advanced", (p) -> new SpaceCrystal(p, 4));
-    public static RegistryObject<Item> SPACE_CRYSTAL_ULTIMATE = register("space_crystal_ultimate", (p) -> new SpaceCrystal(p, 5));
+    public static RegistryObject<Item> SPACE_CRYSTAL_ULTIMATE = register("space_crystal_ultimate", (p) -> new SpaceCrystal(p.rarity(Rarity.UNCOMMON), 5));
 
     public static RegistryObject<Item> CORE_AMPLIFIER = register("core_amplifier", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_FALL = register("core_modifier_fall", GenericVMItem::new);
@@ -32,6 +33,8 @@ public class VMItems {
     public static RegistryObject<Item> CONCEPT_CORE_BONEMEAL_ADVANCED = register("concept_core_bone_meal_advanced", ConceptCoreBoneMealAdvanced::new);
     public static RegistryObject<Item> CONCEPT_CORE_CACTUS = register("concept_core_cactus", ConceptCoreCactus::new);
     public static RegistryObject<Item> CONCEPT_CORE_CARPET = register("concept_core_carpet", ConceptCoreCarpet::new);
+    public static RegistryObject<Item> CONCEPT_CORE_CHICKEN = register("concept_core_chicken", ConceptCoreChicken::new);
+    public static RegistryObject<Item> CONCEPT_CORE_CHICKEN_ROAST = register("concept_core_chicken_roast", ConceptCoreChickenRoast::new);
     public static RegistryObject<Item> CONCEPT_CORE_COBBLESTONE = register("concept_core_cobblestone", ConceptCoreCobblestone::new);
     public static RegistryObject<Item> CONCEPT_CORE_LAVA = register("concept_core_lava", ConceptCoreLava::new);
     public static RegistryObject<Item> CONCEPT_CORE_OBSIDIAN = register("concept_core_obsidian", ConceptCoreObsidian::new);

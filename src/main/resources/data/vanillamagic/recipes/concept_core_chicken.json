@@ -1,0 +1,36 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_chicken",
+    "count": 1
+  },
+  "pattern": [
+    "  A ",
+    "BCDA",
+    "BEFA",
+    "BEG "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:glass"
+    },
+    "B": {
+      "item": "vanillamagic:core_modifier_pulse"
+    },
+    "C": {
+      "item": "minecraft:dispenser"
+    },
+    "D": {
+      "item": "vanillamagic:world_interaction_io"
+    },
+    "E": {
+      "item": "minecraft:dropper"
+    },
+    "F": {
+      "item": "minecraft:egg"
+    },
+    "G": {
+      "item": "minecraft:hopper"
+    }
+  }
+}

@@ -41,4 +41,6 @@ public class SpaceCrystal extends Item {
         return InteractionResultHolder.success(player.getItemInHand(hand));
     }
 
+
+
 }
