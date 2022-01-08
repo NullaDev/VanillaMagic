@@ -1,0 +1,30 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_frame_destroy",
+    "count": 1
+  },
+  "pattern": [
+    "A   ",
+    "    ",
+    "  BC",
+    "D E "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:ender_eye"
+    },
+    "B": {
+      "item": "minecraft:red_mushroom"
+    },
+    "C": {
+      "item": "vanillamagic:concept_core_bone_meal"
+    },
+    "D": {
+      "item": "vanillamagic:world_interaction_io"
+    },
+    "E": {
+      "item": "minecraft:podzol"
+    }
+  }
+}
