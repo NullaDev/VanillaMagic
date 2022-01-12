@@ -24,6 +24,7 @@ public class VMRegistry {
     public static final RegistryObject<RecipeSerializer<WandCoreRecipe>> RS_WAND_CORE = RECIPE.register("wand_core", () -> WandCoreRecipe.SERIALIZER);
     public static final RegistryObject<RecipeSerializer<WandRemoveCoreRecipe>> RS_WAND_REMOVE_CORE = RECIPE.register("wand_remove_core", () -> WandRemoveCoreRecipe.SERIALIZER);
     public static final RegistryObject<RecipeSerializer<CoreContentRecipe>> RS_CORE_CONTENT = RECIPE.register("core_content", () -> CoreContentRecipe.SERIALIZER);
+    public static final RegistryObject<RecipeSerializer<CoreRemoveContentRecipe>> RS_CORE_REMOVE_CONTENT = RECIPE.register("core_remove_content", () -> CoreRemoveContentRecipe.SERIALIZER);
 
     public static final RegistryObject<MenuType<CrystalMenu>> MT_CRYSTAL = MENU.register("space_crystal", () -> IForgeMenuType.create(CrystalMenu::fromNetwork));
 

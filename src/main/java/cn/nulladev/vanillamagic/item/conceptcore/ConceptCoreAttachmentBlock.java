@@ -6,13 +6,11 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FallingBlock;
+import net.minecraft.world.level.block.*;
 
-public class ConceptCoreFallingBlock extends ConceptCoreWithContent {
+public class ConceptCoreAttachmentBlock extends ConceptCoreWithContent {
 
-    public ConceptCoreFallingBlock(Properties props) {
+    public ConceptCoreAttachmentBlock(Properties props) {
         super(props);
         this.setUsingCD(2);
     }
@@ -20,7 +18,13 @@ public class ConceptCoreFallingBlock extends ConceptCoreWithContent {
     @Override
     public boolean isContentValid(ItemStack stack) {
         if (stack.getItem() instanceof BlockItem) {
-            return ((BlockItem)(stack.getItem())).getBlock() instanceof FallingBlock;
+            Block b = ((BlockItem)(stack.getItem())).getBlock();
+            if (b instanceof WoolCarpetBlock)
+                return true;
+            else if (b instanceof BaseRailBlock)
+                return true;
+            else
+                return false;
         } else {
             return false;
         }

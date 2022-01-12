@@ -1,32 +1,29 @@
 {
   "type": "vanillamagic:crystal_default",
   "result": {
-    "item": "vanillamagic:concept_core_carpet",
+    "item": "vanillamagic:concept_core_attachment_block",
     "count": 1
   },
   "pattern": [
-    "A   ",
-    "BCD ",
-    "ECC ",
-    "  EF"
+    "A B ",
+    "C B ",
+    " DBD",
+    "   E"
   ],
   "key": {
     "A": {
       "item": "minecraft:lever"
     },
     "B": {
-      "item": "minecraft:sticky_piston"
-    },
-    "C": {
       "item": "minecraft:slime_block"
     },
-    "D": {
-      "item": "minecraft:white_carpet"
+    "C": {
+      "item": "minecraft:sticky_piston"
     },
-    "E": {
+    "D": {
       "item": "minecraft:observer"
     },
-    "F": {
+    "E": {
       "item": "vanillamagic:world_interaction_io"
     }
   }

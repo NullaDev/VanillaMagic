@@ -28,7 +28,7 @@ public class ConceptCoreChickenRoast extends ConceptCore {
     }
 
     @Override
-    public ArrayList<ItemStack> getMachineOutputs() {
+    public ArrayList<ItemStack> getMachineOutputs(ItemStack coreStack) {
         ArrayList<ItemStack> list = new ArrayList<>();
         list.add(new ItemStack(Items.COOKED_CHICKEN));
         int rand = new Random().nextInt(3);

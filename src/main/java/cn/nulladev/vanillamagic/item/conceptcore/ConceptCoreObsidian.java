@@ -19,7 +19,7 @@ public class ConceptCoreObsidian extends ConceptCore {
     }
 
     @Override
-    public ItemStack getMachineOutput() {
+    public ItemStack getMachineOutput(ItemStack coreStack) {
         return new ItemStack(Blocks.OBSIDIAN);
     }
 }

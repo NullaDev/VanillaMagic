@@ -59,10 +59,10 @@
                     "concept_core":"概念核心:"
                 },
                 {
+                    "attachment_block": "附着方块",
                     "bone_meal": "骨粉",
                     "bone_meal_advanced": "骨粉(高级)",
                     "cactus": "仙人掌",
-                    "carpet": "地毯",
                     "chicken": "鸡",
                     "chicken_roast": "烤鸡",
                     "cobblestone": "圆石",

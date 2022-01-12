@@ -50,13 +50,13 @@ public abstract class ConceptCore extends Item {
         stack.getOrCreateTag().putInt(TAG_CD, cd);
     }
 
-    public ItemStack getMachineOutput() {
+    public ItemStack getMachineOutput(ItemStack coreStack) {
         return ItemStack.EMPTY;
     }
 
-    public ArrayList<ItemStack> getMachineOutputs() {
+    public ArrayList<ItemStack> getMachineOutputs(ItemStack coreStack) {
         ArrayList<ItemStack> list = new ArrayList<>();
-        list.add(this.getMachineOutput());
+        list.add(this.getMachineOutput(coreStack));
         return list;
     }
 

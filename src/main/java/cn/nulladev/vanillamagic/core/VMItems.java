@@ -29,10 +29,10 @@ public class VMItems {
 
     public static RegistryObject<Item> WORLD_INTERACTION_WAND = register("world_interaction_wand", WorldInteractionWand::new);
 
+    public static RegistryObject<Item> CONCEPT_CORE_ATTACHMENT_BLOCK = register("concept_core_attachment_block", ConceptCoreAttachmentBlock::new);
     public static RegistryObject<Item> CONCEPT_CORE_BONEMEAL = register("concept_core_bone_meal", ConceptCoreBoneMeal::new);
     public static RegistryObject<Item> CONCEPT_CORE_BONEMEAL_ADVANCED = register("concept_core_bone_meal_advanced", ConceptCoreBoneMealAdvanced::new);
     public static RegistryObject<Item> CONCEPT_CORE_CACTUS = register("concept_core_cactus", ConceptCoreCactus::new);
-    public static RegistryObject<Item> CONCEPT_CORE_CARPET = register("concept_core_carpet", ConceptCoreCarpet::new);
     public static RegistryObject<Item> CONCEPT_CORE_CHICKEN = register("concept_core_chicken", ConceptCoreChicken::new);
     public static RegistryObject<Item> CONCEPT_CORE_CHICKEN_ROAST = register("concept_core_chicken_roast", ConceptCoreChickenRoast::new);
     public static RegistryObject<Item> CONCEPT_CORE_COBBLESTONE = register("concept_core_cobblestone", ConceptCoreCobblestone::new);
