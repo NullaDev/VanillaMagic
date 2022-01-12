@@ -18,5 +18,7 @@
   "itemGroup.vanillamagic": "原始魔法",
   "vanillamagic.misc.total_cd": "使用冷却时间:%dticks",
   "vanillamagic.misc.cd1": "当前可用",
-  "vanillamagic.misc.cd2": "%dticks后可用"
+  "vanillamagic.misc.cd2": "%dticks后可用",
+  "vanillamagic.misc.miss_content": "缺少填充",
+  "vanillamagic.misc.miss_core": "缺少概念核心"
 }

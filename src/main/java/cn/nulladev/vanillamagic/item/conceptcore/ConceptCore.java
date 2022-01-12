@@ -1,5 +1,6 @@
 package cn.nulladev.vanillamagic.item.conceptcore;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.util.Mth;
@@ -84,12 +85,12 @@ public abstract class ConceptCore extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flags) {
-        Component total_cd = new TranslatableComponent("vanillamagic.misc.total_cd", UsingCD);;
+        Component total_cd = new TranslatableComponent("vanillamagic.misc.total_cd", UsingCD);
         Component cd_info;
         if (getCD(stack) > 0)
-            cd_info = new TranslatableComponent("vanillamagic.misc.cd2", getCD(stack));
+            cd_info = new TranslatableComponent("vanillamagic.misc.cd2", getCD(stack)).withStyle(ChatFormatting.RED);
         else
-            cd_info = new TranslatableComponent("vanillamagic.misc.cd1");
+            cd_info = new TranslatableComponent("vanillamagic.misc.cd1").withStyle(ChatFormatting.GREEN);
         list.add(total_cd);
         list.add(cd_info);
     }

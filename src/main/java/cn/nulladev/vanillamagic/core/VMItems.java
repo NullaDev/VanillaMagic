@@ -36,6 +36,7 @@ public class VMItems {
     public static RegistryObject<Item> CONCEPT_CORE_CHICKEN = register("concept_core_chicken", ConceptCoreChicken::new);
     public static RegistryObject<Item> CONCEPT_CORE_CHICKEN_ROAST = register("concept_core_chicken_roast", ConceptCoreChickenRoast::new);
     public static RegistryObject<Item> CONCEPT_CORE_COBBLESTONE = register("concept_core_cobblestone", ConceptCoreCobblestone::new);
+    public static RegistryObject<Item> CONCEPT_CORE_FALLING_BLOCK = register("concept_core_falling_block", ConceptCoreFallingBlock::new);
     public static RegistryObject<Item> CONCEPT_CORE_FRAME_DESTROY = register("concept_core_frame_destroy", ConceptCoreFrameDestory::new);
     public static RegistryObject<Item> CONCEPT_CORE_LAVA = register("concept_core_lava", ConceptCoreLava::new);
     public static RegistryObject<Item> CONCEPT_CORE_OBSIDIAN = register("concept_core_obsidian", ConceptCoreObsidian::new);
