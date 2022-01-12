@@ -14,7 +14,7 @@ public class ConceptCoreBoneMeal extends ConceptCore {
 
     @Override
     public InteractionResult wandUseOn(UseOnContext ctx) {
-        return Items.BONE_MEAL.useOn(ctx);
+        return GenericInteractions.useBoneMeal(ctx);
     }
 
     @Override
