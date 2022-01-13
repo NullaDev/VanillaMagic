@@ -1,6 +1,6 @@
 package cn.nulladev.vanillamagic.core;
 
-import cn.nulladev.vanillamagic.client.CrystalMenu;
+import cn.nulladev.vanillamagic.client.*;
 import cn.nulladev.vanillamagic.crafting.*;
 import com.lcy0x1.base.BaseRecipe;
 import net.minecraft.world.inventory.MenuType;
@@ -27,6 +27,7 @@ public class VMRegistry {
     public static final RegistryObject<RecipeSerializer<CoreRemoveContentRecipe>> RS_CORE_REMOVE_CONTENT = RECIPE.register("core_remove_content", () -> CoreRemoveContentRecipe.SERIALIZER);
 
     public static final RegistryObject<MenuType<CrystalMenu>> MT_CRYSTAL = MENU.register("space_crystal", () -> IForgeMenuType.create(CrystalMenu::fromNetwork));
+    public static final RegistryObject<MenuType<CoreBagMenu>> MT_CORE_BAG = MENU.register("core_bag", () -> IForgeMenuType.create(CoreBagMenu::fromNetwork));
 
     public void registerEvents() {
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();

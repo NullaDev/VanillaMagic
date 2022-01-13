@@ -19,6 +19,13 @@ public class CrystalGui extends BaseContainerScreen<CrystalMenu> {
     }
 
     @Override
+    public void render(PoseStack p_98418_, int p_98419_, int p_98420_, float p_98421_) {
+        this.renderBackground(p_98418_);
+        super.render(p_98418_, p_98419_, p_98420_, p_98421_);
+        this.renderTooltip(p_98418_, p_98419_, p_98420_);
+    }
+
+    @Override
     protected void renderBg(PoseStack p_97787_, float p_97788_, int p_97789_, int p_97790_) {
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, getTexture());

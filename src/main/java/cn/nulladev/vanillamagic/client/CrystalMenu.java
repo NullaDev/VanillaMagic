@@ -9,7 +9,6 @@ import com.lcy0x1.base.BaseContainerMenu;
 import com.lcy0x1.base.BaseRecipe;
 import com.lcy0x1.core.util.SpriteManager;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Inventory;
@@ -73,7 +72,7 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> {
             for (int j = 0; j < 9; ++j)
                 this.addSlot(new Slot(plInv, j + i * 9 + 9, x + j * 18, y + i * 18));
         for (int k = 0; k < 9; ++k)
-            if (k == plInv.selected && plInv.getItem(k) != null && plInv.getItem(k).getItem() instanceof SpaceCrystal) {
+            if (k == plInv.selected && plInv.getItem(k).getItem() instanceof SpaceCrystal) {
                 this.addSlot(new SlotLocked(plInv, k, x + k * 18, y + 58));
             } else {
                 this.addSlot(new Slot(plInv, k, x + k * 18, y + 58));
@@ -106,24 +105,6 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> {
             crystal.shrink(1);
         }
         super.clearContainer(player, container);
-    }
-
-}
-
-class SlotLocked extends Slot {
-
-    public SlotLocked(Inventory inventory, int index, int x, int y) {
-        super(inventory, index, x, y);
-    }
-
-    @Override
-    public boolean mayPickup(Player player) {
-        return false;
-    }
-
-    @Override
-    public boolean mayPlace(ItemStack stack) {
-        return false;
     }
 
 }
