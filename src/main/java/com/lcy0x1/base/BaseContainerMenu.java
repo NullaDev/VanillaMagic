@@ -45,9 +45,10 @@ public class BaseContainerMenu<T extends BaseContainerMenu<T>> extends AbstractC
     public final SimpleContainer container;
     public final SpriteManager sprite;
     private int added = 0;
+    private final boolean isVirtual;
 
     @SuppressWarnings("unchecked")
-    protected BaseContainerMenu(MenuType<?> type, int wid, Inventory plInv, SpriteManager manager, Function<T, BaseContainer<T>> factory) {
+    protected BaseContainerMenu(MenuType<?> type, int wid, Inventory plInv, SpriteManager manager, Function<T, BaseContainer<T>> factory, boolean isVirtual) {
         super(type, wid);
         this.inventory = plInv;
         container = factory.apply((T) this);
@@ -55,6 +56,7 @@ public class BaseContainerMenu<T extends BaseContainerMenu<T>> extends AbstractC
         int x = manager.getPlInvX();
         int y = manager.getPlInvY();
         this.bindPlayerInventory(plInv, x, y);
+        this.isVirtual = isVirtual;
     }
 
     protected void bindPlayerInventory(Inventory plInv, int x, int y) {
@@ -97,7 +99,7 @@ public class BaseContainerMenu<T extends BaseContainerMenu<T>> extends AbstractC
 
     @Override
     public void removed(Player player) {
-        if (!player.level.isClientSide())
+        if (isVirtual && !player.level.isClientSide())
             clearContainer(player, container);
         super.removed(player);
     }

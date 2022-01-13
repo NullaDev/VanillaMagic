@@ -59,7 +59,9 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> {
     }
 
     public CrystalMenu(int windowID, Inventory inventory, ItemStack crystal) {
-        super(VMRegistry.MT_CRYSTAL.get(), windowID, inventory, getSprite(crystal), menu -> new CrystalContainer(SpaceCrystal.getSize(crystal) * SpaceCrystal.getSize(crystal) + 1, menu));
+        super(VMRegistry.MT_CRYSTAL.get(), windowID, inventory, getSprite(crystal),
+                menu -> new CrystalContainer(SpaceCrystal.getSize(crystal) * SpaceCrystal.getSize(crystal) + 1, menu),
+                true);
         this.player = inventory.player;
         this.crystal = crystal;
         this.addSlot("grid", stack -> true);
@@ -96,8 +98,7 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> {
     protected void clearContainer(Player player, Container container) {
         Optional<AbstractCrystalRecipe<?>> optional = player.getServer().getRecipeManager().getRecipeFor(VMRegistry.RT_CRYSTAL, (CrystalContainer) this.container, this.player.level);
         if (optional.isPresent()) {
-            Inventory inventory = this.player.getInventory();
-            for(int i = 0; i < getSize() * getSize(); i++) {
+            for (int i = 0; i < getSize() * getSize(); i++) {
                 ItemStack stack = container.getItem(i);
                 if (!stack.isEmpty())
                     stack.shrink(1);

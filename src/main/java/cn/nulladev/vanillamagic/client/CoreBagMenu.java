@@ -46,14 +46,10 @@ public class CoreBagMenu extends BaseContainerMenu<CoreBagMenu> {
     }
 
     public CoreBagMenu(int windowId, Inventory inventory, ItemStack bag) {
-        super(VMRegistry.MT_CORE_BAG.get(), windowId, inventory, CORE_BAG, menu -> new CoreBagContainer(menu, bag));
+        super(VMRegistry.MT_CORE_BAG.get(), windowId, inventory, CORE_BAG, menu -> new CoreBagContainer(menu, bag), false);
         this.player = inventory.player;
         this.bag = bag;
-        for(int i = 0; i < 3; i++) {
-            for(int j = 0; j < 9; j++) {
-                this.addSlot(new Slot(this.container, j + i * 9, 8 + j * 18, 18 + i * 18));
-            }
-        }
+        this.addSlot("slot", stack -> stack.getItem() instanceof ConceptCore);
     }
 
     @Override
@@ -78,19 +74,4 @@ public class CoreBagMenu extends BaseContainerMenu<CoreBagMenu> {
         CoreBag.setListTag(this.bag, list);
     }
 
-    @Override
-    public void removed(Player player) {
-        //不能调用祖父类方法，只好直接照抄
-        if (player instanceof ServerPlayer) {
-            ItemStack itemstack = this.getCarried();
-            if (!itemstack.isEmpty()) {
-                if (player.isAlive() && !((ServerPlayer)player).hasDisconnected()) {
-                    player.getInventory().placeItemBackInInventory(itemstack);
-                } else {
-                    player.drop(itemstack, false);
-                }
-                this.setCarried(ItemStack.EMPTY);
-            }
-        }
-    }
 }
