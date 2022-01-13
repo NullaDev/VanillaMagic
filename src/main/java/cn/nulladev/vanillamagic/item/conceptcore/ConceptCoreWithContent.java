@@ -21,9 +21,7 @@ public abstract class ConceptCoreWithContent extends ConceptCore {
 
     public static void setContent(ItemStack stack, ItemStack content) {
         CompoundTag tag = new CompoundTag();
-        if (content != null) {
-            tag = content.save(tag);
-        }
+        content.save(tag);
         stack.getOrCreateTag().put(TAG_CONTENT, tag);
     }
 

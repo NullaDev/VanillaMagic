@@ -33,9 +33,7 @@ public class SpaceCrystal extends Item {
         if (!world.isClientSide) {
             ItemStack stack = player.getItemInHand(hand);
             MenuProvider container = new SimpleMenuProvider((windowId, playerInventory, playerEntity) -> new CrystalMenu(windowId, playerInventory, stack), stack.getDisplayName());
-            NetworkHooks.openGui((ServerPlayer) player, container, buf -> {
-                buf.writeBoolean(hand == InteractionHand.MAIN_HAND);
-            });
+            NetworkHooks.openGui((ServerPlayer) player, container, buf -> buf.writeBoolean(hand == InteractionHand.MAIN_HAND));
             //player.openMenu(container);
         }
         return InteractionResultHolder.success(player.getItemInHand(hand));

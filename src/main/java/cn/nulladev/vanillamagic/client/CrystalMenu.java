@@ -17,6 +17,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Objects;
 import java.util.Optional;
 
 @ParametersAreNonnullByDefault
@@ -84,7 +85,7 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> {
     @Override
     public void slotsChanged(Container container) {
         if (!this.player.level.isClientSide) {
-            Optional<AbstractCrystalRecipe<?>> optional = player.getServer().getRecipeManager().getRecipeFor(VMRegistry.RT_CRYSTAL, (CrystalContainer) this.container, this.player.level);
+            Optional<AbstractCrystalRecipe<?>> optional = Objects.requireNonNull(player.getServer()).getRecipeManager().getRecipeFor(VMRegistry.RT_CRYSTAL, (CrystalContainer) this.container, this.player.level);
             if (optional.isPresent()) {
                 AbstractCrystalRecipe<?> craftingrecipe = optional.get();
                 ItemStack itemstack = craftingrecipe.assemble((CrystalContainer) this.container);
@@ -96,7 +97,7 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> {
 
     @Override
     protected void clearContainer(Player player, Container container) {
-        Optional<AbstractCrystalRecipe<?>> optional = player.getServer().getRecipeManager().getRecipeFor(VMRegistry.RT_CRYSTAL, (CrystalContainer) this.container, this.player.level);
+        Optional<AbstractCrystalRecipe<?>> optional = Objects.requireNonNull(player.getServer()).getRecipeManager().getRecipeFor(VMRegistry.RT_CRYSTAL, (CrystalContainer) this.container, this.player.level);
         if (optional.isPresent()) {
             for (int i = 0; i < getSize() * getSize(); i++) {
                 ItemStack stack = container.getItem(i);

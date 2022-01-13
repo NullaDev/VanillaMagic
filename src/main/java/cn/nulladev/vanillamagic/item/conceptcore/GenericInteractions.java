@@ -30,7 +30,7 @@ public class GenericInteractions {
             ItemStack itemstack = ctx.getItemInHand();
             if (blockstate == null) {
                 return InteractionResult.FAIL;
-            } else if (!b.canSurvive(blockstate, level, blockpos)) {
+            } else if (!blockstate.canSurvive(level, blockpos)) {
                 return InteractionResult.FAIL;
             } else if (!level.setBlock(blockpos, blockstate, 11)) {
                 return InteractionResult.FAIL;
@@ -56,8 +56,7 @@ public class GenericInteractions {
         Level level = ctx.getLevel();
         BlockPos blockpos = ctx.getClickedPos();
         BlockState blockstate = level.getBlockState(blockpos);
-        if (blockstate.getBlock() instanceof BonemealableBlock) {
-            BonemealableBlock bonemealableblock = (BonemealableBlock) blockstate.getBlock();
+        if (blockstate.getBlock() instanceof BonemealableBlock bonemealableblock) {
             if (bonemealableblock.isValidBonemealTarget(level, blockpos, blockstate, level.isClientSide)) {
                 if (level instanceof ServerLevel) {
                     if (bonemealableblock.isBonemealSuccess(level, level.random, blockpos, blockstate)) {

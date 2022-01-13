@@ -20,7 +20,7 @@ public class ConceptCoreFallingBlock extends ConceptCoreWithContent {
     @Override
     public boolean isContentValid(ItemStack stack) {
         if (stack.getItem() instanceof BlockItem) {
-            return ((BlockItem)(stack.getItem())).getBlock() instanceof FallingBlock;
+            return ((BlockItem) (stack.getItem())).getBlock() instanceof FallingBlock;
         } else {
             return false;
         }
@@ -28,7 +28,7 @@ public class ConceptCoreFallingBlock extends ConceptCoreWithContent {
 
     public static Block getBlock(ItemStack stack) {
         if (getContent(stack).getItem() instanceof BlockItem) {
-            return ((BlockItem)(getContent(stack).getItem())).getBlock();
+            return ((BlockItem) (getContent(stack).getItem())).getBlock();
         } else {
             return Blocks.AIR;
         }

@@ -1,6 +1,7 @@
 package cn.nulladev.vanillamagic.core;
 
-import cn.nulladev.vanillamagic.client.*;
+import cn.nulladev.vanillamagic.client.CoreBagMenu;
+import cn.nulladev.vanillamagic.client.CrystalMenu;
 import cn.nulladev.vanillamagic.crafting.*;
 import com.lcy0x1.base.BaseRecipe;
 import net.minecraft.world.inventory.MenuType;
@@ -9,8 +10,11 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.common.extensions.IForgeMenuType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.*;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
+@SuppressWarnings("unused")
 public class VMRegistry {
 
     public static final VMRegistry INSTANCE = new VMRegistry();

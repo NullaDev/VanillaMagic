@@ -3,19 +3,14 @@ package cn.nulladev.vanillamagic.crafting;
 import cn.nulladev.vanillamagic.client.CrystalMenu;
 import com.lcy0x1.base.BaseRecipe;
 import com.lcy0x1.core.util.SerialClass;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.HashMap;
-import java.util.Map;
 
 @SerialClass
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class AbstractCrystalRecipe<Rec extends AbstractCrystalRecipe<Rec>> extends BaseRecipe<Rec,
         AbstractCrystalRecipe<?>, CrystalMenu.CrystalContainer> {
 

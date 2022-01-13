@@ -33,9 +33,7 @@ public class WorldInteractionWand extends Item {
 
     public static void setCore(ItemStack stack, ItemStack core) {
         CompoundTag tag = new CompoundTag();
-        if (core != null) {
-            tag = core.save(tag);
-        }
+        core.save(tag);
         stack.getOrCreateTag().put(TAG_CORE, tag);
     }
 
@@ -115,11 +113,10 @@ public class WorldInteractionWand extends Item {
 
     @Override
     public InteractionResult useOn(UseOnContext ctx) {
-        if (getCD(ctx.getItemInHand()) > 0 && !ctx.getPlayer().isCreative())
+        if (getCD(ctx.getItemInHand()) > 0 && ctx.getPlayer() != null && !ctx.getPlayer().isCreative())
             return InteractionResult.PASS;
 
-        if (getCore(ctx.getItemInHand()).getItem() instanceof ConceptCore) {
-            ConceptCore item = (ConceptCore) getCore(ctx.getItemInHand()).getItem();
+        if (getCore(ctx.getItemInHand()).getItem() instanceof ConceptCore item) {
             InteractionResult result = item.wandUseOn(ctx);
             if (result != InteractionResult.PASS)
                 setCD(ctx.getItemInHand(), item.UsingCD);
@@ -134,9 +131,8 @@ public class WorldInteractionWand extends Item {
         if (getCD(stack) > 0 && !player.isCreative())
             return InteractionResultHolder.pass(stack);
 
-        if (getCore(stack).getItem() instanceof ConceptCore) {
-            ConceptCore item = (ConceptCore) getCore(stack).getItem();
-            InteractionResultHolder result = item.wandUse(level, player, hand);
+        if (getCore(stack).getItem() instanceof ConceptCore item) {
+            InteractionResultHolder<ItemStack> result = item.wandUse(level, player, hand);
             if (result.getResult() != InteractionResult.PASS) {
                 setCD(player.getItemInHand(hand), item.UsingCD);
                 return InteractionResultHolder.success(stack);

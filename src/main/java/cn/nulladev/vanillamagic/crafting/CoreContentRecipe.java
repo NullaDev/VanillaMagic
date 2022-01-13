@@ -43,7 +43,7 @@ public class CoreContentRecipe extends CustomRecipe {
                 if (!stack.isEmpty()) {
                     if (foundContent) {
                         return false;
-                    } else if(core.isContentValid(stack)) {
+                    } else if (core.isContentValid(stack)) {
                         foundContent = true;
                     }
                 }

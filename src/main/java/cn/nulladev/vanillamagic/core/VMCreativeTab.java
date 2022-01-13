@@ -1,8 +1,10 @@
 package cn.nulladev.vanillamagic.core;
 
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
+@MethodsReturnNonnullByDefault
 public class VMCreativeTab extends CreativeModeTab {
 
     public static final VMCreativeTab INSTANCE = new VMCreativeTab();

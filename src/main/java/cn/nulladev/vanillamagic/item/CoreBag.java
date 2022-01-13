@@ -4,7 +4,10 @@ import cn.nulladev.vanillamagic.client.CoreBagMenu;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.*;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -37,9 +40,7 @@ public class CoreBag extends Item {
         if (!world.isClientSide) {
             ItemStack stack = player.getItemInHand(hand);
             MenuProvider menu = new SimpleMenuProvider((windowId, playerInventory, playerEntity) -> new CoreBagMenu(windowId, playerInventory, stack), stack.getDisplayName());
-            NetworkHooks.openGui((ServerPlayer) player, menu, buf -> {
-                buf.writeBoolean(hand == InteractionHand.MAIN_HAND);
-            });
+            NetworkHooks.openGui((ServerPlayer) player, menu, buf -> buf.writeBoolean(hand == InteractionHand.MAIN_HAND));
             //player.openMenu(container);
         }
         return InteractionResultHolder.success(player.getItemInHand(hand));

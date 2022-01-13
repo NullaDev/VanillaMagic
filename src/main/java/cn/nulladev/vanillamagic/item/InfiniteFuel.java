@@ -13,6 +13,7 @@ public class InfiniteFuel extends Item {
         super(props.stacksTo(1));
     }
 
+    @SuppressWarnings("unused")
     @SubscribeEvent
     public static void furnaceFuelBurnTimeEvent(FurnaceFuelBurnTimeEvent event) {
         if (event.getItemStack().getItem() == VMItems.INFINITE_FUEL.get())

@@ -79,7 +79,7 @@ public abstract class ConceptCore extends Item {
 
     @Override
     public int getBarColor(ItemStack stack) {
-        float f = Math.max(0.0F, (this.UsingCD - getCD(stack)) / (float)UsingCD);
+        float f = Math.max(0.0F, (this.UsingCD - getCD(stack)) / (float) UsingCD);
         return Mth.hsvToRgb(f / 3.0F, 1.0F, 1.0F);
     }
 

@@ -6,7 +6,10 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.BaseRailBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.WoolCarpetBlock;
 
 public class ConceptCoreAttachmentBlock extends ConceptCoreWithContent {
 
@@ -18,13 +21,10 @@ public class ConceptCoreAttachmentBlock extends ConceptCoreWithContent {
     @Override
     public boolean isContentValid(ItemStack stack) {
         if (stack.getItem() instanceof BlockItem) {
-            Block b = ((BlockItem)(stack.getItem())).getBlock();
+            Block b = ((BlockItem) (stack.getItem())).getBlock();
             if (b instanceof WoolCarpetBlock)
                 return true;
-            else if (b instanceof BaseRailBlock)
-                return true;
-            else
-                return false;
+            else return b instanceof BaseRailBlock;
         } else {
             return false;
         }
@@ -32,7 +32,7 @@ public class ConceptCoreAttachmentBlock extends ConceptCoreWithContent {
 
     public static Block getBlock(ItemStack stack) {
         if (getContent(stack).getItem() instanceof BlockItem) {
-            return ((BlockItem)(getContent(stack).getItem())).getBlock();
+            return ((BlockItem) (getContent(stack).getItem())).getBlock();
         } else {
             return Blocks.AIR;
         }

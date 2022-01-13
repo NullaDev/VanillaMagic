@@ -1,7 +1,7 @@
 package cn.nulladev.vanillamagic.core;
 
-import cn.nulladev.vanillamagic.item.conceptcore.*;
 import cn.nulladev.vanillamagic.item.*;
+import cn.nulladev.vanillamagic.item.conceptcore.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraftforge.registries.DeferredRegister;
@@ -9,6 +9,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Function;
 
+@SuppressWarnings("unused")
 public class VMItems {
 
     public static final DeferredRegister<Item> ITEM = DeferredRegister.create(Item.class, VanillaMagic.MODID);

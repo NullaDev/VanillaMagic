@@ -1,7 +1,7 @@
 package cn.nulladev.vanillamagic.crafting;
 
-import cn.nulladev.vanillamagic.item.conceptcore.ConceptCore;
 import cn.nulladev.vanillamagic.item.WorldInteractionWand;
+import cn.nulladev.vanillamagic.item.conceptcore.ConceptCore;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;

@@ -17,7 +17,7 @@ public class ConceptCoreTNT extends ConceptCore {
     @Override
     public InteractionResultHolder<ItemStack> wandUse(Level level, Player player, InteractionHand hand) {
         double x = player.getX();
-        double y = player.getY()+0.5D;
+        double y = player.getY() + 0.5D;
         double z = player.getZ();
         PrimedTnt primedtnt = new PrimedTnt(level, x, y, z, null);
         level.addFreshEntity(primedtnt);
