@@ -2,6 +2,7 @@ package cn.nulladev.vanillamagic.item;
 
 import cn.nulladev.vanillamagic.client.CoreBagMenu;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Player;
@@ -21,7 +22,7 @@ public class CoreBag extends Item {
 
     public static ListTag getListTag(ItemStack stack) {
         if (stack.getOrCreateTag().contains(TAG_ITEMS)) {
-            return stack.getOrCreateTag().getList(TAG_ITEMS, SIZE);
+            return stack.getOrCreateTag().getList(TAG_ITEMS, Tag.TAG_COMPOUND);
         } else {
             return new ListTag();
         }

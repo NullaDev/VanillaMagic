@@ -9,8 +9,6 @@ import com.lcy0x1.core.util.SpriteManager;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -50,6 +48,12 @@ public class CoreBagMenu extends BaseContainerMenu<CoreBagMenu> {
         this.player = inventory.player;
         this.bag = bag;
         this.addSlot("grid", stack -> stack.getItem() instanceof ConceptCore);
+        if (!this.player.level.isClientSide()) {
+            ListTag tag = CoreBag.getListTag(bag);
+            for (int i = 0; i < tag.size(); i++) {
+                this.container.setItem(i, ItemStack.of((CompoundTag) tag.get(i)));
+            }
+        }
     }
 
     @Override
@@ -66,12 +70,14 @@ public class CoreBagMenu extends BaseContainerMenu<CoreBagMenu> {
     }
 
     @Override
-    public void slotsChanged(Container container) {
-        ListTag list = new ListTag();
-        for (int i = 0; i < this.container.getContainerSize(); i++) {
-            list.add(i, this.container.getItem(i).save(new CompoundTag()));
+    public void removed(Player player) {
+        if (!player.level.isClientSide) {
+            ListTag list = new ListTag();
+            for (int i = 0; i < this.container.getContainerSize(); i++) {
+                list.add(i, this.container.getItem(i).save(new CompoundTag()));
+            }
+            CoreBag.setListTag(this.bag, list);
         }
-        CoreBag.setListTag(this.bag, list);
+        super.removed(player);
     }
-
 }
