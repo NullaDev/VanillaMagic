@@ -1,6 +1,7 @@
 package cn.nulladev.vanillamagic.client;
 
 import com.lcy0x1.base.BaseContainerScreen;
+import com.lcy0x1.core.util.SpriteManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.network.chat.Component;
@@ -9,12 +10,8 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class CoreBagGui extends BaseContainerScreen<CoreBagMenu> {
 
-    private static final ResourceLocation BACKGROUND = new ResourceLocation("textures/gui/container/generic_54.png");
-
     public CoreBagGui(CoreBagMenu menu, Inventory plInv, Component title) {
         super(menu, plInv, title);
-        this.imageHeight = 114 + 3 * 18;
-        this.inventoryLabelY = this.imageHeight - 94;
     }
 
     @Override
@@ -25,13 +22,10 @@ public class CoreBagGui extends BaseContainerScreen<CoreBagMenu> {
     }
 
     @Override
-    protected void renderBg(PoseStack p_97787_, float p_97788_, int p_97789_, int p_97790_) {
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.setShaderTexture(0, BACKGROUND);
-        int i = (this.width - this.imageWidth) / 2;
-        int j = (this.height - this.imageHeight) / 2;
-        this.blit(p_97787_, i, j, 0, 0, this.imageWidth, 3 * 18 + 17);
-        this.blit(p_97787_, i, j + 3 * 18 + 17, 0, 126, this.imageWidth, 96);
+    protected void renderBg(PoseStack matrix, float p_97788_, int p_97789_, int p_97790_) {
+        SpriteManager sm = menu.sprite;
+        SpriteManager.ScreenRenderer sr = sm.getRenderer(this);
+        sr.start(matrix);
     }
 
 }

@@ -2,6 +2,7 @@ package cn.nulladev.vanillamagic.client;
 
 import cn.nulladev.vanillamagic.core.VanillaMagic;
 import com.lcy0x1.base.BaseContainerScreen;
+import com.lcy0x1.core.util.SpriteManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.network.chat.Component;
@@ -26,16 +27,10 @@ public class CrystalGui extends BaseContainerScreen<CrystalMenu> {
     }
 
     @Override
-    protected void renderBg(PoseStack p_97787_, float p_97788_, int p_97789_, int p_97790_) {
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.setShaderTexture(0, getTexture());
-        int k = (width - imageWidth) / 2;
-        int l = (height - imageHeight) / 2;
-        blit(p_97787_, k, l, 0, 0, imageWidth, imageHeight);
-    }
-
-    private ResourceLocation getTexture() {
-        return new ResourceLocation(VanillaMagic.MODID, "textures/gui/container/crystal_" + this.menu.getSize() + ".png");
+    protected void renderBg(PoseStack matrix, float p_97788_, int p_97789_, int p_97790_) {
+        SpriteManager sm = menu.sprite;
+        SpriteManager.ScreenRenderer sr = sm.getRenderer(this);
+        sr.start(matrix);
     }
 
     @Override

@@ -235,9 +235,9 @@ public class SpriteManager {
          * bind texture, draw background color, and GUI background
          */
         public void start(PoseStack mat) {
-            RenderSystem.clearColor(1.0F, 1.0F, 1.0F, 1.0F);
+            RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
             scr.renderBackground(mat);
-            scr.getMinecraft().getTextureManager().bindForSetup(texture);
+            RenderSystem.setShaderTexture(0, texture);
             scr.blit(mat, x, y, 0, 0, w, h);
         }
 

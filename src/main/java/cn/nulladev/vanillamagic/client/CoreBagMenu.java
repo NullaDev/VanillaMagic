@@ -49,19 +49,19 @@ public class CoreBagMenu extends BaseContainerMenu<CoreBagMenu> {
         super(VMRegistry.MT_CORE_BAG.get(), windowId, inventory, CORE_BAG, menu -> new CoreBagContainer(menu, bag), false);
         this.player = inventory.player;
         this.bag = bag;
-        this.addSlot("slot", stack -> stack.getItem() instanceof ConceptCore);
+        this.addSlot("grid", stack -> stack.getItem() instanceof ConceptCore);
     }
 
     @Override
     protected void bindPlayerInventory(Inventory plInv, int x, int y) {
         for (int i = 0; i < 3; ++i)
             for (int j = 0; j < 9; ++j)
-                this.addSlot(new Slot(plInv, j + i * 9 + 9, x + j * 18, 103 + y + i * 18));
+                this.addSlot(new Slot(plInv, j + i * 9 + 9, x + j * 18, y + i * 18));
         for (int k = 0; k < 9; ++k)
             if (k == plInv.selected && plInv.getItem(k).getItem() instanceof CoreBag) {
-                this.addSlot(new SlotLocked(plInv, k, x + k * 18, y + 161));
+                this.addSlot(new SlotLocked(plInv, k, x + k * 18, y + 58));
             } else {
-                this.addSlot(new Slot(plInv, k, x + k * 18, y + 161));
+                this.addSlot(new Slot(plInv, k, x + k * 18, y + 58));
             }
     }
 
