@@ -1,5 +1,6 @@
-package com.lcy0x1.base;
+package com.lcy0x1.base.menu;
 
+import com.lcy0x1.base.Proxy;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;

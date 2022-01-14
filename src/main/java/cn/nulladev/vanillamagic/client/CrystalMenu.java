@@ -5,15 +5,14 @@ import cn.nulladev.vanillamagic.core.VMRegistry;
 import cn.nulladev.vanillamagic.core.VanillaMagic;
 import cn.nulladev.vanillamagic.crafting.AbstractCrystalRecipe;
 import cn.nulladev.vanillamagic.item.SpaceCrystal;
-import com.lcy0x1.base.BaseContainerMenu;
 import com.lcy0x1.base.BaseRecipe;
+import com.lcy0x1.base.menu.BaseContainerMenu;
 import com.lcy0x1.core.util.SpriteManager;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -70,16 +69,8 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> {
     }
 
     @Override
-    protected void bindPlayerInventory(Inventory plInv, int x, int y) {
-        for (int i = 0; i < 3; ++i)
-            for (int j = 0; j < 9; ++j)
-                this.addSlot(new Slot(plInv, j + i * 9 + 9, x + j * 18, y + i * 18));
-        for (int k = 0; k < 9; ++k)
-            if (k == plInv.selected && plInv.getItem(k).getItem() instanceof SpaceCrystal) {
-                this.addSlot(new SlotLocked(plInv, k, x + k * 18, y + 58));
-            } else {
-                this.addSlot(new Slot(plInv, k, x + k * 18, y + 58));
-            }
+    protected boolean shouldLock(Inventory inv, int slot) {
+        return slot == inv.selected && inv.getItem(slot).getItem() instanceof SpaceCrystal;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.lcy0x1.base;
+package com.lcy0x1.base.menu;
 
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;

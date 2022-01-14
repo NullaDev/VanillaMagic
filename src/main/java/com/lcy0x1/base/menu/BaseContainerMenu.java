@@ -1,4 +1,4 @@
-package com.lcy0x1.base;
+package com.lcy0x1.base.menu;
 
 import com.lcy0x1.core.util.SpriteManager;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -64,7 +64,14 @@ public class BaseContainerMenu<T extends BaseContainerMenu<T>> extends AbstractC
             for (int j = 0; j < 9; ++j)
                 this.addSlot(new Slot(plInv, j + i * 9 + 9, x + j * 18, y + i * 18));
         for (int k = 0; k < 9; ++k)
-            this.addSlot(new Slot(plInv, k, x + k * 18, y + 58));
+            if (shouldLock(plInv, k))
+                this.addSlot(new SlotLocked(plInv, k, x + k * 18, y + 58));
+            else
+                this.addSlot(new Slot(plInv, k, x + k * 18, y + 58));
+    }
+
+    protected boolean shouldLock(Inventory inv, int slot) {
+        return false;
     }
 
     protected void addSlot(String name, Predicate<ItemStack> pred) {

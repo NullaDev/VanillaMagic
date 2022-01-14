@@ -1,6 +1,6 @@
 package cn.nulladev.vanillamagic.client;
 
-import com.lcy0x1.base.BaseContainerScreen;
+import com.lcy0x1.base.menu.BaseContainerScreen;
 import com.lcy0x1.core.util.SpriteManager;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.network.chat.Component;
