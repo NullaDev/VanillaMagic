@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "vanillamagic:core_bag",
+    "count": 1
+  },
+  "pattern": [
+    "ABA",
+    "ACA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:leather"
+    },
+    "B": {
+      "item": "vanillamagic:world_interaction_io"
+    },
+    "C": {
+      "item": "vanillamagic:space_crystal_basic"
+    }
+  }
+}
