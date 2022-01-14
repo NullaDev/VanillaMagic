@@ -29,18 +29,18 @@ public class JEICompat implements IModPlugin {
     public static final CrystalRecipeCategory BASIC = new CrystalRecipeCategory(
             new ResourceLocation(VanillaMagic.MODID, "crystal_basic"),
             VMItems.SPACE_CRYSTAL_BASIC.get().getDefaultInstance(),
-            new ResourceLocation(VanillaMagic.MODID, "textures/gui/jei/crystal_basic.png"),
-            "jei.title.crystal.basic");
+            new ResourceLocation(VanillaMagic.MODID, "textures/gui/container/crystal_3.png"),
+            "jei.title.crystal.basic", 3);
     public static final CrystalRecipeCategory ADVANCED = new CrystalRecipeCategory(
             new ResourceLocation(VanillaMagic.MODID, "crystal_advanced"),
             VMItems.SPACE_CRYSTAL_ADVANCED.get().getDefaultInstance(),
-            new ResourceLocation(VanillaMagic.MODID, "textures/gui/jei/crystal_advanced.png"),
-            "jei.title.crystal.advanced");
+            new ResourceLocation(VanillaMagic.MODID, "textures/gui/container/crystal_4.png"),
+            "jei.title.crystal.advanced", 4);
     public static final CrystalRecipeCategory ULTIMATE = new CrystalRecipeCategory(
             new ResourceLocation(VanillaMagic.MODID, "crystal_ultimate"),
             VMItems.SPACE_CRYSTAL_ULTIMATE.get().getDefaultInstance(),
-            new ResourceLocation(VanillaMagic.MODID, "textures/gui/jei/crystal_ultimate.png"),
-            "jei.title.crystal.ultimate");
+            new ResourceLocation(VanillaMagic.MODID, "textures/gui/container/crystal_5.png"),
+            "jei.title.crystal.ultimate", 5);
 
     public JEICompat() {
         INSTANCE = this;
@@ -89,6 +89,7 @@ public class JEICompat implements IModPlugin {
 
     @Override
     public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
+        //TODO
     }
 
     @Override
