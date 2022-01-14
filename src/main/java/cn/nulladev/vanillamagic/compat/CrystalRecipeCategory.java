@@ -45,7 +45,6 @@ public class CrystalRecipeCategory implements IRecipeCategory<DefaultCrystalReci
         background = guiHelper.drawableBuilder(bg, 7, 16, 162, 18 * size)
                 .addPadding(0, 0, 0, 0)
                 .build();
-        //TODO tune position
         icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM, stack);
         return this;
     }
@@ -98,7 +97,6 @@ public class CrystalRecipeCategory implements IRecipeCategory<DefaultCrystalReci
         }
         group.init(size * size, false, 131, size * 9 - 9);
         group.set(size * size, recipe.getResultItem());
-        //TODO tune position
     }
 
 }
