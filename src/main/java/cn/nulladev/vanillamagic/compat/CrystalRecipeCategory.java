@@ -92,11 +92,11 @@ public class CrystalRecipeCategory implements IRecipeCategory<DefaultCrystalReci
         IGuiItemStackGroup group = recipeLayout.getItemStacks();
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                group.init(i * size + j, true, j * 18, i * 18);
+                group.init(i * size + j, true, 45 - size * 9 + j * 18, i * 18);
                 group.set(size * i + j, ingredients.getInputs(VanillaTypes.ITEM).get(i * size + j));
             }
         }
-        group.init(size * size, false, 149, size * 9 - 9);
+        group.init(size * size, false, 131, size * 9 - 9);
         group.set(size * size, recipe.getResultItem());
         //TODO tune position
     }
