@@ -5,24 +5,27 @@
     "count": 1
   },
   "pattern": [
-    " A ",
-    "BC ",
-    " DE"
+    "AB ",
+    "CD ",
+    " EF"
   ],
   "key": {
     "A": {
-      "item": "vanillamagic:concept_core_carpet"
+      "tag": "minecraft:carpets"
     },
     "B": {
-      "item": "vanillamagic:core_modifier_pulse"
+      "item": "vanillamagic:concept_core_carpet"
     },
     "C": {
-      "item": "minecraft:dropper"
+      "item": "vanillamagic:core_modifier_pulse"
     },
     "D": {
-      "item": "minecraft:ender_eye"
+      "item": "minecraft:dropper"
     },
     "E": {
+      "item": "minecraft:ender_eye"
+    },
+    "F": {
       "item": "vanillamagic:world_interaction_io"
     }
   }
