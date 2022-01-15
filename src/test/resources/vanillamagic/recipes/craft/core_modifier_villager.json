@@ -1,0 +1,39 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:core_modifier_villager",
+    "count": 1
+  },
+  "pattern": [
+    "ABCD",
+    " E  ",
+    " FG ",
+    " H  "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:blaze_powder"
+    },
+    "B": {
+      "item": "minecraft:nether_wart"
+    },
+    "C": {
+      "item": "minecraft:fermented_spider_eye"
+    },
+    "D": {
+      "item": "minecraft:gunpowder"
+    },
+    "E": {
+      "item": "minecraft:glass_bottle"
+    },
+    "F": {
+      "item": "vanillamagic:core_modifier_dark_box"
+    },
+    "G": {
+      "item": "minecraft:golden_apple"
+    },
+    "H": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}

@@ -20,11 +20,13 @@ public class VMItems {
 
     public static RegistryObject<Item> CORE_AMPLIFIER = register("core_amplifier", GenericVMItem::new);
     public static RegistryObject<Item> CORE_BAG = register("core_bag", CoreBag::new);
+    public static RegistryObject<Item> CORE_MODIFIER_DARK_BOX = register("core_modifier_dark_box", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_FALL = register("core_modifier_fall", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_PULSE = register("core_modifier_pulse", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_PULSE_CONTROLLABLE = register("core_modifier_pulse_controllable", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_SNOW_GOLEM = register("core_modifier_snow_golem", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_UPDATE_END = register("core_modifier_update_end", GenericVMItem::new);
+    public static RegistryObject<Item> CORE_MODIFIER_VILLAGER = register("core_modifier_villager", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_WITHER = register("core_modifier_wither", GenericVMItem::new);
     public static RegistryObject<Item> INFINITE_FUEL = register("infinite_fuel", InfiniteFuel::new);
     public static RegistryObject<Item> WORLD_INTERACTION_IO = register("world_interaction_io", GenericVMItem::new);
@@ -39,6 +41,7 @@ public class VMItems {
     public static RegistryObject<Item> CONCEPT_CORE_CHICKEN_ROAST = register("concept_core_chicken_roast", ConceptCoreChickenRoast::new);
     public static RegistryObject<Item> CONCEPT_CORE_COBBLESTONE = register("concept_core_cobblestone", ConceptCoreCobblestone::new);
     public static RegistryObject<Item> CONCEPT_CORE_FALLING_BLOCK = register("concept_core_falling_block", ConceptCoreFallingBlock::new);
+    public static RegistryObject<Item> CONCEPT_CORE_FARM = register("concept_core_farm", ConceptCoreFarm::new);
     public static RegistryObject<Item> CONCEPT_CORE_FRAME_DESTROY = register("concept_core_frame_destroy", ConceptCoreFrameDestory::new);
     public static RegistryObject<Item> CONCEPT_CORE_LAVA = register("concept_core_lava", ConceptCoreLava::new);
     public static RegistryObject<Item> CONCEPT_CORE_OBSIDIAN = register("concept_core_obsidian", ConceptCoreObsidian::new);

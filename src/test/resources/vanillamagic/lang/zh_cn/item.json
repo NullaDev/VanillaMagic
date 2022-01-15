@@ -42,11 +42,13 @@
                     "core_modifier":"核心修饰:"
                 },
                 {
+                    "dark_box": "暗箱",
                     "fall": "坠落",
                     "pulse": "脉冲",
                     "pulse_controllable": "可控脉冲",
                     "snow_golem": "雪傀儡",
                     "update_end": "末地更新",
+                    "villager": "村民",
                     "wither": "凋灵"
                 }
             ]
@@ -68,6 +70,7 @@
                     "chicken_roast": "烤鸡",
                     "cobblestone": "圆石",
                     "falling_block": "重力方块",
+                    "farm": "农场",
                     "frame_destroy": "框架破坏",
                     "lava": "岩浆",
                     "obsidian": "黑曜石",

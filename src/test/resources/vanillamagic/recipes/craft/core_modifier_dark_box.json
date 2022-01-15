@@ -1,0 +1,21 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:core_modifier_dark_box",
+    "count": 1
+  },
+  "pattern": [
+    "AAAA",
+    "A  A",
+    "A BA",
+    "AAAA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:cobblestone"
+    },
+    "B": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}
