@@ -1,0 +1,40 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_iron",
+    "count": 1
+  },
+  "pattern": [
+    "AABAA",
+    "ACDCA",
+    "BEFEB",
+    "AGBHA",
+    "AABAA"
+  ],
+  "key": {
+    "A": {
+      "tag": "minecraft:beds"
+    },
+    "B": {
+      "item": "minecraft:water_bucket"
+    },
+    "C": {
+      "item": "minecraft:lava_bucket"
+    },
+    "D": {
+      "item": "vanillamagic:core_modifier_dark_box"
+    },
+    "E": {
+      "tag": "minecraft:signs"
+    },
+    "F": {
+      "item": "minecraft:soul_sand"
+    },
+    "G": {
+      "item": "vanillamagic:concept_core_villager_spawn"
+    },
+    "H": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}

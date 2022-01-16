@@ -1,0 +1,33 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_villager_spawn",
+    "count": 1
+  },
+  "pattern": [
+    "ABBC",
+    "DBBE",
+    "DBBF",
+    "ABBC"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:composter"
+    },
+    "B": {
+      "item": "minecraft:dirt"
+    },
+    "C": {
+      "tag": "minecraft:beds"
+    },
+    "D": {
+      "item": "vanillamagic:core_modifier_villager"
+    },
+    "E": {
+      "item": "minecraft:water_bucket"
+    },
+    "F": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_cobblestone_advanced",
+    "count": 1
+  },
+  "pattern": [
+    "AAAA",
+    "BBBB",
+    "CCCC",
+    "DE F"
+  ],
+  "key": {
+    "A": {
+      "item": "vanillamagic:core_modifier_pulse"
+    },
+    "B": {
+      "item": "minecraft:piston"
+    },
+    "C": {
+      "item": "vanillamagic:concept_core_cobblestone"
+    },
+    "D": {
+      "item": "minecraft:water_bucket"
+    },
+    "E": {
+      "item": "vanillamagic:concept_core_tnt"
+    },
+    "F": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}

@@ -40,15 +40,18 @@ public class VMItems {
     public static RegistryObject<Item> CONCEPT_CORE_CHICKEN = register("concept_core_chicken", ConceptCoreChicken::new);
     public static RegistryObject<Item> CONCEPT_CORE_CHICKEN_ROAST = register("concept_core_chicken_roast", ConceptCoreChickenRoast::new);
     public static RegistryObject<Item> CONCEPT_CORE_COBBLESTONE = register("concept_core_cobblestone", ConceptCoreCobblestone::new);
+    public static RegistryObject<Item> CONCEPT_CORE_COBBLESTONE_ADVANCED = register("concept_core_cobblestone_advanced", ConceptCoreCobblestoneAdvanced::new);
     public static RegistryObject<Item> CONCEPT_CORE_FALLING_BLOCK = register("concept_core_falling_block", ConceptCoreFallingBlock::new);
     public static RegistryObject<Item> CONCEPT_CORE_FARM = register("concept_core_farm", ConceptCoreFarm::new);
     public static RegistryObject<Item> CONCEPT_CORE_FRAME_DESTROY = register("concept_core_frame_destroy", ConceptCoreFrameDestory::new);
+    public static RegistryObject<Item> CONCEPT_CORE_IRON = register("concept_core_iron", ConceptCoreIron::new);
     public static RegistryObject<Item> CONCEPT_CORE_LAVA = register("concept_core_lava", ConceptCoreLava::new);
     public static RegistryObject<Item> CONCEPT_CORE_OBSIDIAN = register("concept_core_obsidian", ConceptCoreObsidian::new);
     public static RegistryObject<Item> CONCEPT_CORE_SNOWBALL = register("concept_core_snowball", ConceptCoreSnowball::new);
     public static RegistryObject<Item> CONCEPT_CORE_STONE = register("concept_core_stone", ConceptCoreStone::new);
     public static RegistryObject<Item> CONCEPT_CORE_SUGAR_CANE = register("concept_core_sugar_cane", ConceptCoreSugarCane::new);
     public static RegistryObject<Item> CONCEPT_CORE_TNT = register("concept_core_tnt", ConceptCoreTNT::new);
+    public static RegistryObject<Item> CONCEPT_CORE_VILLAGER_SPAWN = register("concept_core_villager_spawn", ConceptCoreVillagerSpawn::new);
     public static RegistryObject<Item> CONCEPT_CORE_WATER = register("concept_core_water", ConceptCoreWater::new);
 
     public static <V extends Item> RegistryObject<V> register(String name, Function<Item.Properties, V> sup) {
