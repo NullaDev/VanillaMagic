@@ -47,6 +47,7 @@ public class VMItems {
     public static RegistryObject<Item> CONCEPT_CORE_GOLD = register("concept_core_gold", ConceptCoreGold::new);
     public static RegistryObject<Item> CONCEPT_CORE_IRON = register("concept_core_iron", ConceptCoreIron::new);
     public static RegistryObject<Item> CONCEPT_CORE_LAVA = register("concept_core_lava", ConceptCoreLava::new);
+    public static RegistryObject<Item> CONCEPT_CORE_NETHER_PORTAL = register("concept_core_nether_portal", ConceptCoreNetherPortal::new);
     public static RegistryObject<Item> CONCEPT_CORE_OBSIDIAN = register("concept_core_obsidian", ConceptCoreObsidian::new);
     public static RegistryObject<Item> CONCEPT_CORE_PORKCHOP = register("concept_core_porkchop", ConceptCorePorkchop::new);
     public static RegistryObject<Item> CONCEPT_CORE_SNOWBALL = register("concept_core_snowball", ConceptCoreSnowball::new);

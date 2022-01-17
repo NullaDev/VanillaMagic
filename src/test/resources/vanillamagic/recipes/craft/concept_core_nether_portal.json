@@ -1,0 +1,28 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_nether_portal",
+    "count": 1
+  },
+  "pattern": [
+    "ABBBB",
+    " B  B",
+    " B  B",
+    " BC B",
+    "DBBBB"
+  ],
+  "key": {
+    "A": {
+      "item": "vanillamagic:concept_core_obsidian"
+    },
+    "B": {
+      "item": "minecraft:obsidian"
+    },
+    "C": {
+      "item": "minecraft:lava_bucket"
+    },
+    "D": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}
