@@ -1,0 +1,43 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_porkchop",
+    "count": 1
+  },
+  "pattern": [
+    "A   A",
+    "BCDCB",
+    "EEFEE",
+    "  G  ",
+    "  HI "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:warped_fungus"
+    },
+    "B": {
+      "item": "minecraft:flower_pot"
+    },
+    "C": {
+      "item": "minecraft:glowstone"
+    },
+    "D": {
+      "tag": "minecraft:trapdoors"
+    },
+    "E": {
+      "item": "minecraft:crimson_nylium"
+    },
+    "F": {
+      "item": "minecraft:lava_bucket"
+    },
+    "G": {
+      "tag": "minecraft:slabs"
+    },
+    "H": {
+      "item": "minecraft:hopper"
+    },
+    "I": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}

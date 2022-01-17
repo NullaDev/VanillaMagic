@@ -1,0 +1,34 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_gold",
+    "count": 1
+  },
+  "pattern": [
+    "     ",
+    "ABCBA",
+    "AB BA",
+    " DDD ",
+    " EFE "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:magma_block"
+    },
+    "B": {
+      "tag": "minecraft:trapdoors"
+    },
+    "C": {
+      "item": "minecraft:turtle_egg"
+    },
+    "D": {
+      "item": "vanillamagic:core_modifier_fall"
+    },
+    "E": {
+      "item": "minecraft:hopper"
+    },
+    "F": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}

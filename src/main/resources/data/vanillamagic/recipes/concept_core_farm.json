@@ -7,36 +7,30 @@
   "pattern": [
     "AABAA",
     "AACAA",
-    "DEFED",
-    " GHG ",
-    "  I  "
+    "DCECF",
+    "AACAA",
+    "AAGAA"
   ],
   "key": {
     "A": {
       "item": "minecraft:dirt"
     },
     "B": {
-      "item": "minecraft:water_bucket"
+      "item": "vanillamagic:concept_core_villager_spawn"
     },
     "C": {
-      "item": "minecraft:wooden_hoe"
-    },
-    "D": {
       "item": "minecraft:composter"
     },
+    "D": {
+      "item": "minecraft:wooden_hoe"
+    },
     "E": {
-      "item": "vanillamagic:core_modifier_villager"
+      "item": "minecraft:water_bucket"
     },
     "F": {
-      "tag": "minecraft:fences"
+      "item": "minecraft:hopper_minecart"
     },
     "G": {
-      "tag": "minecraft:beds"
-    },
-    "H": {
-      "item": "minecraft:hopper"
-    },
-    "I": {
       "item": "vanillamagic:world_interaction_io"
     }
   }

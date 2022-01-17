@@ -21,6 +21,7 @@ public class ConceptCoreVillagerSpawn extends ConceptCore {
         double y = player.getY() + 0.5D;
         double z = player.getZ();
         Villager villager = new Villager(EntityType.VILLAGER, level);
+        villager.setAge(1200 * 20);
         level.addFreshEntity(villager);
         return InteractionResultHolder.success(player.getItemInHand(hand));
     }

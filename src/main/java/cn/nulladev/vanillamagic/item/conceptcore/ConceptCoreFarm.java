@@ -13,7 +13,7 @@ public class ConceptCoreFarm extends ConceptCoreWithContent {
 
     public ConceptCoreFarm(Properties props) {
         super(props);
-        this.setUsingCD(1200);
+        this.setUsingCD(600);
     }
 
     @Override
