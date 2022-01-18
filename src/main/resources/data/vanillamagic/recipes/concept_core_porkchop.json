@@ -5,8 +5,8 @@
     "count": 1
   },
   "pattern": [
-    "A   A",
-    "BCDCB",
+    "ABBBA",
+    "CDBDC",
     "EEFEE",
     "  G  ",
     "  HI "
@@ -16,13 +16,13 @@
       "item": "minecraft:warped_fungus"
     },
     "B": {
-      "item": "minecraft:flower_pot"
+      "tag": "minecraft:trapdoors"
     },
     "C": {
-      "item": "minecraft:glowstone"
+      "item": "minecraft:flower_pot"
     },
     "D": {
-      "tag": "minecraft:trapdoors"
+      "item": "minecraft:glowstone"
     },
     "E": {
       "item": "minecraft:crimson_nylium"

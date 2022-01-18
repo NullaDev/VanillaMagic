@@ -1,6 +1,5 @@
 package cn.nulladev.vanillamagic.item.conceptcore;
 
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -20,18 +19,21 @@ public class ConceptCoreNetherPortal extends ConceptCore {
     public InteractionResultHolder<ItemStack> wandUse(Level level, Player player, InteractionHand hand) {
         if (level instanceof ServerLevel) {
             ServerLevel serverlevel = (ServerLevel)level;
-            MinecraftServer minecraftserver = serverlevel.getServer();
-            ResourceKey<Level> resourcekey = level.dimension() == Level.NETHER ? Level.OVERWORLD : Level.NETHER;
-            ServerLevel serverlevel1 = minecraftserver.getLevel(resourcekey);
-            if (serverlevel1 != null && minecraftserver.isNetherEnabled() && !player.isPassenger()) {
-                level.getProfiler().push("portal");
-                player.setPortalCooldown();
-                player.changeDimension(serverlevel1);
-                level.getProfiler().pop();
-                return InteractionResultHolder.success(player.getItemInHand(hand));
+            MinecraftServer server = serverlevel.getServer();
+            ServerLevel overworld = server.getLevel(Level.OVERWORLD);
+            ServerLevel nether = server.getLevel(Level.NETHER);
+            if (!player.isPassenger() && !player.isOnPortalCooldown()) {
+                if (level == overworld) {
+                    player.changeDimension(nether);
+                    player.setPortalCooldown();
+                    return InteractionResultHolder.success(player.getItemInHand(hand));
+                } else if (level == nether) {
+                    player.changeDimension(overworld);
+                    player.setPortalCooldown();
+                    return InteractionResultHolder.success(player.getItemInHand(hand));
+                }
             }
         }
         return InteractionResultHolder.pass(player.getItemInHand(hand));
-
     }
 }

@@ -14,7 +14,7 @@
       "tag": "minecraft:carpets"
     },
     "B": {
-      "item": "vanillamagic:concept_core_carpet"
+      "item": "vanillamagic:concept_core_attachment_block"
     },
     "C": {
       "item": "vanillamagic:core_modifier_pulse"

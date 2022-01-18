@@ -5,29 +5,32 @@
     "count": 1
   },
   "pattern": [
-    "     ",
-    "ABCBA",
-    "AB BA",
-    " DDD ",
-    " EFE "
+    "AAAAA",
+    "BCDCB",
+    "BC CB",
+    " EEE ",
+    " FGF "
   ],
   "key": {
     "A": {
-      "item": "minecraft:magma_block"
+      "item": "minecraft:glass"
     },
     "B": {
-      "tag": "minecraft:trapdoors"
+      "item": "minecraft:magma_block"
     },
     "C": {
-      "item": "minecraft:turtle_egg"
+      "tag": "minecraft:trapdoors"
     },
     "D": {
-      "item": "vanillamagic:core_modifier_fall"
+      "item": "minecraft:turtle_egg"
     },
     "E": {
-      "item": "minecraft:hopper"
+      "item": "vanillamagic:core_modifier_fall"
     },
     "F": {
+      "item": "minecraft:hopper"
+    },
+    "G": {
       "item": "vanillamagic:world_interaction_io"
     }
   }
