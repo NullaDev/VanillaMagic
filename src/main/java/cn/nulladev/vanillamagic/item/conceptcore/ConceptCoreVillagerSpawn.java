@@ -7,6 +7,7 @@ import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 public class ConceptCoreVillagerSpawn extends ConceptCore {
 
@@ -21,7 +22,8 @@ public class ConceptCoreVillagerSpawn extends ConceptCore {
         double y = player.getY() + 0.5D;
         double z = player.getZ();
         Villager villager = new Villager(EntityType.VILLAGER, level);
-        villager.setAge(1200 * 20);
+        villager.setPos(new Vec3(x, y, z));
+        villager.setAge(-1200 * 20);
         level.addFreshEntity(villager);
         return InteractionResultHolder.success(player.getItemInHand(hand));
     }

@@ -8,16 +8,19 @@
     "AAAA",
     "AAAA",
     "AAAA",
-    " BC "
+    " BCD"
   ],
   "key": {
     "A": {
       "item": "vanillamagic:concept_core_cactus"
     },
     "B": {
-      "item": "minecraft:composter"
+      "item": "minecraft:hopper"
     },
     "C": {
+      "item": "minecraft:composter"
+    },
+    "D": {
       "item": "vanillamagic:world_interaction_io"
     }
   }

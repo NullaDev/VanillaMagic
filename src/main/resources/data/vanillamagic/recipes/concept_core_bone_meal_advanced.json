@@ -8,8 +8,8 @@
     " AAA ",
     " BBB ",
     " CCC ",
-    "ADEF ",
-    "ADGHI"
+    "ADEFG",
+    "ADHIJ"
   ],
   "key": {
     "A": {
@@ -31,13 +31,16 @@
       "item": "minecraft:moss_block"
     },
     "G": {
-      "item": "minecraft:water_bucket"
+      "item": "vanillamagic:world_interaction_io"
     },
     "H": {
-      "item": "minecraft:composter"
+      "item": "minecraft:water_bucket"
     },
     "I": {
-      "item": "vanillamagic:world_interaction_io"
+      "item": "minecraft:hopper"
+    },
+    "J": {
+      "item": "minecraft:composter"
     }
   }
 }
