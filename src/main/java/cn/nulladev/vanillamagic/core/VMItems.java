@@ -22,6 +22,7 @@ public class VMItems {
     public static RegistryObject<Item> CORE_BAG = register("core_bag", CoreBag::new);
     public static RegistryObject<Item> CORE_MODIFIER_DARK_BOX = register("core_modifier_dark_box", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_FALL = register("core_modifier_fall", GenericVMItem::new);
+    public static RegistryObject<Item> CORE_MODIFIER_PISTON_WARM = register("core_modifier_piston_worm", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_PULSE = register("core_modifier_pulse", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_PULSE_CONTROLLABLE = register("core_modifier_pulse_controllable", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_SNOW_GOLEM = register("core_modifier_snow_golem", GenericVMItem::new);
@@ -49,6 +50,7 @@ public class VMItems {
     public static RegistryObject<Item> CONCEPT_CORE_GOLD = register("concept_core_gold", ConceptCoreGold::new);
     public static RegistryObject<Item> CONCEPT_CORE_IRON = register("concept_core_iron", ConceptCoreIron::new);
     public static RegistryObject<Item> CONCEPT_CORE_LAVA = register("concept_core_lava", ConceptCoreLava::new);
+    public static RegistryObject<Item> CONCEPT_CORE_LEVEL_EATER = register("concept_core_level_eater", ConceptCoreLevelEater::new);
     public static RegistryObject<Item> CONCEPT_CORE_NETHER_PORTAL = register("concept_core_nether_portal", ConceptCoreNetherPortal::new);
     public static RegistryObject<Item> CONCEPT_CORE_OBSIDIAN = register("concept_core_obsidian", ConceptCoreObsidian::new);
     public static RegistryObject<Item> CONCEPT_CORE_PORKCHOP = register("concept_core_porkchop", ConceptCorePorkchop::new);

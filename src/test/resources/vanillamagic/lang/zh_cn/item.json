@@ -44,6 +44,7 @@
                 {
                     "dark_box": "暗箱",
                     "fall": "坠落",
+                    "piston_worm": "活塞虫",
                     "pulse": "脉冲",
                     "pulse_controllable": "可控脉冲",
                     "snow_golem": "雪傀儡",
@@ -78,6 +79,7 @@
                     "gold": "金",
                     "iron": "铁",
                     "lava": "岩浆",
+                    "level_eater": "世界吞噬者",
                     "nether_portal": "下界传送门",
                     "obsidian": "黑曜石",
                     "porkchop": "猪排",

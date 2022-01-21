@@ -1,0 +1,30 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:core_modifier_piston_worm",
+    "count": 1
+  },
+  "pattern": [
+    "    ",
+    "ABCC",
+    "CCDA",
+    "   E"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:observer"
+    },
+    "B": {
+      "item": "minecraft:sticky_piston"
+    },
+    "C": {
+      "item": "minecraft:slime_block"
+    },
+    "D": {
+      "item": "minecraft:piston"
+    },
+    "E": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}

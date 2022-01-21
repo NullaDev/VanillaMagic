@@ -1,0 +1,28 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_level_eater",
+    "count": 1
+  },
+  "pattern": [
+    "ABCBA",
+    "B   B",
+    "C D C",
+    "B   B",
+    "ABCBA"
+  ],
+  "key": {
+    "A": {
+      "item": "vanillamagic:concept_core_tnt"
+    },
+    "B": {
+      "item": "minecraft:slime_block"
+    },
+    "C": {
+      "item": "vanillamagic:core_modifier_piston_worm"
+    },
+    "D": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}
