@@ -1,0 +1,27 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_drain",
+    "count": 1
+  },
+  "pattern": [
+    "    ",
+    "  AB",
+    "  C ",
+    "  D "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:sponge"
+    },
+    "B": {
+      "item": "vanillamagic:world_interaction_io"
+    },
+    "C": {
+      "item": "minecraft:furnace"
+    },
+    "D": {
+      "item": "vanillamagic:infinite_fuel"
+    }
+  }
+}

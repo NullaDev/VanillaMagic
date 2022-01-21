@@ -12,6 +12,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -50,6 +51,20 @@ public class GenericInteractions {
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }
         }
+    }
+
+    public static InteractionResult remove(UseOnContext ctx, Block b, Block b1) {
+        Level level = ctx.getLevel();
+        BlockPos blockpos = ctx.getClickedPos();
+        if (level.getBlockState(blockpos).getBlock() == b) {
+            level.setBlockAndUpdate(blockpos, b1.defaultBlockState());
+            return InteractionResult.SUCCESS;
+        }
+        return InteractionResult.PASS;
+    }
+
+    public static InteractionResult remove(UseOnContext ctx, Block b) {
+        return remove(ctx, b, Blocks.AIR);
     }
 
     public static InteractionResult useBoneMeal(UseOnContext ctx) {

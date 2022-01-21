@@ -1,9 +1,7 @@
 package cn.nulladev.vanillamagic.item.conceptcore;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 
 public class ConceptCoreFrameDestory extends ConceptCore {
@@ -15,12 +13,6 @@ public class ConceptCoreFrameDestory extends ConceptCore {
 
     @Override
     public InteractionResult wandUseOn(UseOnContext ctx) {
-        Level level = ctx.getLevel();
-        BlockPos blockpos = ctx.getClickedPos();
-        if (level.getBlockState(blockpos).getBlock() == Blocks.END_PORTAL_FRAME) {
-            level.setBlockAndUpdate(blockpos, Blocks.AIR.defaultBlockState());
-            return InteractionResult.SUCCESS;
-        }
-        return InteractionResult.PASS;
+        return GenericInteractions.remove(ctx, Blocks.END_PORTAL_FRAME);
     }
 }
