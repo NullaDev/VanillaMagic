@@ -1,0 +1,18 @@
+{
+    "side": [
+    ],
+    "comp": {
+        "core": {
+            "sprite": "slot",
+            "x": 88,
+            "y": 0
+        },
+        "grid": {
+            "sprite": "slot",
+            "x": 16,
+            "y": 36,
+            "rx": 9,
+            "ry": 3
+        }
+    }
+}

@@ -8,6 +8,8 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.Slot;
 
+import javax.annotation.Nullable;
+
 public class CrystalGui extends BaseContainerScreen<CrystalMenu> {
     public final CrystalMenu menu;
 
@@ -31,8 +33,8 @@ public class CrystalGui extends BaseContainerScreen<CrystalMenu> {
     }
 
     @Override
-    protected void slotClicked(Slot slot, int index, int key, ClickType type) {
-        if (slot.index == 36 + menu.getSize() * menu.getSize() && slot.hasItem()) {
+    protected void slotClicked(@Nullable Slot slot, int index, int key, ClickType type) {
+        if (slot != null && slot.index == 36 + menu.getSize() * menu.getSize() && slot.hasItem()) {
             this.onClose();
         } else {
             super.slotClicked(slot, index, key, type);
