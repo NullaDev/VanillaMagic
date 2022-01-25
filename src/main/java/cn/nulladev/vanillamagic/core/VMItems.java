@@ -58,6 +58,7 @@ public class VMItems {
     public static RegistryObject<Item> CONCEPT_CORE_STONE = register("concept_core_stone", ConceptCoreStone::new);
     public static RegistryObject<Item> CONCEPT_CORE_SUGAR_CANE = register("concept_core_sugar_cane", ConceptCoreSugarCane::new);
     public static RegistryObject<Item> CONCEPT_CORE_TNT = register("concept_core_tnt", ConceptCoreTNT::new);
+    public static RegistryObject<Item> CONCEPT_CORE_TREE = register("concept_core_tree", ConceptCoreTree::new);
     public static RegistryObject<Item> CONCEPT_CORE_VILLAGER_SPAWN = register("concept_core_villager_spawn", ConceptCoreVillagerSpawn::new);
     public static RegistryObject<Item> CONCEPT_CORE_WATER = register("concept_core_water", ConceptCoreWater::new);
 
