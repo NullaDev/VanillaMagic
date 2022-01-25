@@ -1,0 +1,34 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_ghast",
+    "count": 1
+  },
+  "pattern": [
+    "AAAAA",
+    "A   A",
+    "A  BA",
+    "ACDEA",
+    "AAFAA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:glass"
+    },
+    "B": {
+      "item": "minecraft:cactus"
+    },
+    "C": {
+      "item": "vanillamagic:concept_core_nether_portal"
+    },
+    "D": {
+      "tag": "minecraft:boats"
+    },
+    "E": {
+      "item": "minecraft:sand"
+    },
+    "F": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}
