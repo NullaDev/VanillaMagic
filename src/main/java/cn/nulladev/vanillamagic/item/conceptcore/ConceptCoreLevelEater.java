@@ -19,12 +19,10 @@ public class ConceptCoreLevelEater extends ConceptCore {
     public InteractionResultHolder<ItemStack> wandUse(Level level, Player player, InteractionHand hand) {
         int x = (int) player.getX() | 0xF;
         int z = (int) player.getZ() | 0xF;
-        int y = (int) player.getY();
-        System.out.println(x + " " + y + " " + z);
         for (int i = 1; i <= 16; i++) {
-            for (int j = 0; j <= y+64; j++) {
+            for (int j = -64; j <= 300; j++) {
                 for (int k = 1; k <= 16; k++) {
-                    BlockPos blockpos = new BlockPos(x-i, y-j, z-k);
+                    BlockPos blockpos = new BlockPos(x-i, j, z-k);
                     if (level.getBlockState(blockpos).getBlock().getExplosionResistance() <= 15) {
                         level.setBlockAndUpdate(blockpos, Blocks.AIR.defaultBlockState());
                     }

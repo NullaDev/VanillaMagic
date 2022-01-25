@@ -5,21 +5,21 @@
     "count": 1
   },
   "pattern": [
-    "ABCBA",
-    "B   B",
-    "C D C",
-    "B   B",
-    "ABCBA"
+    "  A A",
+    " BCC ",
+    "ACDCA",
+    " CCB ",
+    "A A  "
   ],
   "key": {
     "A": {
-      "item": "vanillamagic:concept_core_tnt"
+      "item": "vanillamagic:core_modifier_piston_worm"
     },
     "B": {
-      "item": "minecraft:slime_block"
+      "item": "vanillamagic:concept_core_tnt"
     },
     "C": {
-      "item": "vanillamagic:core_modifier_piston_worm"
+      "item": "minecraft:slime_block"
     },
     "D": {
       "item": "vanillamagic:world_interaction_io"
