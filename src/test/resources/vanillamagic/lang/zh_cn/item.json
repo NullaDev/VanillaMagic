@@ -14,7 +14,8 @@
             "-path": [
                 "item.vanillamagic",
                 "block.vanillamagic"
-            ]
+            ],
+            "automatic_collector": "自动收集器"
         }
     },
     "cartesian": {

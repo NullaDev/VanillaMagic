@@ -16,12 +16,12 @@ public class VMBlocks {
 
     public static final DeferredRegister<Block> BLOCK = DeferredRegister.create(Block.class, VanillaMagic.MODID);
 
-    public static BlockBehaviour.Properties p = BlockBehaviour.Properties.of(Material.METAL, MaterialColor.GOLD).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.METAL);
-    public static RegistryObject<Block> AUTOMATIC_COLLECTOR = register("automatic_collector", () -> new AutomaticCollector(p));
+    public static final BlockBehaviour.Properties p = BlockBehaviour.Properties.of(Material.METAL, MaterialColor.GOLD).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.METAL);
+    public static final RegistryObject<Block> AUTOMATIC_COLLECTOR = register("automatic_collector", () -> new AutomaticCollector(p));
 
     public static <V extends Block> RegistryObject<V> register(String name, Supplier<V> sup) {
         RegistryObject<V> ans = BLOCK.register(name, sup);
-        VMItems.register(name, (p) -> new BlockItem(sup.get(), p));
+        VMItems.register(name, (p) -> new BlockItem(ans.get(), p));
         return ans;
     }
 

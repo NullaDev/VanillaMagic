@@ -43,6 +43,7 @@ public class VMRegistry {
         modBus.register(INSTANCE);
         VMBlocks.BLOCK.register(modBus);
         VMItems.ITEM.register(modBus);
+        BE.register(modBus);
         RECIPE.register(modBus);
         MENU.register(modBus);
     }
