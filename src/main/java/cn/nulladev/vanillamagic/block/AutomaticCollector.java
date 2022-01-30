@@ -47,8 +47,9 @@ public class AutomaticCollector extends BaseEntityBlock {
                 MenuProvider menu = (MenuProvider)level.getBlockEntity(pos);
                 NetworkHooks.openGui((ServerPlayer) player, menu, buf -> buf.writeBlockPos(pos));
                 //player.openMenu((MenuProvider)level.getBlockEntity(pos));
+                return InteractionResult.CONSUME;
             }
         }
-        return InteractionResult.PASS;
+        return InteractionResult.SUCCESS;
     }
 }
