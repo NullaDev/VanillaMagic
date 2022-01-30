@@ -7,9 +7,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -24,7 +27,9 @@ import java.util.stream.IntStream;
 
 public class CollectorBE extends BaseContainerBlockEntity implements WorldlyContainer {
 
-    protected NonNullList<ItemStack> items = NonNullList.withSize(CollectorMenu.SIZE, ItemStack.EMPTY);
+    public static final String TAG_ITEMS = "Items";
+    protected SimpleContainer container = new SimpleContainer(CollectorMenu.SIZE);
+
     public static BlockEntityTicker<CollectorBE> ticker = (level, pos, state, blockEntity) -> blockEntity.serverTick(level, pos, state, blockEntity);
 
     private void serverTick(Level level, BlockPos pos, BlockState state, CollectorBE be) {
@@ -49,19 +54,23 @@ public class CollectorBE extends BaseContainerBlockEntity implements WorldlyCont
         super(VMRegistry.BE_COLLECTOR.get(), pos, blockState);
     }
 
+    public SimpleContainer getContainer() {
+        return this.container;
+    }
+
     public boolean addStack(ItemStack stack) {
-        for (int i=0; i<items.size(); i++) {
-            if (items.get(i) == ItemStack.EMPTY) {
-                items.set(i, stack);
+        for (int i=0; i<container.getContainerSize(); i++) {
+            if (container.getItem(i).isEmpty()) {
+                container.setItem(i, stack);
                 return true;
-            } else if(items.get(i).sameItem(stack)) {
-                int num = items.get(i).getMaxStackSize() - items.get(i).getCount();
+            } else if(container.getItem(i).sameItem(stack)) {
+                int num = container.getItem(i).getMaxStackSize() - container.getItem(i).getCount();
                 if (num > 0) {
                     if (stack.getCount() <= num) {
-                        items.get(i).grow(stack.getCount());
+                        container.getItem(i).grow(stack.getCount());
                         return true;
                     } else {
-                        items.get(i).grow(num);
+                        container.getItem(i).grow(num);
                         stack.shrink(num);
                         return addStack(stack);
                     }
@@ -78,42 +87,37 @@ public class CollectorBE extends BaseContainerBlockEntity implements WorldlyCont
 
     @Override
     protected AbstractContainerMenu createMenu(int id, Inventory inv) {
-        return new CollectorMenu(id, inv);
+        return new CollectorMenu(id, inv, this.worldPosition, this.level);
     }
 
     @Override
     public int getContainerSize() {
-        return this.items.size();
+        return this.container.getContainerSize();
     }
 
     @Override
     public boolean isEmpty() {
-        for(ItemStack itemstack : this.items) {
-            if (!itemstack.isEmpty()) {
-                return false;
-            }
-        }
-        return true;
+        return this.container.isEmpty();
     }
 
     @Override
     public ItemStack getItem(int index) {
-        return this.items.get(index);
+        return this.container.getItem(index);
     }
 
     @Override
     public ItemStack removeItem(int index, int num) {
-        return ContainerHelper.removeItem(this.items, index, num);
+        return this.container.removeItem(index, num);
     }
 
     @Override
     public ItemStack removeItemNoUpdate(int index) {
-        return ContainerHelper.takeItem(this.items, index);
+        return this.container.removeItemNoUpdate(index);
     }
 
     @Override
     public void setItem(int index, ItemStack stack) {
-        this.items.set(index, stack);
+        this.container.setItem(index, stack);
     }
 
     @Override
@@ -123,20 +127,26 @@ public class CollectorBE extends BaseContainerBlockEntity implements WorldlyCont
 
     @Override
     public void clearContent() {
-        this.items.clear();
+        this.container.clearContent();
     }
 
     @Override
     public void load(CompoundTag tag) {
         super.load(tag);
-        this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(tag, this.items);
+        ListTag list = tag.getList(TAG_ITEMS, Tag.TAG_COMPOUND);
+        for (int i = 0; i < tag.size(); i++) {
+            this.container.setItem(i, ItemStack.of((CompoundTag) list.get(i)));
+        }
     }
 
     @Override
     protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
-        ContainerHelper.saveAllItems(tag, this.items);
+        ListTag list = new ListTag();
+        for (int i = 0; i < this.container.getContainerSize(); i++) {
+            list.add(i, this.container.getItem(i).save(new CompoundTag()));
+        }
+        tag.put(TAG_ITEMS, list);
     }
 
     @Override

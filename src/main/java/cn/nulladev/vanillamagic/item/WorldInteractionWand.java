@@ -18,14 +18,11 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class WorldInteractionWand extends Item {
 
     private static final String TAG_CORE = "core";
-    private static final String TAG_CD = "cd";
-    private static final String TAG_MAX_CD = "cdmax";
 
     public WorldInteractionWand(Properties props) {
         super(props.stacksTo(1));
@@ -142,7 +139,7 @@ public class WorldInteractionWand extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flags) {
+    public void appendHoverText(ItemStack stack, Level level, List<Component> list, TooltipFlag flags) {
         Component cd_info;
         if (!hasCore(stack))
             cd_info = new TranslatableComponent("vanillamagic.misc.miss_core").withStyle(ChatFormatting.RED);

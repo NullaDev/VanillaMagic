@@ -1,7 +1,6 @@
 package cn.nulladev.vanillamagic.core;
 
-import cn.nulladev.vanillamagic.client.CoreBagGui;
-import cn.nulladev.vanillamagic.client.CrystalGui;
+import cn.nulladev.vanillamagic.client.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.entity.player.Player;
@@ -24,6 +23,7 @@ class ClientProxy implements IProxy {
     public void setup() {
         MenuScreens.register(VMRegistry.MT_CRYSTAL.get(), CrystalGui::new);
         MenuScreens.register(VMRegistry.MT_CORE_BAG.get(), CoreBagGui::new);
+        MenuScreens.register(VMRegistry.MT_COLLECTOR.get(), CollectorGui::new);
     }
 }
 

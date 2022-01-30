@@ -6,6 +6,7 @@ import cn.nulladev.vanillamagic.client.CollectorMenu;
 import cn.nulladev.vanillamagic.client.CrystalMenu;
 import cn.nulladev.vanillamagic.crafting.*;
 import com.lcy0x1.base.BaseRecipe;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -29,7 +30,7 @@ public class VMRegistry {
 
     public static final RegistryObject<MenuType<CrystalMenu>> MT_CRYSTAL = MENU.register("space_crystal", () -> IForgeMenuType.create(CrystalMenu::fromNetwork));
     public static final RegistryObject<MenuType<CoreBagMenu>> MT_CORE_BAG = MENU.register("core_bag", () -> IForgeMenuType.create(CoreBagMenu::fromNetwork));
-    public static final RegistryObject<MenuType<CollectorMenu>> MT_COLLECTOR = MENU.register("collector", () -> IForgeMenuType.create((windowId, inv, data) -> new CollectorMenu(windowId, inv)));
+    public static final RegistryObject<MenuType<CollectorMenu>> MT_COLLECTOR = MENU.register("collector", () -> IForgeMenuType.create((windowId, inv, data) -> new CollectorMenu(windowId, inv, data.readBlockPos(), Minecraft.getInstance().level)));
 
     public static final RecipeType<AbstractCrystalRecipe<?>> RT_CRYSTAL = RecipeType.register("vanillamagic:crystal");
     public static final RegistryObject<BaseRecipe.RecType<DefaultCrystalRecipe, AbstractCrystalRecipe<?>, CrystalMenu.CrystalContainer>> RS_CRYSTAL_DEFAULT = RECIPE.register("crystal_default", () -> new BaseRecipe.RecType<>(DefaultCrystalRecipe.class, RT_CRYSTAL));

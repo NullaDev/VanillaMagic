@@ -48,7 +48,7 @@ public class BaseContainerMenu<T extends BaseContainerMenu<T>> extends AbstractC
     private final boolean isVirtual;
 
     @SuppressWarnings("unchecked")
-    protected BaseContainerMenu(MenuType<?> type, int wid, Inventory plInv, SpriteManager manager, Function<T, BaseContainer<T>> factory, boolean isVirtual) {
+    protected BaseContainerMenu(MenuType<?> type, int wid, Inventory plInv, SpriteManager manager, Function<T, SimpleContainer> factory, boolean isVirtual) {
         super(type, wid);
         this.inventory = plInv;
         container = factory.apply((T) this);
