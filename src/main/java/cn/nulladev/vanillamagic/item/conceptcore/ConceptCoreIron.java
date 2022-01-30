@@ -32,4 +32,9 @@ public class ConceptCoreIron extends ConceptCore {
             list.add(new ItemStack(Blocks.POPPY, rand2));
         return list;
     }
+
+    @Override
+    public boolean canProvideItem(ItemStack stack) {
+        return true;
+    }
 }

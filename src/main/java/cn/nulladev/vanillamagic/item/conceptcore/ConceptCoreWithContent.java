@@ -65,4 +65,13 @@ public abstract class ConceptCoreWithContent extends ConceptCore {
         list.add(total_cd);
         list.add(cd_info);
     }
+
+    @Override
+    public boolean isUsable(ItemStack stack) {
+        return !getContent(stack).isEmpty();
+    }
+
+    public boolean canProvideItem(ItemStack stack) {
+        return !getContent(stack).isEmpty();
+    }
 }

@@ -60,6 +60,14 @@ public abstract class ConceptCore extends Item {
         return list;
     }
 
+    public boolean isUsable(ItemStack stack) {
+        return true;
+    }
+
+    public boolean canProvideItem(ItemStack stack) {
+        return !getMachineOutput(stack).isEmpty();
+    }
+
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
         if (getCD(stack) > 0) {

@@ -41,4 +41,9 @@ public class ConceptCoreTree extends ConceptCore {
             list.add(new ItemStack(Blocks.MOSS_CARPET));
         return list;
     }
+
+    @Override
+    public boolean canProvideItem(ItemStack stack) {
+        return true;
+    }
 }

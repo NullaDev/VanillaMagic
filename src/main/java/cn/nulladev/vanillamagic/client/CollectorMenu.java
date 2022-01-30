@@ -17,7 +17,7 @@ public class CollectorMenu extends BaseContainerMenu<CollectorMenu> {
 
     public CollectorMenu(int windowId, Inventory inventory, BlockPos pos, Level level) {
         super(VMRegistry.MT_COLLECTOR.get(), windowId, inventory, CORE_MACHINE, menu -> level.getBlockEntity(pos, VMRegistry.BE_COLLECTOR.get()).get().getContainer(), false);
-        this.addSlot("core", stack -> stack.getItem() instanceof ConceptCore);
+        this.addSlot("core", stack -> stack.getItem() instanceof ConceptCore && ((ConceptCore)stack.getItem()).isUsable(stack));
         this.addSlot("grid", stack -> false);
     }
 

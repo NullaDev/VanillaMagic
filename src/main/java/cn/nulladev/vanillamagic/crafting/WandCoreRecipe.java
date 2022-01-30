@@ -30,7 +30,7 @@ public class WandCoreRecipe extends CustomRecipe {
                         return false;
                     else
                         foundWand = true;
-                } else if (stack.getItem() instanceof ConceptCore) {
+                } else if (stack.getItem() instanceof ConceptCore && ((ConceptCore)stack.getItem()).isUsable(stack)) {
                     if (foundCore)
                         return false;
                     else

@@ -37,4 +37,9 @@ public class ConceptCorePorkchop extends ConceptCore {
             list.add(new ItemStack(Items.LEATHER, rand2));
         return list;
     }
+
+    @Override
+    public boolean canProvideItem(ItemStack stack) {
+        return true;
+    }
 }

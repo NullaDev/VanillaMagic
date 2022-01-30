@@ -36,4 +36,9 @@ public class ConceptCoreChickenRoast extends ConceptCore {
             list.add(new ItemStack(Items.FEATHER, rand));
         return list;
     }
+
+    @Override
+    public boolean canProvideItem(ItemStack stack) {
+        return true;
+    }
 }

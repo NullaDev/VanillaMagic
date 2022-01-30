@@ -46,4 +46,9 @@ public class ConceptCoreGold extends ConceptCore {
             list.add(new ItemStack(Items.GOLD_INGOT));
         return list;
     }
+
+    @Override
+    public boolean canProvideItem(ItemStack stack) {
+        return true;
+    }
 }

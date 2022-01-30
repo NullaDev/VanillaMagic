@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class CollectorBE extends BaseContainerBlockEntity implements WorldlyContainer {
@@ -37,9 +38,14 @@ public class CollectorBE extends BaseContainerBlockEntity implements WorldlyCont
                 ConceptCore.setCD(coreStack, ConceptCore.getCD(coreStack) - 1);
             } else {
                 ConceptCore core = (ConceptCore) coreStack.getItem();
+                if (!core.canProvideItem(coreStack))
+                    return;
                 boolean flag = false;
-                for (ItemStack s : core.getMachineOutputs(coreStack)) {
-                    if (!s.isEmpty() && be.addStack(s))
+                List<ItemStack> list = core.getMachineOutputs(coreStack);
+                if (list.size() == 0)
+                    flag = true;
+                for (ItemStack s : list) {
+                    if (be.addStack(s))
                         flag = true;
                 }
                 if (flag)
@@ -57,6 +63,8 @@ public class CollectorBE extends BaseContainerBlockEntity implements WorldlyCont
     }
 
     public boolean addStack(ItemStack stack) {
+        if (stack.isEmpty())
+            return false;
         for (int i=0; i<container.getContainerSize(); i++) {
             if (container.getItem(i).isEmpty()) {
                 container.setItem(i, stack);
@@ -70,7 +78,8 @@ public class CollectorBE extends BaseContainerBlockEntity implements WorldlyCont
                     } else {
                         container.getItem(i).grow(num);
                         stack.shrink(num);
-                        return addStack(stack);
+                        addStack(stack);
+                        return true;
                     }
                 }
             }
