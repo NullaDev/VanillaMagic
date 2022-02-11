@@ -44,6 +44,7 @@
                 },
                 {
                     "dark_box": "暗箱",
+                    "endermite": "末影螨",
                     "fall": "坠落",
                     "piston_worm": "活塞虫",
                     "pulse": "脉冲",
@@ -73,6 +74,7 @@
                     "cobblestone": "圆石",
                     "cobblestone_advanced": "圆石(高级)",
                     "drain": "排水",
+                    "ender_pearl": "末影珍珠",
                     "falling_block": "重力方块",
                     "farm": "农场",
                     "frame_destroy": "框架破坏",

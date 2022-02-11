@@ -21,6 +21,7 @@ public class VMItems {
     public static RegistryObject<Item> CORE_AMPLIFIER = register("core_amplifier", GenericVMItem::new);
     public static RegistryObject<Item> CORE_BAG = register("core_bag", CoreBag::new);
     public static RegistryObject<Item> CORE_MODIFIER_DARK_BOX = register("core_modifier_dark_box", GenericVMItem::new);
+    public static RegistryObject<Item> CORE_MODIFIER_ENDERMITE = register("core_modifier_endermite", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_FALL = register("core_modifier_fall", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_PISTON_WARM = register("core_modifier_piston_worm", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_PULSE = register("core_modifier_pulse", GenericVMItem::new);
@@ -43,6 +44,7 @@ public class VMItems {
     public static RegistryObject<Item> CONCEPT_CORE_COBBLESTONE = register("concept_core_cobblestone", ConceptCoreCobblestone::new);
     public static RegistryObject<Item> CONCEPT_CORE_COBBLESTONE_ADVANCED = register("concept_core_cobblestone_advanced", ConceptCoreCobblestoneAdvanced::new);
     public static RegistryObject<Item> CONCEPT_CORE_DRAIN = register("concept_core_drain", ConceptCoreDrain::new);
+    public static RegistryObject<Item> CONCEPT_CORE_ENDER_PEARL = register("concept_core_ender_pearl", ConceptCoreEnderPearl::new);
     public static RegistryObject<Item> CONCEPT_CORE_FALLING_BLOCK = register("concept_core_falling_block", ConceptCoreFallingBlock::new);
     public static RegistryObject<Item> CONCEPT_CORE_FARM = register("concept_core_farm", ConceptCoreFarm::new);
     public static RegistryObject<Item> CONCEPT_CORE_FRAME_DESTROY = register("concept_core_frame_destroy", ConceptCoreFrameDestory::new);

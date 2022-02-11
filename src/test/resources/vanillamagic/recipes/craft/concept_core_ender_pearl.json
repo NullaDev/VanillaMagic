@@ -1,0 +1,37 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_ender_pearl",
+    "count": 1
+  },
+  "pattern": [
+    " A   ",
+    "BC   ",
+    "DDEDD",
+    "  F  ",
+    "  G  "
+  ],
+  "key": {
+    "A": {
+      "item": "vanillamagic:core_modifier_endermite"
+    },
+    "B": {
+      "item": "minecraft:cobblestone_wall"
+    },
+    "C": {
+      "item": "minecraft:minecart"
+    },
+    "D": {
+      "item": "minecraft:end_stone"
+    },
+    "E": {
+      "tag": "minecraft:trapdoors"
+    },
+    "F": {
+      "item": "vanillamagic:core_modifier_fall"
+    },
+    "G": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}

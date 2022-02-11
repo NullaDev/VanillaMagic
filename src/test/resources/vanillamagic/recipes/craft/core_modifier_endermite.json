@@ -1,0 +1,24 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:core_modifier_endermite",
+    "count": 1
+  },
+  "pattern": [
+    "AAAA",
+    "AAAA",
+    "AAAA",
+    " BC "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:ender_pearl"
+    },
+    "B": {
+      "item": "minecraft:name_tag"
+    },
+    "C": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}
