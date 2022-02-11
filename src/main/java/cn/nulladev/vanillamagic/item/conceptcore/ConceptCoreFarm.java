@@ -1,5 +1,6 @@
 package cn.nulladev.vanillamagic.item.conceptcore;
 
+import cn.nulladev.vanillamagic.item.WorldInteractionWand;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -34,7 +35,8 @@ public class ConceptCoreFarm extends ConceptCoreWithContent {
     @Override
     public InteractionResultHolder<ItemStack> wandUse(Level level, Player player, InteractionHand hand) {
         if (player.canEat(false)) {
-            ItemStack content = getContent(player.getItemInHand(hand));
+            ItemStack core = WorldInteractionWand.getCore(player.getItemInHand(hand));
+            ItemStack content = getContent(core);
             if (content.getItem() == Items.POTATO)
                 player.getFoodData().eat(1, 0.6F);
             else if (content.getItem() == Items.CARROT)
