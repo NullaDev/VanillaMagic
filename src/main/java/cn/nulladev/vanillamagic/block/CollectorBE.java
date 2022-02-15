@@ -7,7 +7,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.SimpleContainer;
@@ -20,6 +19,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.wrapper.SidedInvWrapper;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -65,11 +69,12 @@ public class CollectorBE extends BaseContainerBlockEntity implements WorldlyCont
     public boolean addStack(ItemStack stack) {
         if (stack.isEmpty())
             return false;
-        for (int i=0; i<container.getContainerSize(); i++) {
+        setChanged();
+        for (int i = 0; i < container.getContainerSize(); i++) {
             if (container.getItem(i).isEmpty()) {
                 container.setItem(i, stack);
                 return true;
-            } else if(container.getItem(i).sameItem(stack)) {
+            } else if (container.getItem(i).sameItem(stack)) {
                 int num = container.getItem(i).getMaxStackSize() - container.getItem(i).getCount();
                 if (num > 0) {
                     if (stack.getCount() <= num) {
@@ -114,6 +119,7 @@ public class CollectorBE extends BaseContainerBlockEntity implements WorldlyCont
 
     @Override
     public ItemStack removeItem(int index, int num) {
+        this.setChanged();
         return this.container.removeItem(index, num);
     }
 
@@ -124,6 +130,7 @@ public class CollectorBE extends BaseContainerBlockEntity implements WorldlyCont
 
     @Override
     public void setItem(int index, ItemStack stack) {
+        this.setChanged();
         this.container.setItem(index, stack);
     }
 
@@ -134,35 +141,30 @@ public class CollectorBE extends BaseContainerBlockEntity implements WorldlyCont
 
     @Override
     public void clearContent() {
+        this.setChanged();
         this.container.clearContent();
     }
 
-    @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
-        ListTag list = tag.getList(TAG_ITEMS, Tag.TAG_COMPOUND);
-        for (int i = 0; i < tag.size(); i++) {
-            this.container.setItem(i, ItemStack.of((CompoundTag) list.get(i)));
-        }
-    }
-
-    @Override
     protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
-        ListTag list = new ListTag();
-        for (int i = 0; i < this.container.getContainerSize(); i++) {
-            list.add(i, this.container.getItem(i).save(new CompoundTag()));
+        tag.put("items", container.createTag());
+    }
+
+    public void load(CompoundTag tag) {
+        super.load(tag);
+        if (tag.contains("items")) {
+            container.fromTag((ListTag) tag.get("items"));
         }
-        tag.put(TAG_ITEMS, list);
+
     }
 
     @Override
     public int[] getSlotsForFace(Direction direc) {
         System.out.println(direc);
-        if (direc == Direction.DOWN) {
+        if (direc == Direction.UP) {
             return new int[]{0};
         } else {
-            return IntStream.rangeClosed(1,27).toArray();
+            return IntStream.rangeClosed(1, 27).toArray();
         }
     }
 
@@ -182,5 +184,12 @@ public class CollectorBE extends BaseContainerBlockEntity implements WorldlyCont
             return stack.getItem() instanceof ConceptCore;
         else
             return false;
+    }
+
+    @Override
+    public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable Direction side) {
+        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+            return (LazyOptional<T>) LazyOptional.of(() -> new SidedInvWrapper(this, side));
+        } else return super.getCapability(cap, side);
     }
 }

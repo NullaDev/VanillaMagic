@@ -3,10 +3,9 @@ package cn.nulladev.vanillamagic.block;
 import cn.nulladev.vanillamagic.core.VMRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.RenderShape;
@@ -52,4 +51,25 @@ public class AutomaticCollector extends BaseEntityBlock {
         }
         return InteractionResult.SUCCESS;
     }
+
+    public void onRemove(BlockState p_51538_, Level p_51539_, BlockPos p_51540_, BlockState p_51541_, boolean p_51542_) {
+        if (!p_51538_.is(p_51541_.getBlock())) {
+            BlockEntity blockentity = p_51539_.getBlockEntity(p_51540_);
+            if (blockentity instanceof Container) {
+                Containers.dropContents(p_51539_, p_51540_, (Container)blockentity);
+                p_51539_.updateNeighbourForOutputSignal(p_51540_, this);
+            }
+            super.onRemove(p_51538_, p_51539_, p_51540_, p_51541_, p_51542_);
+        }
+    }
+
+    public boolean hasAnalogOutputSignal(BlockState p_49058_) {
+        return true;
+    }
+
+    public int getAnalogOutputSignal(BlockState p_49065_, Level p_49066_, BlockPos p_49067_) {
+        return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(p_49066_.getBlockEntity(p_49067_));
+    }
+
+
 }
