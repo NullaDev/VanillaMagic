@@ -1,0 +1,30 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_mob_grinder",
+    "count": 1
+  },
+  "pattern": [
+    " AA ",
+    "B  B",
+    " CC ",
+    " DDE"
+  ],
+  "key": {
+    "A": {
+      "item": "vanillamagic:core_modifier_dark_box"
+    },
+    "B": {
+      "item": "minecraft:water_bucket"
+    },
+    "C": {
+      "item": "vanillamagic:core_modifier_fall"
+    },
+    "D": {
+      "item": "minecraft:hopper"
+    },
+    "E": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}

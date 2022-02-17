@@ -160,7 +160,7 @@ public class CollectorBE extends BaseContainerBlockEntity implements WorldlyCont
 
     @Override
     public int[] getSlotsForFace(Direction direc) {
-        System.out.println(direc);
+        //System.out.println(direc);
         if (direc == Direction.UP) {
             return new int[]{0};
         } else {

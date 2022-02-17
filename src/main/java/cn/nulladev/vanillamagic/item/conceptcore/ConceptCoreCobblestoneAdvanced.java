@@ -22,4 +22,5 @@ public class ConceptCoreCobblestoneAdvanced extends ConceptCore {
     public ItemStack getMachineOutput(ItemStack coreStack) {
         return new ItemStack(Blocks.COBBLESTONE);
     }
+
 }
