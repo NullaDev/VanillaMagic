@@ -22,9 +22,12 @@ public class ConceptCoreGold extends ConceptCore {
     @Override
     public InteractionResultHolder<ItemStack> wandUse(Level level, Player player, InteractionHand hand) {
         if (player.canEat(false)) {
-            player.getFoodData().eat(4, 0.2F);
             double rand = new Random().nextDouble();
-            if (rand > 0.8D)
+            if (rand > 0.5D)
+                return InteractionResultHolder.success(player.getItemInHand(hand));
+            player.getFoodData().eat(4, 0.2F);
+            double rand2 = new Random().nextDouble();
+            if (rand2 > 0.8D)
                 player.addEffect(new MobEffectInstance(MobEffects.HUNGER, 600, 0));
             return InteractionResultHolder.success(player.getItemInHand(hand));
         } else {
@@ -41,9 +44,6 @@ public class ConceptCoreGold extends ConceptCore {
         int rand2 = new Random().nextInt(1);
         if (rand2 > 0)
             list.add(new ItemStack(Items.GOLD_NUGGET, rand2));
-        double rand3 = new Random().nextDouble();
-        if (rand3 > 0.975D)
-            list.add(new ItemStack(Items.GOLD_INGOT));
         return list;
     }
 

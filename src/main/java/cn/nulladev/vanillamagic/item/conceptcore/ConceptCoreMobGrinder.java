@@ -16,7 +16,7 @@ public class ConceptCoreMobGrinder extends ConceptCore {
 
     public ConceptCoreMobGrinder(Properties props) {
         super(props);
-        this.setUsingCD(400);
+        this.setUsingCD(100);
     }
 
     @Override

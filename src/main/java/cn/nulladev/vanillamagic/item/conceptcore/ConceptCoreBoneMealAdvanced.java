@@ -9,7 +9,7 @@ public class ConceptCoreBoneMealAdvanced extends ConceptCore {
 
     public ConceptCoreBoneMealAdvanced(Properties props) {
         super(props);
-        this.setUsingCD(1);
+        this.setUsingCD(2);
     }
 
     @Override

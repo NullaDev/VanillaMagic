@@ -33,15 +33,20 @@ public class ConceptCoreMelon extends ConceptCoreWithContent {
 
     @Override
     public InteractionResultHolder<ItemStack> wandUse(Level level, Player player, InteractionHand hand) {
-        if (player.canEat(false)) {
-            ItemStack core = WorldInteractionWand.getCore(player.getItemInHand(hand));
-            ItemStack content = getContent(core);
-            if (content.getItem() == Items.MELON_SEEDS) {
+        ItemStack core = WorldInteractionWand.getCore(player.getItemInHand(hand));
+        ItemStack content = getContent(core);
+        if (content.getItem() == Items.MELON_SEEDS || !player.canEat(false)) {
+            return InteractionResultHolder.pass(player.getItemInHand(hand));
+        }
+        int i = 3 + new Random().nextInt(5);
+        while (i-- > 0) {
+            if (player.canEat(false)) {
                 player.getFoodData().eat(2, 0.6F);
-                return InteractionResultHolder.success(player.getItemInHand(hand));
+            } else {
+                break;
             }
         }
-        return InteractionResultHolder.pass(player.getItemInHand(hand));
+        return InteractionResultHolder.success(player.getItemInHand(hand));
     }
 
     @Override
