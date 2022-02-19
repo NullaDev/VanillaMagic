@@ -1,0 +1,103 @@
+{
+    "simple": {
+        "item": {
+            "-path": [
+                "item.vanillamagic"
+            ],
+            "core_amplifier": "Core Amplifier",
+            "core_bag": "Core Storage Bag",
+            "infinite_fuel": "Infinite Fuel",
+            "world_interaction_io": "World Interaction I/O",
+            "world_interaction_wand": "World Interaction Wand"
+        },
+        "block": {
+            "-path": [
+                "item.vanillamagic",
+                "block.vanillamagic"
+            ],
+            "automatic_collector": "Automatic Collector"
+        }
+    },
+    "cartesian": {
+        "space_crystal": {
+            "-path": [
+                "item.vanillamagic"
+            ],
+            "list": [
+                {
+                    "space_crystal":"Space Crystal: "
+                },
+                {
+                    "basic": "Basic",
+                    "advanced": "Advanced",
+                    "ultimate": "Ultimate"
+                }
+            ]
+        },
+        "core_modifier": {
+            "-path": [
+                "item.vanillamagic"
+            ],
+            "list": [
+                {
+                    "core_modifier":"Core Modifier: "
+                },
+                {
+                    "dark_box": "Dark Box",
+                    "endermite": "Endermite",
+                    "fall": "Fall",
+                    "piston_worm": "Piston Worm",
+                    "pulse": "Pulse",
+                    "pulse_controllable": "Controllable Pulse",
+                    "snow_golem": "Snow Golem",
+                    "update_end": "End Update",
+                    "villager": "Villager",
+                    "wither": "Wither"
+                }
+            ]
+        },
+        "concept_core":{
+            "-path": [
+                "item.vanillamagic"
+            ],
+            "list": [
+                {
+                    "concept_core":"Concept Core: "
+                },
+                {
+                    "attachment_block": "Attachment Blocks",
+                    "bone_meal": "Bone Meal",
+                    "bone_meal_advanced": "Bone Meal (Advanced)",
+                    "cactus": "Cactus",
+                    "chicken": "Chicken",
+                    "chicken_roast": "Roast Chicken",
+                    "cobblestone": "Cobblestone",
+                    "cobblestone_advanced": "Cobblestone (Advanced)",
+                    "drain": "Drain",
+                    "ender_pearl": "Ender Pearl",
+                    "falling_block": "Falling Blocks",
+                    "farm": "Farm",
+                    "frame_destroy": "End Portal Frame Destroy",
+                    "ghast": "Ghast",
+                    "glow_berries": "Glow Berries",
+                    "gold": "Gold",
+                    "iron": "Iron",
+                    "lava": "Lava",
+                    "level_eater": "Level Eater",
+                    "melon": "Melons",
+                    "mob_grinder": "Mob Grinder",
+                    "nether_portal": "Nether Portal",
+                    "obsidian": "Obsidian",
+                    "porkchop": "Porkchop",
+                    "snowball": "Snowball",
+                    "stone": "Stone",
+                    "sugar_cane": "Sugar Cane",
+                    "tnt": "TNT",
+                    "tree": "Tree",
+                    "villager_spawn": "Villager Spawn",
+                    "water": "Water"
+                }
+            ]
+        }
+    }
+}

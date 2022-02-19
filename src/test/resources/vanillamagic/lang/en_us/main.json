@@ -1,0 +1,38 @@
+{
+  "item": {
+    "vanillamagic": {}
+  },
+  "block": {
+    "vanillamagic": {}
+  },
+  "entity": {
+    "vanillamagic": {}
+  },
+  "effect": {
+    "vanillamagic": {}
+  },
+  "enchantment": {
+    "vanillamagic": {}
+  },
+  "death.attack": {},
+  "itemGroup.vanillamagic": "Vanilla Magic",
+  "container.collector": "Automatic Collector",
+  "vanillamagic": {
+    "misc": {
+      "total_cd": "CD: %dticks",
+      "cd1": "Currently available",
+      "cd2": "Available in %dticks",
+      "miss_content": "Content Missing",
+      "miss_core": "Concept Core Missing"
+    }
+  },
+  "jei": {
+    "title": {
+      "crystal": {
+        "basic": "Space Crystal: Basic",
+        "advanced": "Space Crystal: Advanced",
+        "ultimate": "Space Crystal: Ultimate"
+      }
+    }
+  }
+}
