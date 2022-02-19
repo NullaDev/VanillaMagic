@@ -5,10 +5,10 @@
     "count": 1
   },
   "pattern": [
-    "ABCD",
+    "AB C",
+    "DDDD",
     "EEEE",
-    "FFFF",
-    "  GH"
+    "  FG"
   ],
   "key": {
     "A": {
@@ -21,18 +21,15 @@
       "item": "vanillamagic:concept_core_tnt"
     },
     "D": {
-      "item": "vanillamagic:core_modifier_pulse_controllable"
-    },
-    "E": {
       "item": "minecraft:powered_rail"
     },
-    "F": {
+    "E": {
       "item": "minecraft:obsidian"
     },
-    "G": {
+    "F": {
       "item": "minecraft:hopper"
     },
-    "H": {
+    "G": {
       "item": "vanillamagic:world_interaction_io"
     }
   }

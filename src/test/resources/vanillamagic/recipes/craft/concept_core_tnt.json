@@ -6,9 +6,9 @@
   },
   "pattern": [
     "ABC ",
-    " BBD",
-    " E F",
-    "   G"
+    "DBBE",
+    " F G",
+    "   H"
   ],
   "key": {
     "A": {
@@ -21,15 +21,18 @@
       "item": "minecraft:minecart"
     },
     "D": {
-      "item": "minecraft:cobblestone_wall"
+      "item": "vanillamagic:core_modifier_pulse_controllable"
     },
     "E": {
-      "item": "minecraft:dead_brain_coral_fan"
+      "item": "minecraft:cobblestone_wall"
     },
     "F": {
-      "item": "minecraft:tnt"
+      "item": "minecraft:dead_brain_coral_fan"
     },
     "G": {
+      "item": "minecraft:tnt"
+    },
+    "H": {
       "item": "vanillamagic:world_interaction_io"
     }
   }
