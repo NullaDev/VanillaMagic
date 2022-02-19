@@ -16,6 +16,7 @@
   },
   "death.attack": {},
   "itemGroup.vanillamagic": "原始魔法",
+  "container.collector": "自动收集器",
   "vanillamagic": {
     "misc": {
       "total_cd": "使用冷却时间:%dticks",

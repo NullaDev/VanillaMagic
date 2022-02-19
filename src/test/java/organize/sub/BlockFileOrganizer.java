@@ -9,7 +9,7 @@ public class BlockFileOrganizer extends ResourceOrganizer {
 
 
     private String texture, model, state, loot;
-    private String BM, BS, BL, BS_H;
+    private String BM, BM_T, BS, BL, BS_H;
 
     public BlockFileOrganizer() {
         super(null, "blocks", null);
@@ -24,6 +24,7 @@ public class BlockFileOrganizer extends ResourceOrganizer {
         BS = readFile(f.getPath() + "/-blockstate/-.json");
         BS_H = readFile(f.getPath() + "/-blockstate/-horizontal.json");
         BM = readFile(f.getPath() + "/-model/-.json");
+        BM_T = readFile(f.getPath() + "/-model/-top.json");
         BL = readFile(f.getPath() + "/-loot_tables/-.json");
     }
 
@@ -32,7 +33,7 @@ public class BlockFileOrganizer extends ResourceOrganizer {
         init(f);
         org(new File(f.getPath() + "/default"), true);
         org(new File(f.getPath() + "/no_drop"), false);
-
+        topside(new File(f.getPath() + "/top"), true);
         File special = new File(f.getPath() + "/-special");
         if (special.exists()) {
             special(f);
@@ -92,5 +93,27 @@ public class BlockFileOrganizer extends ResourceOrganizer {
         }
     }
 
+    private void topside(File f, boolean drop) throws Exception {
+        for (File fi : list(f)) {
+            String filename = fi.getName();
+            if (filename.startsWith("-") || filename.startsWith("."))
+                continue;
+            String name = filename.split("\\.")[0];
+            File ti = new File(texture + name + ".png");
+            check(ti);
+            Files.copy(fi, ti);
+            if (name.endsWith("_side")) {
+                name = name.substring(0, name.length() - 5);
+                write(state + name + ".json", BS.replaceAll("\\^s", name));
+                write(model + name + ".json", BM_T.replaceAll("\\^s", name));
+            } else if (name.endsWith("_top")) {
+                continue;
+            }
+            if (drop) {
+                write(loot + name + ".json", BL.replaceAll("\\^s", name));
+                ((ItemFileOrganizer) MAP.get("items")).createBlock(name);
+            }
+        }
+    }
 
 }
