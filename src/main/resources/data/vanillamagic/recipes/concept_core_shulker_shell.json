@@ -1,0 +1,46 @@
+{
+  "type": "vanillamagic:crystal_default",
+  "result": {
+    "item": "vanillamagic:concept_core_shulker_shell",
+    "count": 1
+  },
+  "pattern": [
+    "AAA  ",
+    "ABB  ",
+    "CDE  ",
+    "F GAH",
+    "A IBJ"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:scaffolding"
+    },
+    "B": {
+      "tag": "minecraft:slabs"
+    },
+    "C": {
+      "item": "minecraft:piston"
+    },
+    "D": {
+      "item": "vanillamagic:core_modifier_pulse"
+    },
+    "E": {
+      "item": "vanillamagic:core_modifier_endermite"
+    },
+    "F": {
+      "item": "vanillamagic:core_modifier_shulker"
+    },
+    "G": {
+      "item": "minecraft:minecart"
+    },
+    "H": {
+      "item": "minecraft:lava_bucket"
+    },
+    "I": {
+      "item": "vanillamagic:core_modifier_snow_golem"
+    },
+    "J": {
+      "item": "vanillamagic:world_interaction_io"
+    }
+  }
+}

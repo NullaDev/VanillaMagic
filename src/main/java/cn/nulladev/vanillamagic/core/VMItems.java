@@ -26,6 +26,7 @@ public class VMItems {
     public static RegistryObject<Item> CORE_MODIFIER_PISTON_WARM = register("core_modifier_piston_worm", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_PULSE = register("core_modifier_pulse", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_PULSE_CONTROLLABLE = register("core_modifier_pulse_controllable", GenericVMItem::new);
+    public static RegistryObject<Item> CORE_MODIFIER_SHULKER = register("core_modifier_shulker", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_SNOW_GOLEM = register("core_modifier_snow_golem", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_UPDATE_END = register("core_modifier_update_end", GenericVMItem::new);
     public static RegistryObject<Item> CORE_MODIFIER_VILLAGER = register("core_modifier_villager", GenericVMItem::new);
@@ -60,6 +61,7 @@ public class VMItems {
     public static RegistryObject<Item> CONCEPT_CORE_OBSIDIAN = register("concept_core_obsidian", ConceptCoreObsidian::new);
     public static RegistryObject<Item> CONCEPT_CORE_OBSIDIAN_ADVANCED = register("concept_core_obsidian_advanced", ConceptCoreObsidianAdvanced::new);
     public static RegistryObject<Item> CONCEPT_CORE_PORKCHOP = register("concept_core_porkchop", ConceptCorePorkchop::new);
+    public static RegistryObject<Item> CONCEPT_CORE_SHULKER_SHELL = register("concept_core_shulker_shell", ConceptCoreShulkerShell::new);
     public static RegistryObject<Item> CONCEPT_CORE_SNOWBALL = register("concept_core_snowball", ConceptCoreSnowball::new);
     public static RegistryObject<Item> CONCEPT_CORE_STONE = register("concept_core_stone", ConceptCoreStone::new);
     public static RegistryObject<Item> CONCEPT_CORE_SUGAR_CANE = register("concept_core_sugar_cane", ConceptCoreSugarCane::new);
