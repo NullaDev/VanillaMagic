@@ -1,88 +1,83 @@
 package cn.nulladev.vanillamagic.item.conceptcore;
 
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.block.*;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUseContext;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public class GenericInteractions {
 
-    public static InteractionResult place(BlockPlaceContext ctx, Block b) {
+    public static ActionResultType place(BlockItemUseContext ctx, Block b) {
         if (!ctx.canPlace()) {
-            return InteractionResult.FAIL;
+            return ActionResultType.FAIL;
         } else {
             BlockState blockstate = b.getStateForPlacement(ctx);
             BlockPos blockpos = ctx.getClickedPos();
-            Level level = ctx.getLevel();
-            Player player = ctx.getPlayer();
+            World world = ctx.getLevel();
+            PlayerEntity player = ctx.getPlayer();
             ItemStack itemstack = ctx.getItemInHand();
             if (blockstate == null) {
-                return InteractionResult.FAIL;
-            } else if (!blockstate.canSurvive(level, blockpos)) {
-                return InteractionResult.FAIL;
-            } else if (!level.setBlock(blockpos, blockstate, 11)) {
-                return InteractionResult.FAIL;
+                return ActionResultType.FAIL;
+            } else if (!blockstate.canSurvive(world, blockpos)) {
+                return ActionResultType.FAIL;
+            } else if (!world.setBlock(blockpos, blockstate, 11)) {
+                return ActionResultType.FAIL;
             } else {
-                BlockState blockstate1 = level.getBlockState(blockpos);
+                BlockState blockstate1 = world.getBlockState(blockpos);
                 if (blockstate1.is(b)) {
-                    blockstate1.getBlock().setPlacedBy(level, blockpos, blockstate1, player, itemstack);
-                    if (player instanceof ServerPlayer) {
-                        CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer) player, blockpos, itemstack);
+                    blockstate1.getBlock().setPlacedBy(world, blockpos, blockstate1, player, itemstack);
+                    if (player instanceof ServerPlayerEntity serverPlayer) {
+                        CriteriaTriggers.PLACED_BLOCK.trigger(serverPlayer, blockpos, itemstack);
                     }
                 }
 
-                level.gameEvent(player, GameEvent.BLOCK_PLACE, blockpos);
-                SoundType soundtype = blockstate1.getSoundType(level, blockpos, ctx.getPlayer());
-                level.playSound(player, blockpos, blockstate1.getSoundType(level, blockpos, ctx.getPlayer()).getPlaceSound(), SoundSource.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+                //world.gameEvent(player, GameEvent.BLOCK_PLACE, blockpos);
+                SoundType soundtype = blockstate1.getSoundType(world, blockpos, ctx.getPlayer());
+                world.playSound(player, blockpos, blockstate1.getSoundType(world, blockpos, ctx.getPlayer()).getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
 
-                return InteractionResult.sidedSuccess(level.isClientSide);
+                return ActionResultType.sidedSuccess(world.isClientSide);
             }
         }
     }
 
-    public static InteractionResult remove(UseOnContext ctx, Block b, Block b1) {
-        Level level = ctx.getLevel();
+    public static ActionResultType remove(ItemUseContext ctx, Block b, Block b1) {
+        World world = ctx.getLevel();
         BlockPos blockpos = ctx.getClickedPos();
-        if (level.getBlockState(blockpos).getBlock() == b) {
-            level.setBlockAndUpdate(blockpos, b1.defaultBlockState());
-            return InteractionResult.SUCCESS;
+        if (world.getBlockState(blockpos).getBlock() == b) {
+            world.setBlockAndUpdate(blockpos, b1.defaultBlockState());
+            return ActionResultType.SUCCESS;
         }
-        return InteractionResult.PASS;
+        return ActionResultType.PASS;
     }
 
-    public static InteractionResult remove(UseOnContext ctx, Block b) {
+    public static ActionResultType remove(ItemUseContext ctx, Block b) {
         return remove(ctx, b, Blocks.AIR);
     }
 
-    public static InteractionResult useBoneMeal(UseOnContext ctx) {
-        Level level = ctx.getLevel();
+    public static ActionResultType useBoneMeal(ItemUseContext ctx) {
+        World world = ctx.getLevel();
         BlockPos blockpos = ctx.getClickedPos();
-        BlockState blockstate = level.getBlockState(blockpos);
-        if (blockstate.getBlock() instanceof BonemealableBlock bonemealableblock) {
-            if (bonemealableblock.isValidBonemealTarget(level, blockpos, blockstate, level.isClientSide)) {
-                if (level instanceof ServerLevel) {
-                    if (bonemealableblock.isBonemealSuccess(level, level.random, blockpos, blockstate)) {
-                        bonemealableblock.performBonemeal((ServerLevel) level, level.random, blockpos, blockstate);
+        BlockState blockstate = world.getBlockState(blockpos);
+        if (blockstate.getBlock() instanceof IGrowable growable) {
+            if (growable.isValidBonemealTarget(world, blockpos, blockstate, world.isClientSide)) {
+                if (world instanceof ServerWorld serverWorld) {
+                    if (growable.isBonemealSuccess(world, world.random, blockpos, blockstate)) {
+                        growable.performBonemeal(serverWorld, world.random, blockpos, blockstate);
                     }
-                    level.levelEvent(1505, blockpos, 0);
+                    world.levelEvent(1505, blockpos, 0);
                 }
-                return InteractionResult.SUCCESS;
+                return ActionResultType.SUCCESS;
             }
         }
-        return InteractionResult.PASS;
+        return ActionResultType.PASS;
     }
 
 }

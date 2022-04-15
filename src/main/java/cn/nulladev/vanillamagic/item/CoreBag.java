@@ -2,20 +2,9 @@ package cn.nulladev.vanillamagic.item;
 
 import cn.nulladev.vanillamagic.client.CoreBagMenu;
 import cn.nulladev.vanillamagic.item.conceptcore.ConceptCore;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.network.NetworkHooks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.ListNBT;
 
 public class CoreBag extends Item {
 
@@ -26,15 +15,15 @@ public class CoreBag extends Item {
         super(props.stacksTo(1));
     }
 
-    public static ListTag getListTag(ItemStack stack) {
+    public static ListNBT getListTag(ItemStack stack) {
         if (stack.getOrCreateTag().contains(TAG_ITEMS)) {
             return stack.getOrCreateTag().getList(TAG_ITEMS, Tag.TAG_COMPOUND);
         } else {
-            return new ListTag();
+            return new ListNBT();
         }
     }
 
-    public static void setListTag(ItemStack stack, ListTag list) {
+    public static void setListTag(ItemStack stack, ListNBT list) {
         stack.getOrCreateTag().put(TAG_ITEMS, list);
     }
 

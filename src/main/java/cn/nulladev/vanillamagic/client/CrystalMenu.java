@@ -8,12 +8,12 @@ import cn.nulladev.vanillamagic.item.SpaceCrystal;
 import com.lcy0x1.base.BaseRecipe;
 import com.lcy0x1.base.menu.BaseContainerMenu;
 import com.lcy0x1.core.util.SpriteManager;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.Container;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketBuffer;
+import net.minecraft.util.Hand;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Objects;
@@ -37,11 +37,11 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> {
     public static final SpriteManager SPRITE_4 = new SpriteManager(VanillaMagic.MODID, "crystal_4");
     public static final SpriteManager SPRITE_5 = new SpriteManager(VanillaMagic.MODID, "crystal_5");
 
-    private final Player player;
+    private final PlayerEntity player;
     private final ItemStack crystal;
 
-    public static CrystalMenu fromNetwork(int windowId, Inventory inv, FriendlyByteBuf buf) {
-        InteractionHand hand = buf.readBoolean() ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
+    public static CrystalMenu fromNetwork(int windowId, PlayerInventory inv, PacketBuffer buf) {
+        Hand hand = buf.readBoolean() ? Hand.MAIN_HAND : Hand.OFF_HAND;
         return new CrystalMenu(windowId, inv, inv.player.getItemInHand(hand));
     }
 
@@ -58,7 +58,7 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> {
             return SPRITE_3;
     }
 
-    public CrystalMenu(int windowID, Inventory inventory, ItemStack crystal) {
+    public CrystalMenu(int windowID, PlayerInventory inventory, ItemStack crystal) {
         super(VMRegistry.MT_CRYSTAL.get(), windowID, inventory, getSprite(crystal),
                 menu -> new CrystalContainer(SpaceCrystal.getSize(crystal) * SpaceCrystal.getSize(crystal) + 1, menu),
                 true);
@@ -69,7 +69,7 @@ public class CrystalMenu extends BaseContainerMenu<CrystalMenu> {
     }
 
     @Override
-    protected boolean shouldLock(Inventory inv, int slot) {
+    protected boolean shouldLock(PlayerInventory inv, int slot) {
         return slot == inv.selected && inv.getItem(slot).getItem() instanceof SpaceCrystal;
     }
 

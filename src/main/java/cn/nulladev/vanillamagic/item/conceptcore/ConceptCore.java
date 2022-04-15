@@ -1,21 +1,19 @@
 package cn.nulladev.vanillamagic.item.conceptcore;
 
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUseContext;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
+import net.minecraft.util.text.*;
+import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,12 +28,12 @@ public abstract class ConceptCore extends Item {
         this.setUsingCD(10);
     }
 
-    public InteractionResult wandUseOn(UseOnContext ctx) {
-        return InteractionResult.PASS;
+    public ActionResultType wandUseOn(ItemUseContext ctx) {
+        return ActionResultType.PASS;
     }
 
-    public InteractionResultHolder<ItemStack> wandUse(Level level, Player player, InteractionHand hand) {
-        return InteractionResultHolder.pass(player.getItemInHand(hand));
+    public ActionResult<ItemStack> wandUse(World world, PlayerEntity player, Hand hand) {
+        return ActionResult.pass(player.getItemInHand(hand));
     }
 
     public void setUsingCD(int CD) {
@@ -69,36 +67,32 @@ public abstract class ConceptCore extends Item {
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
+    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         if (getCD(stack) > 0) {
             setCD(stack, getCD(stack) - 1);
         }
     }
 
     @Override
-    public boolean isBarVisible(ItemStack stack) {
+    public boolean showDurabilityBar(ItemStack stack) {
         return getCD(stack) > 0;
     }
 
     @Override
-    public int getBarWidth(ItemStack stack) {
-        return Math.round(13F - 13F * getCD(stack) / UsingCD);
+    public double getDurabilityForDisplay(ItemStack stack) {
+        return 1D - 1D * getCD(stack) / UsingCD;
     }
 
-    @Override
-    public int getBarColor(ItemStack stack) {
-        float f = Math.max(0.0F, (this.UsingCD - getCD(stack)) / (float) UsingCD);
-        return Mth.hsvToRgb(f / 3.0F, 1.0F, 1.0F);
-    }
 
+    @OnlyIn(Dist.CLIENT)
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flags) {
-        Component total_cd = new TranslatableComponent("vanillamagic.misc.total_cd", UsingCD);
-        Component cd_info;
+    public void appendHoverText(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flags) {
+        IFormattableTextComponent total_cd = new TranslationTextComponent("vanillamagic.misc.total_cd", UsingCD);
+        IFormattableTextComponent cd_info;
         if (getCD(stack) > 0)
-            cd_info = new TranslatableComponent("vanillamagic.misc.cd2", getCD(stack)).withStyle(ChatFormatting.RED);
+            cd_info = new TranslationTextComponent("vanillamagic.misc.cd2", getCD(stack)).withStyle(TextFormatting.RED);
         else
-            cd_info = new TranslatableComponent("vanillamagic.misc.cd1").withStyle(ChatFormatting.GREEN);
+            cd_info = new TranslationTextComponent("vanillamagic.misc.cd1").withStyle(TextFormatting.GREEN);
         list.add(total_cd);
         list.add(cd_info);
     }

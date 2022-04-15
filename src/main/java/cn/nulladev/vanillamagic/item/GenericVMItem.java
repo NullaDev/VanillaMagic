@@ -1,6 +1,6 @@
 package cn.nulladev.vanillamagic.item;
 
-import net.minecraft.world.item.Item;
+import net.minecraft.item.Item;
 
 public class GenericVMItem extends Item {
 

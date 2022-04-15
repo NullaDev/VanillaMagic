@@ -1,16 +1,16 @@
 package cn.nulladev.vanillamagic.item;
 
 import cn.nulladev.vanillamagic.client.CrystalMenu;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.network.NetworkHooks;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.container.INamedContainerProvider;
+import net.minecraft.inventory.container.SimpleNamedContainerProvider;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 public class SpaceCrystal extends Item {
 
@@ -29,14 +29,14 @@ public class SpaceCrystal extends Item {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
+    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         if (!world.isClientSide) {
             ItemStack stack = player.getItemInHand(hand);
-            MenuProvider container = new SimpleMenuProvider((windowId, playerInventory, playerEntity) -> new CrystalMenu(windowId, playerInventory, stack), stack.getDisplayName());
-            NetworkHooks.openGui((ServerPlayer) player, container, buf -> buf.writeBoolean(hand == InteractionHand.MAIN_HAND));
+            INamedContainerProvider container = new SimpleNamedContainerProvider((windowId, playerInventory, playerEntity) -> new CrystalMenu(windowId, playerInventory, stack), stack.getDisplayName());
+            NetworkHooks.openGui((ServerPlayerEntity) player, container, buf -> buf.writeBoolean(hand == Hand.MAIN_HAND));
             //player.openMenu(container);
         }
-        return InteractionResultHolder.success(player.getItemInHand(hand));
+        return ActionResult.success(player.getItemInHand(hand));
     }
 
 }

@@ -1,15 +1,16 @@
 package cn.nulladev.vanillamagic.item.conceptcore;
 
-import net.minecraft.ChatFormatting;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.text.IFormattableTextComponent;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 public abstract class ConceptCoreWithContent extends ConceptCore {
@@ -20,7 +21,7 @@ public abstract class ConceptCoreWithContent extends ConceptCore {
     }
 
     public static void setContent(ItemStack stack, ItemStack content) {
-        CompoundTag tag = new CompoundTag();
+        CompoundNBT tag = new CompoundNBT();
         content.save(tag);
         stack.getOrCreateTag().put(TAG_CONTENT, tag);
     }
@@ -40,11 +41,11 @@ public abstract class ConceptCoreWithContent extends ConceptCore {
     public abstract boolean isContentValid(ItemStack stack);
 
     @Override
-    public Component getName(ItemStack stack) {
+    public ITextComponent getName(ItemStack stack) {
         if (hasContent(stack)) {
-            MutableComponent component = super.getName(stack).plainCopy();
+            IFormattableTextComponent component = super.getName(stack).plainCopy();
             component.append("(");
-            component.append(getContent(stack).getDisplayName().plainCopy().withStyle(ChatFormatting.YELLOW));
+            component.append(getContent(stack).getDisplayName().plainCopy().withStyle(TextFormatting.YELLOW));
             component.append(")");
             return component;
         } else {
@@ -52,16 +53,17 @@ public abstract class ConceptCoreWithContent extends ConceptCore {
         }
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flags) {
-        Component total_cd = new TranslatableComponent("vanillamagic.misc.total_cd", UsingCD);
-        Component cd_info;
+    public void appendHoverText(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flags) {
+        IFormattableTextComponent total_cd = new TranslationTextComponent("vanillamagic.misc.total_cd", UsingCD);
+        IFormattableTextComponent cd_info;
         if (!hasContent(stack))
-            cd_info = new TranslatableComponent("vanillamagic.misc.miss_content").withStyle(ChatFormatting.RED);
+            cd_info = new TranslationTextComponent("vanillamagic.misc.miss_content").withStyle(TextFormatting.RED);
         else if (getCD(stack) > 0)
-            cd_info = new TranslatableComponent("vanillamagic.misc.cd2", getCD(stack)).withStyle(ChatFormatting.RED);
+            cd_info = new TranslationTextComponent("vanillamagic.misc.cd2", getCD(stack)).withStyle(TextFormatting.RED);
         else
-            cd_info = new TranslatableComponent("vanillamagic.misc.cd1").withStyle(ChatFormatting.GREEN);
+            cd_info = new TranslationTextComponent("vanillamagic.misc.cd1").withStyle(TextFormatting.GREEN);
         list.add(total_cd);
         list.add(cd_info);
     }

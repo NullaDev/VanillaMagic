@@ -2,10 +2,10 @@ package cn.nulladev.vanillamagic.core;
 
 import cn.nulladev.vanillamagic.item.*;
 import cn.nulladev.vanillamagic.item.conceptcore.*;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.item.Item;
+import net.minecraft.item.Rarity;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Function;
 

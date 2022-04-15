@@ -7,6 +7,7 @@ import cn.nulladev.vanillamagic.client.CrystalMenu;
 import cn.nulladev.vanillamagic.crafting.*;
 import com.lcy0x1.base.BaseRecipe;
 import net.minecraft.client.Minecraft;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -23,14 +24,14 @@ public class VMRegistry {
     public static final VMRegistry INSTANCE = new VMRegistry();
 
     public static final DeferredRegister<BlockEntityType<?>> BE = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, VanillaMagic.MODID);
-    public static final DeferredRegister<MenuType<?>> MENU = DeferredRegister.create(ForgeRegistries.CONTAINERS, VanillaMagic.MODID);
+    public static final DeferredRegister<ContainerType<?>> MENU = DeferredRegister.create(ForgeRegistries.CONTAINERS, VanillaMagic.MODID);
     public static final DeferredRegister<RecipeSerializer<?>> RECIPE = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, VanillaMagic.MODID);
 
     public static final RegistryObject<BlockEntityType<CollectorBE>> BE_COLLECTOR = BE.register("collector", () -> BlockEntityType.Builder.of(CollectorBE::new, VMBlocks.AUTOMATIC_COLLECTOR.get()).build(null));
 
-    public static final RegistryObject<MenuType<CrystalMenu>> MT_CRYSTAL = MENU.register("space_crystal", () -> IForgeMenuType.create(CrystalMenu::fromNetwork));
-    public static final RegistryObject<MenuType<CoreBagMenu>> MT_CORE_BAG = MENU.register("core_bag", () -> IForgeMenuType.create(CoreBagMenu::fromNetwork));
-    public static final RegistryObject<MenuType<CollectorMenu>> MT_COLLECTOR = MENU.register("collector", () -> IForgeMenuType.create((windowId, inv, data) -> new CollectorMenu(windowId, inv, data.readBlockPos(), Minecraft.getInstance().level)));
+    public static final RegistryObject<ContainerType<CrystalMenu>> MT_CRYSTAL = MENU.register("space_crystal", () -> IForgeMenuType.create(CrystalMenu::fromNetwork));
+    public static final RegistryObject<ContainerType<CoreBagMenu>> MT_CORE_BAG = MENU.register("core_bag", () -> IForgeMenuType.create(CoreBagMenu::fromNetwork));
+    public static final RegistryObject<ContainerType<CollectorMenu>> MT_COLLECTOR = MENU.register("collector", () -> IForgeMenuType.create((windowId, inv, data) -> new CollectorMenu(windowId, inv, data.readBlockPos(), Minecraft.getInstance().level)));
 
     public static final RecipeType<AbstractCrystalRecipe<?>> RT_CRYSTAL = RecipeType.register("vanillamagic:crystal");
     public static final RegistryObject<BaseRecipe.RecType<DefaultCrystalRecipe, AbstractCrystalRecipe<?>, CrystalMenu.CrystalContainer>> RS_CRYSTAL_DEFAULT = RECIPE.register("crystal_default", () -> new BaseRecipe.RecType<>(DefaultCrystalRecipe.class, RT_CRYSTAL));

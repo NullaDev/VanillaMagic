@@ -1,25 +1,23 @@
 package com.lcy0x1.base.menu;
 
 import com.lcy0x1.core.util.SpriteManager;
-import net.minecraft.MethodsReturnNonnullByDefault;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.client.gui.screen.inventory.ContainerScreen;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.ContainerType;
+import net.minecraft.inventory.container.Slot;
+import net.minecraft.item.ItemStack;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-@MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-public class BaseContainerMenu<T extends BaseContainerMenu<T>> extends AbstractContainerMenu {
+public class BaseContainerMenu<T extends BaseContainerMenu<T>> extends ContainerScreen {
 
-    public static class BaseContainer<T extends BaseContainerMenu<T>> extends SimpleContainer {
+    public static class BaseContainer<T extends BaseContainerMenu<T>> extends Container {
 
         protected final T parent;
         private boolean updating = false;
@@ -41,14 +39,14 @@ public class BaseContainerMenu<T extends BaseContainerMenu<T>> extends AbstractC
 
     }
 
-    public final Inventory inventory;
-    public final SimpleContainer container;
+    public final PlayerInventory inventory;
+    public final Container container;
     public final SpriteManager sprite;
     private int added = 0;
     private final boolean isVirtual;
 
     @SuppressWarnings("unchecked")
-    protected BaseContainerMenu(MenuType<?> type, int wid, Inventory plInv, SpriteManager manager, Function<T, SimpleContainer> factory, boolean isVirtual) {
+    protected BaseContainerMenu(ContainerType<?> type, int wid, PlayerInventory plInv, SpriteManager manager, Function<T, SimpleContainer> factory, boolean isVirtual) {
         super(type, wid);
         this.inventory = plInv;
         container = factory.apply((T) this);
@@ -59,7 +57,7 @@ public class BaseContainerMenu<T extends BaseContainerMenu<T>> extends AbstractC
         this.isVirtual = isVirtual;
     }
 
-    protected void bindPlayerInventory(Inventory plInv, int x, int y) {
+    protected void bindPlayerInventory(PlayerInventory plInv, int x, int y) {
         for (int i = 0; i < 3; ++i)
             for (int j = 0; j < 9; ++j)
                 this.addSlot(new Slot(plInv, j + i * 9 + 9, x + j * 18, y + i * 18));
@@ -70,7 +68,7 @@ public class BaseContainerMenu<T extends BaseContainerMenu<T>> extends AbstractC
                 this.addSlot(new Slot(plInv, k, x + k * 18, y + 58));
     }
 
-    protected boolean shouldLock(Inventory inv, int slot) {
+    protected boolean shouldLock(PlayerInventory inv, int slot) {
         return false;
     }
 
@@ -87,7 +85,7 @@ public class BaseContainerMenu<T extends BaseContainerMenu<T>> extends AbstractC
     }
 
     @Override
-    public ItemStack quickMoveStack(Player pl, int id) {
+    public ItemStack quickMoveStack(PlayerEntity pl, int id) {
         ItemStack stack = slots.get(id).getItem();
         int n = container.getContainerSize();
         if (id >= 36) {
@@ -100,12 +98,12 @@ public class BaseContainerMenu<T extends BaseContainerMenu<T>> extends AbstractC
     }
 
     @Override
-    public boolean stillValid(Player player) {
+    public boolean stillValid(PlayerEntity player) {
         return player.isAlive();
     }
 
     @Override
-    public void removed(Player player) {
+    public void removed(PlayerEntity player) {
         if (isVirtual && !player.level.isClientSide())
             clearContainer(player, container);
         super.removed(player);
