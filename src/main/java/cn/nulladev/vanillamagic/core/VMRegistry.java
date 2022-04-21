@@ -10,14 +10,19 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.common.extensions.IForgeMenuType;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+@Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class VMRegistry {
 
     public static final VMRegistry INSTANCE = new VMRegistry();
@@ -32,7 +37,13 @@ public class VMRegistry {
     public static final RegistryObject<MenuType<CoreBagMenu>> MT_CORE_BAG = MENU.register("core_bag", () -> IForgeMenuType.create(CoreBagMenu::fromNetwork));
     public static final RegistryObject<MenuType<CollectorMenu>> MT_COLLECTOR = MENU.register("collector", () -> IForgeMenuType.create((windowId, inv, data) -> new CollectorMenu(windowId, inv, data.readBlockPos(), Minecraft.getInstance().level)));
 
-    public static final RecipeType<AbstractCrystalRecipe<?>> RT_CRYSTAL = RecipeType.register("vanillamagic:crystal");
+    public static RecipeType<AbstractCrystalRecipe<?>> RT_CRYSTAL;
+    @SubscribeEvent
+    public static void registerRecipeType(RegistryEvent.Register<Block> event) {
+        // Forge does not include a registry for RecipeTypes, and starting from 1.18.2,
+        // registering in a vanilla registry must be done in any registry event.
+        RT_CRYSTAL = RecipeType.register("vanillamagic:crystal");
+    }
     public static final RegistryObject<BaseRecipe.RecType<DefaultCrystalRecipe, AbstractCrystalRecipe<?>, CrystalMenu.CrystalContainer>> RS_CRYSTAL_DEFAULT = RECIPE.register("crystal_default", () -> new BaseRecipe.RecType<>(DefaultCrystalRecipe.class, RT_CRYSTAL));
     public static final RegistryObject<RecipeSerializer<WandCoreRecipe>> RS_WAND_CORE = RECIPE.register("wand_core", () -> WandCoreRecipe.SERIALIZER);
     public static final RegistryObject<RecipeSerializer<WandRemoveCoreRecipe>> RS_WAND_REMOVE_CORE = RECIPE.register("wand_remove_core", () -> WandRemoveCoreRecipe.SERIALIZER);
