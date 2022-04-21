@@ -92,11 +92,11 @@ public class CrystalRecipeCategory implements IRecipeCategory<DefaultCrystalReci
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                builder.addSlot(RecipeIngredientRole.INPUT, 45 - size * 9 + j * 18, i * 18)
+                builder.addSlot(RecipeIngredientRole.INPUT, 46 - size * 9 + j * 18, i * 18 + 1)
                         .addIngredients(inputs.get(i * size + j));
             }
         }
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 131, size * 9 - 9)
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 132, size * 9 - 8)
                 .addItemStack(recipe.getResultItem());
     }
 
