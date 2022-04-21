@@ -82,9 +82,9 @@ public class JEICompat implements IModPlugin {
         List<DefaultCrystalRecipe> basic = def.stream().filter(e -> e.pattern.length == 3).toList();
         List<DefaultCrystalRecipe> advanced = def.stream().filter(e -> e.pattern.length == 4).toList();
         List<DefaultCrystalRecipe> ultimate = def.stream().filter(e -> e.pattern.length == 5).toList();
-        registration.addRecipes(basic, BASIC.getUid());
-        registration.addRecipes(advanced, ADVANCED.getUid());
-        registration.addRecipes(ultimate, ULTIMATE.getUid());
+        registration.addRecipes(BASIC.getRecipeType(), basic);
+        registration.addRecipes(ADVANCED.getRecipeType(), advanced);
+        registration.addRecipes(ULTIMATE.getRecipeType(), ultimate);
     }
 
     @Override
@@ -94,9 +94,9 @@ public class JEICompat implements IModPlugin {
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        registration.addRecipeCatalyst(VMItems.SPACE_CRYSTAL_BASIC.get().getDefaultInstance(), BASIC.getUid());
-        registration.addRecipeCatalyst(VMItems.SPACE_CRYSTAL_ADVANCED.get().getDefaultInstance(), ADVANCED.getUid());
-        registration.addRecipeCatalyst(VMItems.SPACE_CRYSTAL_ULTIMATE.get().getDefaultInstance(), ULTIMATE.getUid());
+        registration.addRecipeCatalyst(VMItems.SPACE_CRYSTAL_BASIC.get().getDefaultInstance(), BASIC.getRecipeType());
+        registration.addRecipeCatalyst(VMItems.SPACE_CRYSTAL_ADVANCED.get().getDefaultInstance(), ADVANCED.getRecipeType());
+        registration.addRecipeCatalyst(VMItems.SPACE_CRYSTAL_ULTIMATE.get().getDefaultInstance(), ULTIMATE.getRecipeType());
     }
 
     @Override

@@ -35,10 +35,10 @@ public class BaseTileEntity extends BlockEntity {
     }
 
     @Override
-    public CompoundTag save(CompoundTag tag) {
+    public void saveAdditional(CompoundTag tag) {
+        super.saveAdditional(tag);
         CompoundTag ser = ExceptionHandler.get(() -> Automator.toTag(new CompoundTag(), getClass(), this, f -> true));
         if (ser != null) tag.put("auto-serial", ser);
-        return super.save(tag);
     }
 
     @Nullable

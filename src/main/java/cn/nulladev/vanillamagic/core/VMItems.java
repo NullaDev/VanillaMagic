@@ -5,6 +5,7 @@ import cn.nulladev.vanillamagic.item.conceptcore.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Function;
@@ -12,7 +13,7 @@ import java.util.function.Function;
 @SuppressWarnings("unused")
 public class VMItems {
 
-    public static final DeferredRegister<Item> ITEM = DeferredRegister.create(Item.class, VanillaMagic.MODID);
+    public static final DeferredRegister<Item> ITEM = DeferredRegister.create(ForgeRegistries.ITEMS, VanillaMagic.MODID);
 
     public static RegistryObject<Item> SPACE_CRYSTAL_BASIC = register("space_crystal_basic", (p) -> new SpaceCrystal(p, 3));
     public static RegistryObject<Item> SPACE_CRYSTAL_ADVANCED = register("space_crystal_advanced", (p) -> new SpaceCrystal(p, 4));

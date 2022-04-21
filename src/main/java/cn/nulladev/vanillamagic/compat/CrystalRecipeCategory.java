@@ -2,11 +2,12 @@ package cn.nulladev.vanillamagic.compat;
 
 import cn.nulladev.vanillamagic.crafting.DefaultCrystalRecipe;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
-import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
+import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.network.chat.Component;
@@ -32,7 +33,6 @@ public class CrystalRecipeCategory implements IRecipeCategory<DefaultCrystalReci
 
     private IDrawable background, icon;
 
-
     public CrystalRecipeCategory(ResourceLocation uid, ItemStack stack, ResourceLocation bg, String translation, int size) {
         this.uid = uid;
         this.bg = bg;
@@ -49,14 +49,21 @@ public class CrystalRecipeCategory implements IRecipeCategory<DefaultCrystalReci
         return this;
     }
 
+    @SuppressWarnings("removal")
     @Override
     public ResourceLocation getUid() {
         return uid;
     }
 
+    @SuppressWarnings("removal")
     @Override
     public Class<? extends DefaultCrystalRecipe> getRecipeClass() {
         return DefaultCrystalRecipe.class;
+    }
+
+    @Override
+    public RecipeType<DefaultCrystalRecipe> getRecipeType() {
+        return new RecipeType<>(this.uid, DefaultCrystalRecipe.class);
     }
 
     @Override
@@ -75,28 +82,22 @@ public class CrystalRecipeCategory implements IRecipeCategory<DefaultCrystalReci
     }
 
     @Override
-    public void setIngredients(DefaultCrystalRecipe recipe, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayoutBuilder builder, DefaultCrystalRecipe recipe, IFocusGroup focuses) {
         List<Ingredient> inputs = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 inputs.add(Optional.ofNullable(recipe.key.get("" + recipe.pattern[i].charAt(j))).orElse(Ingredient.EMPTY));
             }
         }
-        ingredients.setInputIngredients(inputs);
-        ingredients.setOutput(VanillaTypes.ITEM, recipe.getResultItem());
-    }
 
-    @Override
-    public void setRecipe(IRecipeLayout recipeLayout, DefaultCrystalRecipe recipe, IIngredients ingredients) {
-        IGuiItemStackGroup group = recipeLayout.getItemStacks();
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                group.init(i * size + j, true, 45 - size * 9 + j * 18, i * 18);
-                group.set(size * i + j, ingredients.getInputs(VanillaTypes.ITEM).get(i * size + j));
+                builder.addSlot(RecipeIngredientRole.INPUT, 45 - size * 9 + j * 18, i * 18)
+                        .addIngredients(inputs.get(i * size + j));
             }
         }
-        group.init(size * size, false, 131, size * 9 - 9);
-        group.set(size * size, recipe.getResultItem());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 131, size * 9 - 9)
+                .addItemStack(recipe.getResultItem());
     }
 
 }

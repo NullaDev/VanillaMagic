@@ -8,13 +8,14 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
 public class VMBlocks {
 
-    public static final DeferredRegister<Block> BLOCK = DeferredRegister.create(Block.class, VanillaMagic.MODID);
+    public static final DeferredRegister<Block> BLOCK = DeferredRegister.create(ForgeRegistries.BLOCKS, VanillaMagic.MODID);
 
     public static final BlockBehaviour.Properties p = BlockBehaviour.Properties.of(Material.METAL, MaterialColor.GOLD).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.METAL);
     public static final RegistryObject<Block> AUTOMATIC_COLLECTOR = register("automatic_collector", () -> new AutomaticCollector(p));
