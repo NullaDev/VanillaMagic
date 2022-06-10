@@ -17,8 +17,7 @@ public class ConceptCoreNetherPortal extends ConceptCore {
 
     @Override
     public InteractionResultHolder<ItemStack> wandUse(Level level, Player player, InteractionHand hand) {
-        if (level instanceof ServerLevel) {
-            ServerLevel serverlevel = (ServerLevel)level;
+        if (level instanceof ServerLevel serverlevel) {
             MinecraftServer server = serverlevel.getServer();
             ServerLevel overworld = server.getLevel(Level.OVERWORLD);
             ServerLevel nether = server.getLevel(Level.NETHER);
