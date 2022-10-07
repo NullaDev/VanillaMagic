@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "": {
+            "model": "sheathmagic:block/world_interoperator"
+        }
+    }
+}
+

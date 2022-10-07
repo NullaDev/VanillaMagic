@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "sheathmagic:world_interoperator_wand",
+    "count": 1
+  },
+  "pattern": [
+    " BA",
+    " AA",
+    "A  "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:gold_ingot"
+    },
+    "B": {
+      "item": "sheathmagic:core_amplifier"
+    }
+  }
+}
